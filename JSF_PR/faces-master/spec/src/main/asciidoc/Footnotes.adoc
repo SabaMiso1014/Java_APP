@@ -1,0 +1,55 @@
+'''''
+
+<<Footnotes.adoc#a9087,[1]>> [[a9087]]Accessing attributes
+via this Map will cause the creation of a session associated with this
+request, if none currently exists.
+
+<<Footnotes.adoc#a9088,[2]>> [[a9088]]Converters can also be
+requested based on the object class of the value to be converted.
+
+<<Footnotes.adoc#a9089,[3]>> [[a9089]]It is an error to
+specify more than one <navigation-case>, nested within one or more
+<navigation-rule> elements with the same <from-view-id> matching
+pattern, that have exactly the same combination of <from-xxx>, unless
+each is discriminated by a unique <if> element.
+
+<<Footnotes.adoc#a9090,[4]>> [[a9090]]The presence of the
+<if> element in the absense of the <from-outcome> element is
+characterized as an alternate, contextual means of obtaining a logical outcome and thus the
+navigation case is checked even when the application action returns a a
+null (or void) outcome value.
+
+<<Footnotes.adoc#a9092,[5]>> [[a9092]]Note that multiple
+conditions can be checked using the built-in operators and grouping
+provided by the Expression Language (e.g., and, or, not).
+
+<<Footnotes.adoc#a9093,[6]>> [[a9093]]Or, equivalently,
+with no _<from-view-id>_ element at all.
+
+<<Footnotes.adoc#a9094,[7]>> [[a9094]]The implementation
+classes for attached object must include a public zero-arguments
+constructor.
+
+<<Footnotes.adoc#a9097,[8]>> [[a9097]]This example
+illustrates a non-normative convention for naming tags based
+on a combination of the component name and the renderer type. This
+convention is useful, but not required; tags may be given any
+desired tag name; however the convention is rigorously
+followed in the Standard HTML RenderKit Tag Library.
+
+<<Footnotes.adoc#a9098,[9]>> [[a9098]]Consistent with the
+way that namespace prefixes work in XML, the actual prefix used is
+totally up to the page author, and has no semantic meaning. However, the
+values shown above are the suggested defaults, which are used
+consistently in tag library examples throughout this specification.
+
+<<Footnotes.adoc#a9099,[10]>> [[a9099]]If you need multiple
+components in a facet, nest them inside a <h:panelGroup> tag
+that is the value of the facet.
+
+<<Footnotes.adoc#a9101,[11]>> [[a9101]]This component has no
+associated Renderer, so the getRendererType() method must return null
+instead of a renderer type.
+
+<<Footnotes.adoc#a9102,[12]>> [[a9102]]Identified by XPath
+selection expressions.

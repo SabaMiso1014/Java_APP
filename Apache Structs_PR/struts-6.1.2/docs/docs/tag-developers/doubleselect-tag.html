@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="Date-Revision-yyyymmdd" content="20140918"/>
+  <meta http-equiv="Content-Language" content="en"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>doubleselect tag</title>
+
+  <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/custom.css" rel="stylesheet">
+  <link href="/highlighter/github-theme.css" rel="stylesheet">
+
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/community.js"></script>
+</head>
+<body>
+
+<a href="http://github.com/apache/struts" class="github-ribbon">
+  <img style="position: absolute; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+</a>
+
+<header>
+  <nav>
+    <div role="navigation" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#struts-menu" class="navbar-toggle">
+            Menu
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/index.html" class="navbar-brand logo"><img src="/img/struts-logo.svg"></a>
+        </div>
+        <div id="struts-menu" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                Home<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/index.html">Welcome</a></li>
+                <li><a href="/download.cgi">Download</a></li>
+                <li><a href="/releases.html">Releases</a></li>
+                <li><a href="/announce-2022.html">Announcements</a></li>
+                <li><a href="http://www.apache.org/licenses/">License</a></li>
+                <li><a href="https://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+                <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy Policy</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                Support<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/mail.html">User Mailing List</a></li>
+                <li><a href="https://issues.apache.org/jira/browse/WW">Issue Tracker</a></li>
+                <li><a href="/security.html">Reporting Security Issues</a></li>
+                <li class="divider"></li>
+                <li><a href="https://cwiki.apache.org/confluence/display/WW/Migration+Guide">Version Notes</a></li>
+                <li><a href="https://cwiki.apache.org/confluence/display/WW/Security+Bulletins">Security Bulletins</a></li>
+                <li class="divider"></li>
+                <li><a href="/maven/project-info.html">Maven Project Info</a></li>
+                <li><a href="/maven/struts2-core/dependencies.html">Struts Core Dependencies</a></li>
+                <li><a href="/maven/struts2-plugins/modules.html">Plugin Dependencies</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                Documentation<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/birdseye.html">Birds Eye</a></li>
+                <li><a href="/primer.html">Key Technologies</a></li>
+                <li><a href="/kickstart.html">Kickstart FAQ</a></li>
+                <li><a href="https://cwiki.apache.org/confluence/display/WW/Home">Wiki</a></li>
+                <li class="divider"></li>
+                <li><a href="/getting-started/">Getting Started</a></li>
+                <li><a href="/security/">Security Guide</a></li>
+                <li><a href="/core-developers/">Core Developers Guide</a></li>
+                <li><a href="/tag-developers/">Tag Developers Guide</a></li>
+                <li><a href="/maven-archetypes/">Maven Archetypes</a></li>
+                <li><a href="/plugins/">Plugins</a></li>
+                <li><a href="/maven/struts2-core/apidocs/index.html">Struts Core API</a></li>
+                <li><a href="/tag-developers/tag-reference.html">Tag reference</a></li>
+                <li><a href="https://cwiki.apache.org/confluence/display/WW/FAQs">FAQs</a></li>
+                <li><a href="http://cwiki.apache.org/S2PLUGINS/home.html">Plugin registry</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                Contributing<b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/youatstruts.html">You at Struts</a></li>
+                <li><a href="/helping.html">How to Help FAQ</a></li>
+                <li><a href="/dev-mail.html">Development Lists</a></li>
+                <li class="divider"></li>
+                <li><a href="/submitting-patches.html">Submitting patches</a></li>
+                <li><a href="/builds.html">Source Code and Builds</a></li>
+                <li><a href="/coding-standards.html">Coding standards</a></li>
+                <li><a href="/contributors/">Contributors Guide</a></li>
+                <li class="divider"></li>
+                <li><a href="/release-guidelines.html">Release Guidelines</a></li>
+                <li><a href="/bylaws.html">PMC Charter</a></li>
+                <li><a href="/volunteers.html">Volunteers</a></li>
+                <li><a href="https://gitbox.apache.org/repos/asf?p=struts.git">Source Repository</a></li>
+                <li><a href="/updating-website.html">Updating the website</a></li>
+              </ul>
+            </li>
+            <li class="apache"><a href="http://www.apache.org/"><img src="/img/apache.png"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<article class="container">
+  <section class="col-md-12">
+    <a class="edit-on-gh" href="https://github.com/apache/struts-site/edit/master/source/tag-developers/doubleselect-tag.md" title="Edit this page on GitHub">Edit on GitHub</a>
+    
+    <a href="tag-reference.html" title="back to Tag Reference"><< back to Tag Reference</a>
+    
+    <h1 id="doubleselect">doubleselect</h1>
+
+<p>Please make sure you have read the <a href="tag-syntax">Tag Syntax</a> document and understand how tag attribute syntax works.</p>
+
+<p>Note that the <code class="language-plaintext highlighter-rouge">doublelistkey</code> and <code class="language-plaintext highlighter-rouge">doublelistvalue</code> attribute will default to <code class="language-plaintext highlighter-rouge">key</code> and <code class="language-plaintext highlighter-rouge">value</code> respectively only when 
+the <code class="language-plaintext highlighter-rouge">doublelist</code> attribute is evaluated to a Map or its descendant. Other thing else, will result in <code class="language-plaintext highlighter-rouge">doublelistkey</code> 
+and <code class="language-plaintext highlighter-rouge">doublelistvalue</code> to be null and not used.</p>
+
+<h2 id="description">Description</h2>
+
+<p>Renders two HTML select elements with second one changing displayed values depending on selected entry of first one.</p>
+
+<h2 id="attributes">Attributes</h2>
+
+<table class="tag-reference">
+    <tr>
+        <td colspan="6"><h4>Dynamic Attributes Allowed:</h4> false</td>
+    </tr>
+    <tr>
+        <td colspan="6"><hr /></td>
+    </tr>
+    <tr>
+        <th class="tag-header"><h4>Name</h4></th>
+        <th class="tag-header"><h4>Required</h4></th>
+        <th class="tag-header"><h4>Default</h4></th>
+        <th class="tag-header"><h4>Evaluated</h4></th>
+        <th class="tag-header"><h4>Type</h4></th>
+        <th class="tag-header"><h4>Description</h4></th>
+    </tr>
+    <tr>
+        <td class="tag-attribute">accesskey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html accesskey attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">cssClass</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The css class to use for element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">cssErrorClass</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The css error class to use for element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">cssErrorStyle</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The css error style definitions for element to use</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">cssStyle</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The css style definitions for element to use</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">disabled</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html disabled attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleAccesskey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html accesskey attribute.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleCssClass</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The css class for the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleCssStyle</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The css style for the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleDisabled</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Decides if a disable attribute should be added to the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleEmptyOption</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Decides if the second list will add an empty option</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleHeaderKey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The header key for the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleHeaderValue</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The header value for the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleId</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The id of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleList</td>
+        <td class="tag-attribute"><strong>true</strong></td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The second iterable source to populate from.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleListCssClass</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of second list objects to get css class from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleListCssStyle</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of second list objects to get css style from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleListKey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The key expression to use for second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleListTitle</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of second list objects to get title from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleListValue</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The value expression to use for second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleMultiple</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute"> Decides if multiple attribute should be set on the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleName</td>
+        <td class="tag-attribute"><strong>true</strong></td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The name for complete component</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnblur</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onblur attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnchange</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onchange attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnclick</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onclick attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOndblclick</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the ondbclick attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnfocus</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onfocus attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnkeydown</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onkeydown attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnkeypress</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onkeypress attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnkeyup</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onkeyup attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnmousedown</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onmousedown attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnmousemove</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onmousemove attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnmouseout</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onmouseout attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnmouseover</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onmouseover attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnmouseup</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onmouseup attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleOnselect</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the onselect attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleSize</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the size attribute of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">doubleValue</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The value expression for complete component</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">emptyOption</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">Boolean</td>
+        <td class="tag-attribute">Decides of an empty option is to be inserted in the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">errorPosition</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Define error position of form element (top|bottom)</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">formName</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The form name this component resides in and populates to</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">headerKey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the header key of the second list. Must not be empty! '-1' and '' is correct, '' is bad.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">headerValue</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute"> Set the header value of the second list</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">id</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">HTML id attribute</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">javascriptTooltip</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">Boolean</td>
+        <td class="tag-attribute">Use JavaScript to generate tooltips</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">key</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the key (name, value, label) for this particular component</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">label</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Label expression used for rendering an element specific label</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">labelPosition</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Define label position of form element (top/left)</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">labelSeparator</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">:</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">String that will be appended to the label</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">list</td>
+        <td class="tag-attribute"><strong>true</strong></td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Iterable source to populate from. If the list is a Map (key, value), the Map key will become the option 'value' parameter and the Map value will become the option body.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">listCssClass</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of list objects to get css class from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">listCssStyle</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of list objects to get css style from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">listKey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of list objects to get field value from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">listLabelKey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of list objects to be used to lookup for localised version of field label</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">listTitle</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of list objects to get title from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">listValue</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of list objects to get field content from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">listValueKey</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Property of list objects to get field value label from</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">multiple</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Creates a multiple select. The tag will pre-select multiple values if the values are passed as an Array (of appropriate types) via the value attribute.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">name</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The name to set for element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onblur</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute"> Set the html onblur attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onchange</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onchange attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onclick</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onclick attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">ondblclick</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html ondblclick attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onfocus</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onfocus attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onkeydown</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onkeydown attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onkeypress</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onkeypress attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onkeyup</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onkeyup attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onmousedown</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onmousedown attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onmousemove</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onmousemove attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onmouseout</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onmouseout attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onmouseover</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onmouseover attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onmouseup</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onmouseup attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">onselect</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html onselect attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">performClearTagStateForTagPoolingServers</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">Boolean</td>
+        <td class="tag-attribute">Whether to clear all tag state during doEndTag() processing (if applicable)</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">requiredLabel</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">Boolean</td>
+        <td class="tag-attribute">If set to true, the rendered element will indicate that input is required</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">requiredPosition</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Define required position of required form element (left|right)</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">size</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">Integer</td>
+        <td class="tag-attribute">Size of the element box (# of elements to show)</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">style</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The css style definitions for element to use - it's an alias of cssStyle attribute.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">tabindex</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html tabindex attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">template</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The template (other than default) to use for rendering the element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">templateDir</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The template directory.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">theme</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">The theme (other than default) to use for rendering the element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">title</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the html title attribute on rendered html element</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">tooltip</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Set the tooltip of this particular component</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">tooltipConfig</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Deprecated. Use individual tooltip configuration attributes instead.</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">tooltipCssClass</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">StrutsTTClassic</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">CSS class applied to JavaScrip tooltips</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">tooltipDelay</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">Classic</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Delay in milliseconds, before showing JavaScript tooltips </td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">tooltipIconPath</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Icon path used for image that will have the tooltip</td>
+    </tr>
+    <tr>
+        <td class="tag-attribute">value</td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute"></td>
+        <td class="tag-attribute">false</td>
+        <td class="tag-attribute">String</td>
+        <td class="tag-attribute">Preset the value of input element.</td>
+    </tr>
+</table>
+
+<h2 id="dynamic-attributes">Dynamic attributes</h2>
+
+<p>The tag supports dynamic attributes but if you want to add the attributes to the second control which is generated
+by the tag use the <code class="language-plaintext highlighter-rouge">second-</code> prefix as below:</p>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;s:doubleselect </span>... second-control-id="id2"<span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>The prefix will be stripped while generating the second control.</p>
+
+<h2 id="examples">Examples</h2>
+
+<div class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;s:doubleselect </span><span class="na">label=</span><span class="s">"doubleselect test1"</span><span class="na"> name=</span><span class="s">"menu"</span><span class="na"> list=</span><span class="s">"{'fruit','other'}"</span><span class="na"> doubleName=</span><span class="s">"dishes"</span><span class="na"> doubleList=</span><span class="s">"top == 'fruit' ? {'apple', 'orange'} : {'monkey', 'chicken'}"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;s:doubleselect </span><span class="na">label=</span><span class="s">"doubleselect test2"</span><span class="na"> name=</span><span class="s">"menu"</span><span class="na"> list=</span><span class="s">"#{'fruit':'Nice Fruits', 'other':'Other Dishes'}"</span><span class="na"> doubleName=</span><span class="s">"dishes"</span><span class="na"> doubleList=</span><span class="s">"top == 'fruit' ? {'apple', 'orange'} : {'monkey', 'chicken'}"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+  </section>
+</article>
+
+
+<footer class="container">
+  <div class="col-md-12">
+    Copyright &copy; 2000-2022 <a href="https://www.apache.org/">The Apache Software Foundation</a>.
+    Apache Struts, Struts, Apache, the Apache feather logo, and the Apache Struts project logos are
+    trademarks of The Apache Software Foundation. All Rights Reserved.
+  </div>
+  <div class="col-md-12">Logo and website design donated by <a href="https://softwaremill.com/">SoftwareMill</a>.</div>
+</footer>
+
+<script>!function (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (!d.getElementById(id)) {
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }
+}(document, "script", "twitter-wjs");</script>
+<script src="https://apis.google.com/js/platform.js" async="async" defer="defer"></script>
+
+<div id="fb-root"></div>
+
+<script>(function (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+</body>
+</html>

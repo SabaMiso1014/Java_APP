@@ -1,0 +1,199 @@
+[appendix]
+[[a7037]]
+== Jakarta Faces Metadata
+
+The XML Schema Definition for Application Configuration Resource __web-facesconfig_4_0.xsd__
+is included in a web browser optimized format along with the Javadoc.
+That is the canonical location of the schemas in the specification.
+
+[[a7040]]
+=== Required Handling of _*-extension_ elements in the application configuration resources files
+
+As specified in the XML Schema for
+Application Configuration Resources, many of the elements in the file
+have _*-extension_ elements declared in a similar fashion to this one
+for the __faces-config-extension__:
+
+[source,xml]
+----
+<xsd:complexType name ="faces-config-extensionType">
+  <xsd:annotation>
+    <xsd:documentation>
+      Extension element for faces-config. It may contain
+      implementation specific content.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+    <xsd:any namespace="##any" processContents="lax"
+        minOccurs="0" maxOccurs="unbounded" />
+  </xsd:sequence>
+  <xsd:attribute name="id" type="xsd:ID" />
+</xsd:complexType>
+----
+
+This section specifies the required handling
+of such elements.
+
+Note that it is normal for an application to
+have several application configuration resources files. If multiple such
+resource files have conflicting _*-extension_ elements, the last element
+processed takes precedence over preceding elements. Processing order can
+be controlled as specified in <<UsingFacesInWebApplications.adoc#a6435,Ordering
+of Artifacts>>.
+
+====  _faces-config-extension_ handling
+
+If an application configuration resource
+contains a _faces-config-extension_ element, the children of the element
+must be inspected for containing well-formed XML conforming to the
+syntax specified in the following subsection(s). DTD syntax is used for
+convenience since the content of a _*-extension_ element may not be
+constrained due to its declaration as containing __<xsd:any>__.
+
+[[a7061]]
+===== The _facelets-processing_ element
+
+DTD syntax..
+
+[source,xml]
+----
+<!ELEMENT facelets-processing (file-extension, process-as) >
+<!ELEMENT file-extension ANY>
+<!ELEMENT process-as ANY>
+----
+
+The _<facelets-processing>_ element is used
+to affect the processing of Facelets VDL files. Therefore, this setting
+only applies to those requests that reach the Facelets
+_ViewDeclarationLanguage_ implementation, as specified to the runtime
+via the _jakarta.faces.FACELETS_VIEW_MAPPINGS_ and
+_jakarta.faces.FACELETS_SUFFIX_ _<context-param>_ entries. The
+specification defines three processing modes for Facelets files:
+Facelets XHTML syntax, XML View syntax, and Facelets JSPX syntax. This
+last syntax is intended to ease the migration to Facelets for
+applications already using the Jakarta Server Pages XML document syntax (also known as JSPX
+syntax). The affect on the processing of files in each of these three
+modes is specified in the following table.
+
+.Valid _<process-as>_ values and their implications on the processing of Facelet VDL files.
+[%header, cols="5*", frame="topbot", grid="rows", stripes="even"]
+|===
+
+| {empty}
+| _<process-as>html5</process-as> +
+HTML 5 (default)_
+| _<process-as>xhtml</process-as> +
+Facelets XHTML_
+| <process-as>xml</process-as> +
+XML View
+| <process-as>jspx</process-as> +
+Facelets JSPX
+
+| XML Doctype
+| Simplified to _<!DOCTYPE html>_
+| passed through
+| consumed
+| consumed
+
+| _XML declaration_
+| passed through
+| passed through
+| consumed
+| consumed
+
+| _Processing instructions_
+| passed through
+| passed through
+| consumed
+| consumed
+
+| _CDATA section start and end tags_
+| passed through
+| passed through
+| consumed
+| consumed
+
+| _Escaping of inline text_
+| escaped
+| escaped
+| escaped
+| not escaped
+
+| _XML Comments_
+| passed through
+| passed through
+| consumed
+| consumed
+
+|===
+
+In the preceding table, “passed through”
+means that the content is passed through unmodified to the user agent.
+“consumed” means the content is silently consumed on the server. Note
+that for CDATA sections, the content of the CDATA section itself is
+passed through, even if the start and end tags should be consumed.
+“escaped” means that sensivite content in the response is automatically
+escaped: _&_ becomes __&amp;__, for example. “not escaped” means that
+such content is not escaped.
+
+The content of the _<file-extension>_ element
+is particular to the file extension of the physical resource for the
+Facelets VDL content, as specified in the
+_jakarta.faces.FACELETS_VIEW_MAPPINGS_ and _jakarta.faces.FACELETS_SUFFIX_
+_<context-param>_ elements. Consider the following example
+__faces-config.xml__.
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+        https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd"
+    version="4.0">
+  <faces-config-extension>
+    <facelets-processing>
+      <file-extension>.jspx</file-extension>
+      <process-as>jspx</process-as>
+    </facelets-processing>
+    <facelets-processing>
+      <file-extension>.view.xml</file-extension>
+      <process-as>xml</process-as>
+    </facelets-processing>
+  </faces-config-extension>
+</faces-config>
+----
+
+And _web.xml_ content
+
+[source,xml]
+----
+<context-param>
+  <param-name>jakarta.faces.FACELETS_VIEW_MAPPINGS</param-name>
+  <param-value>*.xhtml;*.view.xml;*.jspx</param-value>
+</context-param>
+<context-param>
+  <param-name>jakarta.faces.FACELETS_SUFFIX</param-name>
+  <param-value>.xhtml .view.xml .jspx</param-value>
+</context-param>
+----
+
+This configuration states that .xhtml,
+.view.xml, and .jspx files must be treated as Facelets VDL files
+declares the processing mode of .jspx files to be jspx and declares the
+processing mode of .view.xml files to be xml.
+
+
+[[a7134]]
+=== XML Schema Definition For Facelet Taglib
+
+The XML Schema Definition for Facelet Taglib __web-facelettaglibrary_4_0.xsd__
+is included in a web browser optimized format along with the Javadoc.
+That is the canonical location of the schemas in the specification.
+
+=== XML Schema Definition For Partial Response
+
+The XML Schema Definition for Partial Repsonse __web-partialresponse_4_0.xsd__
+is included in a web browser optimized format along with the Javadoc.
+That is the canonical location of the schemas in the specification.

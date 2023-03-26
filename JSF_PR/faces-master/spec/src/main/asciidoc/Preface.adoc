@@ -1,0 +1,201 @@
+== Preface
+
+This is the Jakarta Faces Specification Document, version 4.0.
+
+
+=== Related Technologies
+
+[[a173]]
+==== Other Jakarta Platform Specifications
+
+Jakarta Faces 4.0 is based on the following Jakarta specifications:
+
+
+Jakarta Servlet, version 6.0
+<https://jakarta.ee/specifications/servlet/>
+
+Jakarta Expression Language, version 5.0
+<https://jakarta.ee/specifications/expression-language/>
+
+Jakarta Contexts and Dependency Injection, version 4.0
+<https://jakarta.ee/specifications/cdi/>
+
+Jakarta Bean Validation, version 3.0
+<https://jakarta.ee/specifications/bean-validation/>
+
+Jakarta Tags, version 2.0
+<https://jakarta.ee/specifications/tags/>
+
+Jakarta WebSocket, version 2.0, optional
+<https://jakarta.ee/specifications/websocket/>
+
+Jakarta JSON Processing, version 2.1, optional
+<https://jakarta.ee/specifications/jsonp/>
+
+JavaBeans™ Specification, version 1.01
+<https://www.oracle.com/java/technologies/javase/javabeans-spec.html>
+
+
+Therefore, a Jakarta Faces container must support all of
+the above specifications. This requirement allows faces applications to
+be portable across a variety of Jakarta Faces implementations.
+
+In addition, Jakarta Faces is designed to work
+synergistically with other web-related Java APIs, including:
+
+Portlet Specification 1.0, JSR-168
+<https://jcp.org/en/jsr/detail?id=168>
+
+Portlet Specification 2.0, JSR-286
+<https://jcp.org/en/jsr/detail?id=286>
+
+Portlet Specification 3.0, JSR-362
+<https://jcp.org/en/jsr/detail?id=362>
+
+Portlet Bridge Specification, JSR-301
+<https://jcp.org/en/jsr/detail?id=301>
+
+==== Related Documents and Specifications
+
+The following documents and specifications of
+the World Wide Web Consortium will be of interest to Jakarta Faces implementors,
+as well as developers of applications and components based on Jakarta
+Faces.
+
+Hypertext Markup Language (HTML), Living Standard
+<https://html.spec.whatwg.org/>
+
+Extensible HyperText Markup Language (XHTML),
+version 1.0 <https://www.w3.org/TR/xhtml1/>
+
+Extensible Markup Language (XML), version 1.0
+(Second Edition) <https://www.w3.org/TR/REC-xml/>
+
+The class and method Javadoc documentation for
+the classes and interfaces in _jakarta.faces_ (and its subpackages) are
+incorporated by reference as requirements of this Specification.
+
+The Facelet tag library for the
+HTML_BASIC standard RenderKit is specified in the VDLDocs and
+incorporated by reference in this Specification.
+
+=== Terminology
+
+The key words MUST, MUST NOT, REQUIRED, SHALL,
+SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this
+document are to be interpreted as described in
+
+Key words for use in RFCs to Indicate
+Requirement Levels (RFC 2119)
+<https://www.rfc-editor.org/rfc/rfc2119.txt>
+
+=== Providing Feedback
+
+We welcome any and all feedback about this
+specification. Please email your comments to
+<faces-dev@eclipse.org>.
+
+Please note that, due to the volume of feedback
+that we receive, you will not normally receive a reply from an engineer.
+However, each and every comment is read, evaluated, and archived by the
+specification team.
+
+=== Acknowledgements
+
+The authors would like to thank the Jakarta Faces 4.0 contributors.
+
+* Arjan Tijms
+* Bauke Scholtz
+* Thomas Andraschko
+* Manfred Riem
+* Christoph Straßer
+* Emil Lefkof
+
+The editors would like to recognize the
+following individuals who have contributed to the success of Jakarta
+Faces over the years.
+
+[width="100%",cols="33%,33%,33%",]
+|===
+|Ed Burns
+|Frank Caputo
+|Cagatay Civici
+|Ken Fyten
+|Neil Griffin
+|Josh Juneau
+|Brian Leatham
+|Kito Mann
+|Michael Müller
+|Paul Nicolucci
+|Leonardo Uribe
+|Dan Allen 
+|Thomas Asel
+|Jennifer Ball
+|Lincoln Baxter III
+|Hans Bergsten
+|Shawn Bayern
+|Joseph Berkovitz
+|Dennis Byrne
+|Pete Carapetyan
+|Ryan DeLaplante
+|Keith Donald
+|Jim Driscoll
+|Hanspeter Duennenberger
+|Ken Finnigan
+|Amy Fowler
+|Mike Freedman
+|David Geary
+|Manfred Geiler
+|Ted Goddard
+|Juan Gonzalez
+|Jeremy Grelle
+|Rick Hightower
+|Jacob Hookom
+|Justyna Horwat
+|Alexander Jesse
+|Max Katz
+|Roger Keays
+|Gavin King
+|Roger Kitain
+|Eric Lazarus
+|Jason Lee
+|Felipe Leme
+|Cody Lerum
+|Alberto Lemos
+|Ryan Lubke
+|Barbara Louis
+|Martin Marinschek
+|Kumar Mettu
+|Craig McClanahan
+|Pete Muir
+|Bernd Müller
+|Michael Müller
+|Hans Muller
+|Brendan Murray
+|Michael Nash
+|Imre Osswald
+|Joe Ottinger
+|Ken Paulsen
+|Dhiru Pandey
+|Raj Premkumar
+|Werner Punz
+|Matt Raible
+|Hazem Saleh
+|Andy Schwartz
+|Yara Senger
+|Stan Silvert
+|Vernon Singleton
+|Bernhard Slominski
+|Alexander Smirnov
+|Thomas Spiegel
+|Kyle Stiemann
+|James Strachan
+|Jayashri Visvanathan
+|Ana von Klopp
+|Matthias Wessendorf
+|Adam Winer
+|Mike Youngstrom
+|John Zukowski
+|
+|
+|===

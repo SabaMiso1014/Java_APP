@@ -1,0 +1,999 @@
+[[a5476]]
+== Facelets and its use in Web Applications
+
+Jakarta Faces implementations must support (although Jakarta Faces-based
+applications need not utilize) using Facelets as the view declaration
+language for Jakarta Faces pages. Facelets technology was created by JSR-252 EG
+Member Jacob Hookom.
+
+=== Non-normative Background
+
+To aid implementors in providing a spec
+compliant runtime for Facelets, this section provides a non-normative
+background to motivate the discussion of the Facelets feature. Facelets
+is a replacement for Jakarta Server Pages that was designed from the outset with Jakarta Faces in
+mind. See <<ApplicationIntegration.adoc#a4003,ViewDeclarationLanguage>>.
+
+==== Differences between Jakarta Server Pages and Facelets
+
+Facelets was the first non-Jakarta Server Pages view
+declaration language designed for Jakarta Faces. As such, Facelets
+was able to provide a simpler and more powerful programming model to Jakarta Faces
+developers than that provided by Jakarta Server Pages, largely by leveraging Jakarta Faces as much
+as possible without carrying backwards compatibility with Jakarta Server Pages. The
+following table lists some of the differences between Facelets and Jakarta Server Pages
+
+
+
+.Comparison of Facelets and Jakarta Server Pages
+[%header, cols="2,4,4", frame="topbot", grid="rows", stripes="even"]
+|===
+| Feature Name
+| Jakarta Server Pages
+| Facelets
+
+| Pages are compiled to...
+| A Servlet that gets executed each time the
+page renders. The UIComponent hierarchy is built by the presence of
+custom tags in the page.
+| An abstract syntax tree that, when executed,
+builds a UIComponent hierarchy.
+
+| Handling of tag attributes
+| All tag attributes must be declared in a TLD
+file. Conformance instances of components in a page with the expected
+attributes can be enforced with a taglibrary validator.
+| Tag attributes are completely dynamic and
+automatically map to properties, attributes and ValueExpressions on
+UIComponent instances
+
+| Page templating
+| Not supported, must go outside of core Jakarta Server Pages
+| Page templating is a core feature of Facelets
+
+| Performance
+
+| Due to the common implementation technique of
+compiling a Jakarta Server Pages page to a Servlet, performance can be slow
+| Facelets is simpler and faster than Jakarta Server Pages
+
+| Expression Language Expressions
+| Expressions in template text cause unexpected
+behavior when used in Jakarta Server Pages
+| Expressions in template text operate as
+expected.
+
+| Jakarta Standard
+| Yes, the specification is separate from the
+implementation for Jakarta Server Pages
+| No, the specification is defined by and is
+one with the implementation.
+|===
+
+
+[[a5526]]
+==== Resource Library Contracts Background
+
+Jakarta Faces defines a system called “resource library
+contracts” for applying facelet templates to an entire application in a
+re-usable and interchangeable manner. The feature is built on top of the
+resource library facility described in <<RequestProcessingLifecycle.adoc#a836,
+Libraries of Localized and Versioned Resources>>. A configurable set of
+Facelet VDL views in the application will be able to declare themselves
+to be template-clients of any template in a resource library contract.
+Facelet VDL views in the application can also make use of resources
+contained in a resource library contract, but the feature has ample
+value when only used with templates.
+
+===== Non-normative Example
+
+Consider this resource library contract,
+called _siteLayout_.
+
+....
+siteLayout/
+  topNav_template.xhtml
+  leftNav_foo.xhtml
+  styles.css
+  script.js
+  background.png
+....
+
+This simple example takes advantage of
+several conventions built into the feature, most notably the default
+application of all available contracts in the application to all views
+in the application. It is possible to customize how resource library
+contracts are applied to the application, including using several
+different contracts in the same or different parts of the application.
+Such customizing is accomplished by including a
+_<resource-library-contracts>_ element within the _<application>_
+element of the _faces-config.xml_ (or similar) file. Because this
+example is designed with the convention in mind, it does not need a
+_faces-config.xml_ file.
+
+The _siteLayout_ contract offers two
+templates: _topNav_template.xhtml_ and _leftNav_foo.xhtml_. For
+discussion, these are known as “declared templates”. When used by a
+template client, they will lay out the template client’s contents with a
+navigation menu on the top or the left side of the page, respectively.
+In _siteLayout_, each of the templates has _<ui:insert>_ tags named
+“title”, “content”, and “nav”. For discussion, these are knows as
+“declared insertion points”. Furthermore, each of the templates uses the
+CSS styles declared in _styles.css_, some scripts defined in
+_script.js_, and the background image _background.png_. For
+discussion, these are known as “declared resources”. In order to use a
+resource library contract, one must know its declared templates, their
+declared insertion points, and, optionally, their declared resources. No
+constraint is placed on the naming and arrangement of declared
+templates, insertion points, or resources, but all three concepts
+together can informally be thought of as the declaration of the resource
+library contract. The contract declaration of _siteLayout_ can be stated
+as follows.
+
+[none]
+* _siteLayout_ provides two declared
+templates, _topNav_template.xhtml_ and _leftNav_foo.xhtml_. Each
+templates offers declared insertion points “title”, “content”, and
+“nav”.
+
+In this case, the css, script, and image are
+left out of the contract declaration but this distinction is completely
+arbitrary. The important content of _topNav_template.xhtml_ is shown
+next.
+
+[source,xml]
+----
+<!DOCTYPE html>
+<html xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html">
+  <h:head>
+    <h:outputStylesheet id="default" name="default.css" />
+    <h:outputStylesheet name="cssLayout.css" />
+    <title><ui:insert name="title"></ui:insert></title>
+  </h:head>
+  <h:body>
+    <div id="top" class="top">
+      <p>Top Navigation Menu</p>
+      <ui:insert name="nav">Nav content</ui:insert>
+    </div>
+    <div id="content" class="center_content">
+      <ui:insert name="content">Content</ui:insert>
+    </div>
+  </h:body>
+</html>
+----
+
+
+
+This example packages the entire _siteLayout_
+directory and its contents into the _META-INF/contracts_ entry of a JAR
+file named _siteLayout.jar_. The simplest possible way to use
+_siteLayout_ is to drop _siteLayout.jar_ into _WEB-INF/lib_ and apply
+the knowledge of the resource library contract declaration to the
+facelet views in the app.
+
+Consider this simple web app, called
+_useContract_, the file layout for which is shown next. The example is
+shown using a simplified maven war packaging.
+
+....
+useContract/
+  pom.xml
+  src/main/webapp/
+             /WEB-INF/lib/siteLayout.jar
+             index.xhtml
+             page2.xhtml
+....
+
+Notice the absence of a _faces-config.xml_
+file. Because this example is content to let all the contracts in
+_siteLayout.jar_ be applied to all views in the app, this file is not
+necessary. The two pages are shown next.
+
+.index.xhtml.
+
+[source,xml]
+----
+<ui:composition template="/topNav_template.xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html">
+  <ui:define name="title">#{msgs.contactsWindowTitle}</ui:define>
+  <ui:define name="content">
+    <h:commandButton value="next" action="page2" />
+  </ui:define>
+  <ui:define name="nav">#{msgs.contactsNavMessage}</ui:define>
+</ui:composition>
+----
+
+.page2.xhtml
+
+[source,xml]
+----
+<ui:composition template="/leftNav_foo.xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html">
+  <ui:define name="title">Hard coded title</ui:define>
+  <ui:define name="content">
+    <h:commandButton value="back" action="index" />
+  </ui:define>
+  <ui:define name="nav">Hard coded nav</ui:define>
+</ui:composition>
+----
+
+To complete the example, the execution of the
+_useContract_ app is illustrated.
+
+When _useContract.war_ is deployed, the
+runtime will discover that _siteLayout.jar_ is a resource library
+contract and make its contents available for template clients.
+
+When the user agent visits
+_http://localhost:8080/useContract/faces/index.xhtml_, because the
+_siteLayout_ resource library contract provides _/topNav_template.xhtml_
+, that file will be loaded as the template. Likewise, when the _next_
+button is pressed, _/leftNav_foo.xhtml_, also from _siteLayout_, will
+be loaded as the template.
+
+Now, consider there is an alternate
+implementation of the _siteLayout_ contract, packaged as
+_newSiteLayout.jar_. This implementation doesn’t change the contract
+declaration, but completely changes the arrangement and style of the
+views. As long as the contract declaration does not change,
+_useContract_ can take advantage of _newSiteLayout_ simply by replacing
+one JAR in _WEB-INF/lib_.
+
+===== Non-normative Feature Overview
+
+The normative requirements of the feature are
+stated in the context of the part of the specification impacted. This
+section gives the reader a non-normative overview of the feature that
+touches on all the parts of the specification that intersect with this
+feature.
+
+._Design Time_
+
+At design time, the developer has packaged
+any resource library contracts to be used in the application in the
+right place in the web application, or JAR file classpath. _This
+behavior is normatively specified in <<RequestProcessingLifecycle.adoc#a872,
+Resource Library Contracts>>_.
+
+._Startup Time_
+
+At startup time, the runtime will discover
+the set of resource library contracts available for this application. If
+there is one or more _<resource-library-contracts>_ element, only those
+contracts explicitly named will be made available for use in the
+application. If there is no such element, all of the discovered
+contracts are made available for use in the application. _This behavior
+is normatively specified in <<UsingFacesInWebApplications.adoc#a6215,Resource
+Library Contracts>> and in the XML schema for the application
+configuration resources_.
+
+._Facelet Processing Time_
+
+The specification for
+_ViewDeclarationLanguage.createView()_ requires a call to
+_ViewDeclarationLanguage.calculateResourceLibraryContracts()_, passing
+the current _viewId_. This method will examine the data structure
+assembled at startup and return a _List<String>_ representing the
+resource library contracts eligible for use in this view. This value is
+set as the value of the _resourceLibraryContracts_ property on the
+_FacesContext_. _This behavior is normatively specified in
+<<ApplicationIntegration.adoc#a4016,ViewDeclarationLanguage.createView()>>_.
+
+The specification of the tag handler for
+_<f:view>_ is the one other place where the _resourceLibraryContracts_
+property may be set. _This behavior is normatively specified in the tag
+handler for <f:view>_.
+
+In any _<ui:composition>_ or _<ui:decorate>_
+tag reached from that view, it is valid to use any of the templates in
+any of the listed contracts as the value of the _template_ attribute.
+This behavior happens naturally as a side effect of the requirements of
+_ResourceHandler.createViewResource()_, where the implementation of
+that method is required to first consult the _resourceLibraryContracts_
+property of the current _FacesContext_. If the value of the property is
+non-__null__ and non empty, the implementation must first look for the
+named view resource within each of the contracts in the list, and return
+the first matching one found. Otherwise, the implementation just returns
+the matching resource, if found. _This behavior is normatively specified
+in the javadoc for ResourceHandler.createViewResource()_.
+
+._View Rendering Time_
+
+When the view is being rendered, any
+resources that reside in a resource library contract will have
+additional metadata so that a subsequent request from the user agent is
+able to quickly find the resource inside the named contract. _This
+behavior is normatively specified in the javadoc for
+Resource.getRequestPath()_.
+
+._User-Agent Rendering Time_
+
+By the point in time that the User-Agent is
+rendering the view, all of the work related to resource library
+contracts will have been completed, but it is worth mentioning that any
+resources in the page that originate from within resource library
+contracts will be correctly fetched.
+
+[[a5581]]
+==== HTML5 Friendly Markup
+
+Without the HTML5 Friendly Markup feature the view authoring model relies 
+entirely on the concept of a Jakarta Faces UI
+component in a view as a means to encapsulate arbitrarily complex web
+user interface code behind a simple UI component tag in a page. For
+example, the act of including _<my:datePicker value="#{user.dob}">_
+in a view could cause a large amount of HTML, CSS, JavaScript, and
+images to be delivered to the user agent. This abstraction is very
+appropriate when the view author is content to delegate the work of
+designing the user experience for such components to a component author.
+As web designer skills have become more widespread, the need has arisen
+to expose the hitherto hidden complexity so the view author has near
+total control on the user experience of each individual element in the
+view. The HTML5 Friendly Markup feature addresses this requirement, as
+well as providing access to the loosened attribute syntax also present
+in HTML5.
+
+===== Non-normative Feature Overview
+
+The normative requirements of the feature are
+stated in the context of the part of the specification impacted. This
+section gives the reader a non-normative overview of the feature that
+touches on all the parts of the specification that intersect with this
+feature. There are two main aspects to the feature, pass through
+attributes and pass through elements.
+
+._Pass Through Attributes_
+
+For any given Jakarta Faces component tag in a view,
+the set of available attributes that component supports is determined by
+a combination of the _UIComponent_ and _Renderer_ for that tag. In some
+cases the value of the attribute is interpreted by the _UIComponent_ or
+_Renderer_ (for example, the _columns_ attribute of _h:panelGrid_) and
+in others the value is passed straight through to the user agent (for
+example, the _lang_ attribute of _h:inputText_). In both cases, the
+_UIComponent/Renderer_ has a priori knowledge of the set of allowable
+attributes. _Pass Through Attributes_ allows the view author to list
+arbitrary name value pairs that are passed straight through to the user
+agent without interpretation by the _UIComponent/Renderer_. _This
+behavior is normatively specified in the “Rendering Pass Through
+Attributes” section of the overview of the standard HTML_BASIC render
+kit_.
+
+The view author may specify pass through
+attributes in three ways.
+
+* Nesting the _<f:passThroughAttribute>_ tag
+within a _UIComponent_ tag. For example,
++
+[source,xml]
+----
+<h:inputText value="#{user.name}">
+  <f:passThroughAttribute name="autofocus" value="#{config.autofocus}" />
+</h:inputText>
+----
+
+* Nesting the _<f:passThroughAttributes>_ tag
+within a _UIComponent_ tag, For example,
++
+[source,xml]
+----
+<h:inputText value="#{user.name}"> 
+  <f:passThroughAttributes value="#{config.inputTextAttributes}" />
+</h:inputText>
+----
++
+The Jakarta Expression Language expression must point to a _Map<String, Object>_. If the value
+is a _ValueExpresison_ call _getValue()_ the value first. Whether the
+value is a _ValueExpression_ or not, the value must have its
+_toString()_ called on it.
+
+* Prefixing the attribute with the shortname
+assigned to the _jakarta.faces.passthrough_ XML namespace. For
+example
++
+[source,xml]
+----
+<!DOCTYPE html>
+<html xmlns:h="jakarta.faces.html"
+      xmlns:pt="jakarta.faces.passthrough">
+  <h:body>
+    <h:form>
+      <h:inputText pt:autofocus="#{config.autofocus}" value="#{user.name}" />
+    </h:form>
+  </h:body>
+</html>
+----
+
+[none]
+* _This behavior is normatively specified in
+the VDLdoc for <f:passthroughAttribute>, <f:passThroughAttributes> tags
+in the “Faces Core” tag library, and the “Pass Through Attributes” tag
+library_.
+
+._Pass Through Elements_
+
+This feature circumvents the traditional
+component abstraction model of Jakarta Faces, allowing the page author nearly
+complete control of the rendered markup, without sacrificing any of the
+server side lifecycle offered by Jakarta Faces. This is accomplished by means of
+enhancements to the Facelet _TagDecorator_ API. This API describes a
+mapping from the common markup elements to target tags in the HTML_BASIC
+RenderKit such that the actual markup specified by the view author is
+what gets rendered, but the server side component is an actual component
+from the HTML_BASIC RenderKit. A special _Renderer_ is provided to cover
+cases when none of the mappings specified in _TagDecorator_ fit the
+incoming markup. To allow further flexibility, the existing Facelets
+TagDecorator mechanism allows complete control of the mapping process.
+_This behavior is normatively specified in the javadocs for class
+jakarta.faces.view.facelets.TagDecorator and in the section “Rendering
+Pass Through Attributes” in the “General Notes On Encoding” in the
+Standard HTML_BASIC RenderKit_.
+
+An example will illustrate the mapping
+process.
+
+[source,xml]
+----
+<!DOCTYPE HTML>
+<html xmlns:faces="jakarta.faces"
+      xmlns:h="jakarta.faces.html">
+  <h:body>
+    <h:form>
+      <input type="number" pattern="[0-9]*" faces:value="#{user.age}" />
+    </h:form>
+  </h:body>
+</html>
+----
+
+As required in
+<<FaceletsAndWebApplications.adoc#a5608,Specification of the
+ViewDeclarationLanguage Implementation for Facelets for Jakarta Faces>>
+_TagDecorator_ is called during the facelet processing. Because the
+_<input>_ element has an attribute from the _jakarta.faces_
+namespace, the system treats the element as a pass through element. The
+table listed in the javadocs for _TagDecorator_ is consulted and it is
+determined that this component should act as an _<h:inputText>_
+component for the purposes of postback processing. However, the
+rendering is entirely taken from the markup in the facelet view. Another
+example illustrates the special _Renderer_ that is used when no mapping
+can be found in the table in the javadocs for _TagDecorator_.
+
+[source,xml]
+----
+<!DOCTYPE HTML>
+<html xmlns:faces="jakarta.faces"
+      xmlns:h="jakarta.faces.html">
+  <h:body>
+    <meter faces:id="meter" min="#{bean.min}" max="#{bean.max}" value="350">
+      350 degrees
+    </meter>
+  </h:body>
+</html>
+----
+
+As in the preceding example, the
+_TagDecorator_ mechanism is activated but it is determined that this
+component should act as a _<faces:element>_ component for the purposes of
+postback processing. _The behavior of the <faces:element> is normatively
+specified in the VDLdoc for that tag. The behavior of the
+jakarta.faces.passthrough.Element renderer is normatively specified in the
+RenderKitDoc for that renderer_.
+
+
+=== Java Programming Language Specification for Facelets in Jakarta Faces
+
+The subsections within this section specify
+the Java API requirements of a Facelets implementation. Adherence to
+this section and the next section, which specifies the XHTML
+specification for Facelets in Jakarta Faces, will ensure applications and Jakarta Faces
+component libraries that make use of Facelets are portable across
+different implementations of Jakarta Faces.
+
+The original Facelet project did not separate
+the API and the implementation into separate jars, as is common practice
+with specifications. Thus, a significant task for integrating
+Facelets into Jakarta Faces was deciding which classes to include in the public
+Java API, and which to keep as an implementation detail.
+
+There were two guiding principles that
+influenced the task of integrating Facelets into Jakarta Faces.
+
+* The original decision in pre-Jakarta Faces JSF 1.0 (under the JCP) to allow the
+ViewHandler to be pluggable enabled the concept of a View Declaration
+Language for Jakarta Faces. The two most popular ones were Facelets and
+JSFTemplating. The new integration should preserve this pluggability,
+since it is still valuable to be able to replace the View Declaration
+Language.
+
+* After polling users of Facelets, the JCP expert
+group decided that most of them were only using the markup based API and
+were not extending from the Java classes provided by the Facelet
+project. Therefore, we decided to keep the Java API for Facelets in Jakarta Faces
+as small as possible, only exposing classes where absolutely
+necessary.
+
+The application of these principles produced
+the classes in the package _jakarta.faces.view.facelets_. Please consult
+the Javadocs for that package, and the classes within it, for additional
+normative specification.
+
+[[a5608]]
+==== Specification of the ViewDeclarationLanguage Implementation for Facelets for Jakarta Faces
+
+As normatively specified in the javadocs for
+_ViewDeclarationLanguageFactory.getViewDeclarationLanguage()_, a Jakarta Faces
+implementation must guarantee that a valid and functional
+_<<ApplicationIntegration.adoc#a4003,ViewDeclarationLanguage>>_ instance is returned from this method when the
+argument is a reference to a
+Facelets View. This section describes the specification for the Facelets
+implementation.
+
+[source,java]
+----
+public void buildView(FacesContext context, UIViewRoot root)
+    throws IOException
+----
+
+The argument _root_ will have been created
+with a call to either _createView()_ or
+_ViewMetadata.createMetadataView()_. If the root already has
+non-metadata children, the view must still be re-built, but care must be
+taken to ensure that the existing components are correctly paired up
+with their VDL counterparts in the VDL page. The implementation must
+examine the _viewId_ of the argument root, which must resolve to an
+entity written in Facelets for Jakarta Faces markup language. Because Facelets
+views are written in XHTML, an XML parser is well suited to
+the task of processing such an entity. Each element in the XHTML view
+falls into one of the following categories, each of which corresponds to
+an instance of a Java object that implements
+_jakarta.faces.view.facelets.FaceletHandler_, or a subinterface or
+subclass thereof, and an instance of
+_jakarta.faces.view.facelets.TagConfig_, or a subinterface or subclass
+thereof, which is passed to the constructor of the object implementing
+_FaceletHandler_.
+
+When constructing the _TagConfig_
+implementation to be passed to the _FaceletHandler_ implementation, the
+runtime must ensure that the instance returned from _TagConfig.getTag()_
+has been passed through the tag decoration process as described in the
+javadocs for _jakarta.faces.view.facelets.TagDecorator_ prior to the
+_TagConfig_ being passed to the _FaceletHandler_ implementation.
+
+The mapping between the categories of
+elements in the XHTML view and the appropriate sub-interface or subclass
+of _FaceletHandler_ is specified below. Each _FaceletHandler_ instance
+must be traversed and its _apply()_ method called in the same
+depth-first order as in the other lifecycle phase methods in Jakarta Faces. Each
+_FaceletHandler_ instance must use the _getNextHandler()_ method of the
+_TagConfig_ instance passed to its constructor to perform the traversal
+starting from the root _FaceletHandler_.
+
+* Standard XHTML markup elements
+
+** These are declared in the XHTML namespace
+_http://www.w3.org/1999/xhtml_ which must be considered the default namespace.
+I.e. the Facelets page authors should not have the  need to explicitly declare this namespace.
+Such elements should be passed through as is to the rendered output.
+
+** These elements correspond to instances of
+_jakarta.faces.view.facelets.TextHandler_. See the javadocs for that
+class for the normative specification.
+
+* Markup elements that represent _UIComponent_
+instance in the view.
+
+** These elements can come from the Standard
+HTML Renderkit namespace _jakarta.faces.html_, or from the
+namespace of a custom tag library (including composite components) as
+described in <<FaceletsAndWebApplications.adoc#a5638,Facelet Tag Library
+mechanism>>.
+
+** These elements correspond to instances of
+_jakarta.faces.view.facelets.ComponentHandler_. See the javadocs for that
+class for the normative specification.
+
+* Markup elements that take action on their
+parent or children markup element(s). Usually these come from the Jakarta Faces
+Core namespace _jakarta.faces.core_, but they can also be
+provided by a custom tag library.
+
+** Such elements that represent an attached
+object must correspond to an appropriate subclass of
+_jakarta.faces.view.facelets.FaceletsAttachedObjectHandler_. The
+supported subclasses are specified in the javadocs.
+
+** Such elements that represent a facet
+component must correspond to an instance of
+_jakarta.faces.component.FacetHandler_.
+
+** Such elements that represent an attribute
+that must be pushed into the parent _UIComponent_ element must
+correspond to an instance of
+_jakarta.facelets.view.facelets.AttributeHandler_.
+
+* Markup Elements that indicate facelet
+templating, as specified in the VDL Docs for the namespace
+_jakarta.faces.facelets_.
+
+** Such elements correspond to an instance of
+_jakarta.faces.view.facelets.TagHandler_.
+
+* Markup elements from the Facelet version of
+the Jakarta Tags namespaces _jakarta.tags.core_ or
+_jakarta.tags.functions_, as specified in the VDL Docs
+for those namespaces.
+
+** Such elements correspond to an instance of
+_jakarta.faces.view.facelets.TagHandler_.
+
+
+=== XHTML Specification for Facelets for Jakarta Faces
+
+[[a5632]]
+==== General Requirements
+
+Facelet pages are
+authored in XHTML. The runtime must support all XHTML pages that conform
+to the XHTML-1.0-Transitional DTD, as described at
+_http://www.w3.org/TR/xhtml1/#a_dtd_XHTML-1.0-Transitional_.
+
+The runtime must ensure that Jakarta Expression Language expressions
+that appear in the page without being the right-hand-side of a tag
+attribute are treated as if they appeared on the right-hand-side of the
+_value_ attribute of an _<h:outputText>_ element in the
+_jakarta.faces.html_ namespace. This behavior must happen
+regardless of whether or not the _jakarta.faces.html_
+namespace has been declared in the page.
+
+[[a5635]]
+===== DOCTYPE and XML Declaration
+
+When processing Facelet VDL files, the system
+must ensure that at most one XML declaration and at most one DOCTYPE
+declaration appear in the rendered markup, if and only if there is
+corresponding markup in the Facelet VDL files for those elements. If
+multiple occurrences of XML declaration and DOCTYPE declaration are
+encountered when processing Facelet VDL files, the “outer-most”
+occurrence is the one that must be rendered. If an XML declaration is
+present, it must be the very first markup rendered, and it must precede
+any DOCTYPE declaration (if present). The output of the XML and DOCTYPE
+declarations are subject to the configuration options listed in the
+table titled “Valid <process-as> values and their implications on the
+processing of Facelet VDL files” in <<FacesMetadata.adoc#a7061,The
+facelets-processing element>>.
+
+
+[[a5638]]
+==== Facelet Tag Library mechanism
+
+Facelets leverages the XML namespace
+mechanism to support the concept of a “tag library” analogous to the
+same concept in Jakarta Server Pages. However, in Facelets, the role of the tag handler
+java class is greatly reduced and in most cases is unnecessary. The tag
+library mechanism has two purposes.
+
+* Allow page authors to access tags declared in
+the supplied tag libraries declared in <<FacesMetadata.adoc#a5691,
+Standard Facelet Tag Libraries>>, as well as accessing third-party tag
+libraries developed by the application author, or any other third party
+
+* Define a framework for component authors to
+group a collection of custom __UIComponent__s into a tag library and
+expose them to page authors for use in their pages.
+
+The runtime
+must support the following syntax for making the tags in a tag library
+available for use in a Facelet page.
+
+[source,xml]
+----
+<html xmlns:prefix="namespace_uri">
+----
+
+Where _prefix_ is a page author chosen
+arbitrary string used in the markup inside the _<html>_ tag to refer to
+the tags declared within the tag library and _namespace_uri_ is the
+string declared in the _<namespace>_ element of the facelet tag library
+descriptor. For example, declaring
+_xmlns:h="jakarta.faces.html"_ within the _<html>_ element in
+a Facelet XHTML page would cause the runtime to make all tags declared
+in <<FaceletsAndWebApplications.adoc#a6029,Standard HTML RenderKit Tag Library>>
+to be available for use in the page using syntax like: _<h:inputText>_.
+
+The unprefixed namespace, also known as the
+root namespace, must be passed through without modification or check for
+validity. The passing through of the root namespace must occur on any
+non-prefixed element in a facelet page. For example, the following
+markup declaration:.
+
+[source,xml]
+----
+<!DOCTYPE html>
+<html xmlns:h="jakarta.faces.html">
+  <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+    <msup>
+      <msqrt>
+        <mrow>
+          <mi>a</mi>
+          <mo>+</mo>
+
+          <mi>b</mi>
+        </mrow>
+      </msqrt>
+    <mn>27</mn>
+  </msup>
+</math>
+----
+
+would be rendered as
+
+[source,xml]
+----
+<!DOCTYPE html>
+<html>
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <msup>
+      <msqrt>
+        <mrow>
+          <mi>a</mi>
+          <mo>+</mo>
+
+          <mi>b</mi>
+        </mrow>
+      </msqrt>
+    <mn>27</mn>
+  </msup>
+</math>
+----
+
+
+The run
+time must support two modes of discovery for Facelet tag library
+descriptors
+
+* Via declaration in the web.xml, as
+specified in <<UsingFacesInWebApplications.adoc#a6088,Application Configuration
+Parameters>>
+
+* Via auto discovery by placing the tag library
+discriptor file within a jar on the web application classpath, naming
+the file so that it ends with “_.taglib.xml_”, without the quotes, and
+placing the file in the _META-INF_ directory in the jar file.
+
+The discovery of tag library files
+must happen at application startup time and complete before the
+application is placed in service. Failure to parse, process and
+otherwise interpret any of the tag library files discovered must cause
+the application to fail to deploy and must cause an informative error
+message to be logged.
+
+The specification for how to interpret a
+facelet tag library descriptor is included in the documentation elements
+of the schema for such files, see <<FacesMetadata.adoc#a7134,XML
+Schema Definition For Facelet Taglib>>.
+
+
+[[a5661]]
+==== Requirements specific to composite components
+
+The text in this section makes use of the
+terms defined in <<UserInterfaceComponentModel.adoc#a1619,Composite Component
+Terms>>. When such a term appears in this section, it will be in
+_emphasis font face_.
+
+[[a5663]]
+===== Declaring a composite component library for use in a Facelet page
+
+The runtime
+must support the following two ways of declaring a _composite component
+library_.
+
+* If a facelet taglibrary is declared in an
+XHTML page with a namespace starting with the string
+“_jakarta.faces.composite/_” (without the quotes), the
+remainder of the namespace declaration is taken as the name of a
+resource library as described in <<RequestProcessingLifecycle.adoc#a836,
+Libraries of Localized and Versioned Resources>>, as shown in the
+following example:
++
+[source,xml]
+----
+<html xmlns:ez="jakarta.faces.composite/ezcomp">
+----
++
+The runtime must look for a resource library
+named _ezcomp_. If the substring following
+“_jakarta.faces.composite/_” contains a “_/_” character, or
+any characters not legal for a library name the following action must be
+taken. If _application.getProjectStage()_ is _Development_ an
+informative error message must be placed in the page and also logged.
+Otherwise the message must be logged only.
+
+* As specified in facelet taglibrary
+schema, the runtime must also support the _<composite-library-name>_
+element. The runtime must interpret the contents of this element as the
+name of a resource library as described in
+<<RequestProcessingLifecycle.adoc#a836,Libraries of Localized and Versioned
+Resources>>. If a facelet tag library descriptor file is encountered that
+contains this element, the runtime must examine the _<namespace>_
+element in that same tag library descriptor and make it available for
+use in an XML namespace declaration in facelet
+pages.
+
+[[a5670]]
+===== Creating an instance of a _top level component_
+
+If,
+during the process of building the view, the facelet runtime encounters
+an element in the page using the prefix for the namespace of a composite
+component library, the runtime must create a _Resource_ instance with a
+library property equal to the library name derived in
+<<FaceletsAndWebApplications.adoc#a5663,Declaring a composite component library>>
+for use in a Facelet page and call the variant of
+_application.createComponent()_ that takes a _Resource_.
+
+After causing the _top level
+component_ to be instantiated, the runtime must create a _UIComponent_
+with component-family of _jakarta.faces.Panel_ and renderer-type
+_jakarta.faces.Group_ to be installed as a facet of the _top level
+component_ under the facet name _UIComponent.COMPOSITE_FACET_NAME_.
+
+===== Populating a _top level component_ instance with children
+
+As
+specified in <<UserInterfaceComponentModel.adoc#a1545,How does one make a
+composite component?>> the runtime must support the use of _cc:_
+tag library in the _defining page_ pointed to by the _Resource_ derived
+as specified in <<FaceletsAndWebApplications.adoc#a5670,Creating an instance of
+a top level component>>. The
+runtime must ensure that all _UIComponent_ children in the _composite
+component definition_ within the _defining page_ are placed as children
+of the _UIComponent.COMPOSITE_FACET_NAME_ facet of the __top level
+facet__. 
+
+Please see the tag library documentation for
+the _<cc:insertChildren>_ and _<cc:insertFacet>_ tags for
+details on these two tags that are relevant to populating a _top level
+component_ instance with children.
+
+Special handling is required for attributes
+declared on the _composite component tag_ instance in the _using page_.
+The runtime must ensure
+that all such attributes are copied to the attributes map of the _top
+level component_ instance in the following manner.
+
+* Obtain a reference to the _ExpressionFactory_,
+for discussion called _expressionFactory_.
+
+* Let the value of the attribute in the _using
+page_ be _value_.
+
+* If _value_ is “id” or “binding” without the
+quotes, skip to the next attribute.
+
+* If the value of the attribute starts with
+“#{“ (without the quotes) call
+_expressionFactory.createValueExpression(elContext, value,
+Object.class)_
+
+* If the value of the attribute does not start
+with “_#{_“, call _expressionFactory.createValueExpression(value,
+Object.class)_
+
+* If there already is a key in the _map_
+for _value_, inspect the type of the value at that key. If the type is
+_MethodExpression_ take no action.
+
+For code that handles tag attributes on
+_UIComponent_ XHTML elements special action must be taken regarding
+composite components. If
+the type of the attribute is a _MethodExpression_, the code that takes
+the value of the attribute and creates an actual _MethodExpression_
+instance around it must take the following special action. Inspect the
+value of the attribute. If the Jakarta Expression Language expression string starts with the _cc_
+implicit object, is followed by the special string “_attrs_” (without
+the quotes), as specified in <<ExpressionLanguageFacility.adoc#a2908,Composite
+Component Attributes ELResolver>>, and is followed by a single remaining
+expression segment, let the value of that remaining expression segment
+be _attrName_. In this case, the runtime must guarantee that the actual
+_MethodExpression_ instance that is created for the tag attribute have
+the following behavior in its _invoke()_ method.
+
+* Obtain a reference to the current composite
+component by calling _UIComponent.getCurrentCompositeComponent()_.
+
+* Look in the attribute of the component for a
+key under the value _attrName_.
+
+* There must be a value and it must be of type
+_MethodExpression_. If either of these conditions are _false_ allow the
+ensuing exception to be thrown.
+
+* Call _invoke()_ on the discovered
+_MethodExpression_, passing the arguments passed to our _invoke()_
+method.
+
+Once
+the composite component has been populated with children, the runtime
+must ensure that _ViewHandler.retargetAttachedObjects()_ and then
+_ViewHandler.retargetMethodExpressions()_ is called, passing the _top
+level component_. The actions
+taken in these methods set the stage for the tag attribute behavior and
+the special _MethodExpression_ handling behavior described previously.
+
+The
+runtime must support the inclusion of composite components within the
+_composite component definition_. .
+
+
+[[a5691]]
+=== Standard Facelet Tag Libraries
+
+This section specifies the tag libraries that
+must be provided by an implementation.
+
+==== Jakarta Faces Core Tag Library
+
+This tag library must be equivalent to the
+one specified in <<StandardTagLibraries.adoc#a4636,Jakarta Faces Core Tag Library>>.
+The specification for this library can be found in the VDLDocs for the _f:_ tag library.
+
+[[a6029]]
+==== Standard HTML RenderKit Tag Library
+
+This tag library must be equivalent to the
+one specified in <<StandardTagLibraries.adoc#a5363,Standard HTML RenderKit
+Tag Library>>. The specification for this library can be found in the VDLDocs for the _h:_ tag library.
+
+[[a6043]]
+==== Facelet Templating Tag Library
+
+This tag library is the specified version of
+the _ui:_ tag library found in Facelets. The specification for
+this library can be found in the VDLDocs for the _ui:_ tag library.
+
+[[a6045]]
+==== Composite Component Tag Library
+
+This tag library is used to declare composite
+components. The specification for this tag library can be found in the
+VDLDocs for the _cc:_ tag library.
+
+[[a6047]]
+==== Jakarta Tags Core and Function Tag Libraries
+
+Facelets exposes a subset of the Jakarta Tags Core
+tag library and the entirety of the Jakarta Tags Function tag library. Please
+see the VDLDocs for the _jstl-core:_ and _jstl-fn:_ tag libraries for
+the normative specification.
+
+---
+
+=== Assertions relating to the construction of the view
+hierarchy
+
+When
+the VDL calls for the creation of a _UIComponent_ instance, after
+calling _Application.createComponent()_ to instantiate the component
+instance, and after calling _setRendererType()_ on the newly
+instantiated component instance, the following action must be taken.
+
+* Obtain the _Renderer_ for this component. If
+no _Renderer_ is present, ignore the following steps.
+
+* Call _getClass()_ on the _Renderer_ instance
+and inspect if the _ListenerFor_ annotation is present. If so, inspect
+if the _Renderer_ instance implements _ComponentSystemEventListener_.
+If neither of these conditions are _true_, ignore the following steps.
+
+* Obtain the value of the _systemEventClass()_
+property of the _ListenerFor_ annotation on the _Renderer_ instance.
+
+* Call _subscribeToEvent()_ on the
+_UIComponent_ instance from which the _Renderer_ instance was obtained,
+using the _systemEventClass_ from the annotation as the second argument,
+and the _Renderer_ instance as the third argument.
+

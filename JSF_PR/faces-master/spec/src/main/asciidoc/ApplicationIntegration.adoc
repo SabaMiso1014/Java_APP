@@ -1,0 +1,2504 @@
+== Application Integration
+
+Previous chapters of this specification have
+described the component model, request state information, and the next
+chapter describes the rendering model for Jakarta Faces user
+interface components. This chapter describes APIs that are used to link
+an application’s business logic objects, as well as convenient pluggable
+mechanisms to manage the execution of an application that is based on
+Jakarta Faces. These classes are in the _jakarta.faces.application_
+package.
+
+Access to application related information is
+centralized in an instance of the _Application_ class, of which there is
+a single instance per application based on Jakarta Faces.
+Applications will typically provide one or more implementations of
+_ActionListener_ (or a method that can be referenced by an _action_
+expression) in order to respond to _ActionEvent_ events during the
+_Apply Request Values_ or _Invoke Application_ phases of the request
+processing lifecycle. Finally, a standard implementation of
+_NavigationHandler_ (replaceable by the application or framework) is
+provided to manage the selection of the next view to be rendered.
+
+[[a3400]]
+=== Application
+
+There must be a single instance of
+_Application_ per web application that is utilizing Jakarta Faces. It
+can be acquired by calling the _getApplication()_ method on the
+_FacesContext_ instance for the current request, or the
+_getApplication()_ method of the _ApplicationFactory_ (see
+<<ApplicationIntegration.adoc#a3542,ApplicationFactory>>), and provides
+default implementations of features that determine how application logic
+interacts with the Jakarta Faces implementation. Advanced applications (or
+application frameworks) can install replacements for these default
+implementations, which will be used from that point on. Access to
+several integration objects is available via JavaBeans property getters
+and setters, as described in the following subsections.
+
+[[a3402]]
+==== ActionListener Property
+
+[source,java]
+----
+public ActionListener getActionListener();
+public void setActionListener(ActionListener listener);
+----
+
+Return or replace an _ActionListener_
+instance that will be utilized to process _ActionEvent_ events during
+the _Apply Request Values_ or _Invoke Application_ phase of the request
+processing lifecycle.  The
+Jakarta Faces implementation must provide a default implementation
+_ActionListener_ that performs the following functions:
+
+* The _processAction()_ method must first call
+_FacesContext.renderResponse()_ in order to bypass any intervening
+lifecycle phases, once the method returns.
+
+* The _processAction()_ method must next
+determine the logical outcome of this event, as follows:
+
+** If the originating component has a non-null
+_action_ property, retrieve the _MethodBinding_ and call _invoke()_ to
+perform the application-specified processing in this action method. If
+the method returns non-__null__, call _toString()_ on the result and use
+the value returned as the logical outcome. See
+<<ApplicationIntegration.adoc#a1092,Properties>> for a decription of the
+_action_ property.
+
+** Otherwise, the logical outcome is _null_.
+
+* The processAction() method must
+finally retrieve the _NavigationHandler_ instance for this application,
+and pass the logical outcome value (determined above) as a parameter to
+the _handleNavigation()_ method of the _NavigationHandler_ instance. If
+the originating component has an attribute whose name is equal to the
+value of the symbolic constant
+_ActionListener.TO_FLOW_DOCUMENT_ID_ATTR_NAME_, invoke
+_handleNavigation(FacesContext, String, String, String)_ passing the
+value of the attribute as the last parameter. Otherwise, invoke
+_handleNavigation(FacesContext, String, String)_. In either case, the
+first _String_ argument is the expression string of the _fromAction_ and
+the second _String_ argument is the logical outcome.
+
+See the Javadocs for getActionListener() for
+important backwards compatability information.
+
+==== DefaultRenderKitId Property
+
+[source,java]
+----
+public String getDefaultRenderKitId();
+public void setDefaultRenderKitId(String defaultRenderKitId);
+----
+
+An application may specify the render kit
+identifier of the _RenderKit_ to be used by the _ViewHandler_ to render
+views for this application. If not specified, the default render kit
+identifier specified by _RenderKitFactory.HTML_BASIC_RENDER_KIT_ will be
+used by the default _ViewHandler_ implementation.
+
+Unless the application has provided a custom _ViewHandler_ that
+supports the use of multiple RenderKit instances in the same
+application, this method may only be called at application startup,
+before any Faces requests have been processed.  This is a
+limitation of the current Specification, and may be lifted in a future
+release.
+
+==== FlowHandler Property
+
+[source,java]
+----
+public FlowHandler getFlowHandler();
+public void setFlowHandler(FlowHandler handler);
+----
+
+Return or replace the _FlowHandler_ that will
+be used by the _NavigationHandler_ to make decisions about navigating
+application flow. See <<ApplicationIntegration.adoc#a3840,FlowHandler>> for
+an overview of the flow feature.
+
+_setFlowHandler()_ may only be called at application startup, before any
+Faces requests have been processed.  This is a limitation of the
+current Specification, and may be lifted in a future release.
+_getFlowHandler()_ may be called at any time after application startup.
+
+==== NavigationHandler Property
+
+[source,java]
+----
+public NavigationHandler getNavigationHandler();
+public void setNavigationHandler(NavigationHandler handler);
+----
+
+Return or replace the _NavigationHandler_
+instance (see <<ApplicationIntegration.adoc#a3561,NavigationHandler>>) that
+will be passed the logical outcome of the application _ActionListener_
+as described in the previous subsection. A default implementation must
+be provided, with functionality described in
+<<ApplicationIntegration.adoc#a3571,Default NavigationHandler Algorithm>>:
+
+==== StateManager Property
+
+[source,java]
+----
+public StateManager getStateManager();
+public void setStateManager(StateManager manager);
+----
+
+Return or replace the _StateManager_ instance
+that will be utilized during the _Restore View_ and _Render Response_
+phases of the request processing lifecycle to manage state persistence
+for the components belonging to the current view. A default
+implementation must be provided, which operates as described in
+<<ApplicationIntegration.adoc#a4117,StateManager>>.
+
+[[a3435]]
+==== ELResolver Property
+
+[source,java]
+----
+public ELResolver getELResolver();
+public void addELResolver(ELResolver resolver);
+----
+
+Return the
+ELResolver instance to be used for all Expression Language resolution. This is actually
+an instance of jakarta.el.CompositeELResolver that must contain the
+ELResolver instances as specified in _<<ExpressionLanguageFacility.adoc#a2822,
+ELResolver for Facelets and Programmatic Access>>_.
+
+addELResolver must cause the argument resolver to be added at the end of
+the list in the jakarta.el.CompositeELResolver returned from
+getELResolver(). See the diagram in _<<ExpressionLanguageFacility.adoc#a2822,
+ELResolver for Facelets and Programmatic Access>>_
+
+==== ELContextListener Property
+
+[source,java]
+----
+public addELContextListener(ELContextListener listener);
+public void removeELContextListener(ELContextListener listener);
+public ELContextListener[] getELContextListeners();
+----
+
+addELContextListener() registers an
+ELContextListener for the current Faces application. This listener will
+be notified on creation of ELContext instances, and it will be called
+once per request.
+
+removeELContextListener() removes the
+argument listener from the list of ELContextListeners. If listener is
+null, no exception is thrown and no action is performed. If listener is
+not in the list, no exception is thrown and no action is performed.
+
+getELContextListeners() returns an array
+representing the list of listeners added by calls to
+addELContextListener().
+
+[[a3450]]
+==== ViewHandler Property
+
+[source,java]
+----
+public ViewHandler getViewHandler();
+public void setViewHandler(ViewHandler handler);
+----
+
+See <<ApplicationIntegration.adoc#a3871,
+ViewHandler>> for the description of the ViewHandler. The Jakarta Faces
+implementation must provide a default _ViewHandler_ implementation. This
+implementation may be replaced by calling _setViewHandler()_ before the
+first time the _Render Response_ phase has executed.  If a call is made to
+_setViewHandler()_ after the first time the _Render Response_ phase has
+executed, the call must be ignored by the implementation. 
+
+[[a3455]]
+==== ProjectStage Property
+
+[source,java]
+----
+public ProjectStage getProjectStage();
+----
+
+This method
+must return the enum constant from the class
+_jakarta.faces.application.ProjectStage_ as specified in the corresponding
+application init parameter, JNDI entry, or default Value. See
+<<UsingFacesInWebApplications.adoc#a6088,Application Configuration
+Parameters>>.
+
+[[a3459]]
+==== Acquiring ExpressionFactory Instance
+
+[source,java]
+----
+public ExpressionFactory getExpressionFactory();
+----
+
+Return the ExpressionFactory instance for
+this application. This instance is used by the
+evaluateExpressionGet (_<<ApplicationIntegration.adoc#a3463,
+See Programmatically Evaluating Expressions>>_) convenience method.
+
+The default implementation simply returns the
+ExpressionFactory from the Jakarta Expression Language by calling
+ELManager.getExpressionFactory().
+
+[[a3463]]
+==== Programmatically Evaluating Expressions
+
+[source,java]
+----
+public Object evaluateExpressionGet(FacesContext context,
+    String expression, Class expectedType)
+----
+
+Get a value by evaluating an expression.
+
+Call
+_getExpressionFactory().createValueExpression()_ passing the argument
+_expression_ and _expectedType_. Call _FacesContext.getELContext()_ and
+pass it to _ValueExpression.getValue()_, returning the result.
+
+It is also possible and sometimes desireable
+to obtain the actual _ValueExpression_ or _MethodExpression_ instance
+directly. This can be accomplished by using the
+_createValueExpression()_ or _createMethodExpression()_ methods on the
+_ExpressionFactory_ returned from _getExpressionFactory()_.
+
+[[a3468]]
+==== Object Factories
+
+The _Application_ instance for a web
+application also acts as an object factory for the creation of new Jakarta Faces
+objects such as components, converters, validators and behaviors..
+
+[source,java]
+----
+public UIComponent createComponent(String componentType);
+public UIComponent createComponent(
+    String componentType, String rendererType);
+
+public Converter createConverter(Class targetClass);
+public Converter createConverter(String converterId);
+public Validator createValidator(String validatorId);
+public Behavior createBehavior(String behaviorId);
+----
+
+Each of these methods creates a new instance
+of an object of the requested type <<Footnotes.adoc#a9088,^[2]^>>, based on the
+requested identifier. The names of the implementation class used for
+each identifier is normally provided by the Jakarta Faces implementation
+automatically (for standard classes described in this Specification), or
+in one or more application configuration resources (see
+<<UsingFacesInWebApplications.adoc#a6195,Application Configuration Resources>>)
+included with a Jakarta Faces web application, or embedded in a JAR file
+containing the corresponding implementation classes.
+
+All variants _createConverter()_ must take
+some action to inspect the converter for _@ResourceDependency_ and
+_@ListenerFor_ annotations.
+
+
+
+[source,java]
+----
+public UIComponent createComponent(ValueExpression componentExpression,
+    FacesContext context, String componentType);
+----
+
+This method has the following behavior:
+
+* Call the _getValue()_ method on the specified
+_ValueExpression_, in the context of the specified _FacesContext_. If
+this results in a non-null _UIComponent_ instance, return it as the
+value of this method.
+
+* If the getValue() call did not return
+a component instance, create a new component instance of the specified
+component type, pass the new component to the s _etValue()_ method of
+the specified ValueExpression, and return it.
+
+[source,java]
+----
+public UIComponent createComponent(
+    FacesContext context, Resource componentResource);
+----
+
+All variants _createComponent()_ must take
+some action to inspect the component for _@ResourceDependency_ and
+_@ListenerFor_ annotations. Please see the JavaDocs and
+<<UserInterfaceComponentModel.adoc#a1671,Composite Component Metadata>> for the
+normative specification relating to this method.
+
+[source,java]
+----
+public void addComponent(String componentType, String componentClass);
+public void addConverter(Class targetClass, String converterClass);
+public void addConverter(String converterId, String converterClass);
+public void addValidator(String validatorId, String validatorClass);
+public void addBehavior(String behaviorId, String behaviorClass);
+----
+
+Jakarta Faces-based applications can register
+additional mappings of identifiers to a corresponding fully qualified
+class name, or replace mappings provided by the Jakarta Faces implementation in
+order to customize the behavior of standard Jakarta Faces features. These methods
+are also used by the Jakarta Faces implementation to register mappings based on
+_<component>_, _<converter>_, _<behavior>_ and _<validator>_ elements
+discovered in an application configuration resource.
+
+[source,java]
+----
+public Iterator<String> getComponentTypes();
+public Iterator<String> getConverterIds();
+public Iterator<Class> getConverterTypes();
+public Iterator<String> getValidatorIds();
+public Iterator<String> getBehaviorIds();
+----
+
+Jakarta Faces-based applications can ask the
+_Application_ instance for a list of the registered identifiers for
+components, converters, and validators that are known to the instance.
+
+[[a3510]]
+===== Default Validator Ids
+
+From the list of mappings of _validatorId_ to
+fully qualified class name, added to the application via calls to
+_addValidator()_, the application maintains a subset of that list under
+the heading of default validator ids. The following methods provide
+access to the default validator ids registered on an application:
+
+[source,java]
+----
+public void addDefaultValidatorId(String validatorId);
+public Map<String,String> getDefaultValidatorInfo();
+----
+
+The required callsites for these methods are
+specified in <<UserInterfaceComponentModel.adoc#a1419,Validation Registration>>.
+
+==== Internationalization Support
+
+The following methods and properties allow an
+application to describe its supported locales, and to provide
+replacement text for standard messages created by Jakarta Faces objects.
+
+[source,java]
+----
+public Iterator<Locale> getSupportedLocales();
+public void setSupportedLocales(Collection<Locale> newLocales);
+public Locale getDefaultLocale();
+public void setDefaultLocale(Locale newLocale);
+----
+
+Jakarta Faces applications may state the __Locale__s
+they support (and the default _Locale_ within the set of supported
+__Locale__s) in the application configuration resources file. The setters
+for the following methods must be called when the configuration
+resources are parsed. Each time the setter is called, the previous value
+is overwritten.
+
+[source,java]
+----
+public String getMessageBundle();
+public void setMessageBundle(String messageBundle);
+----
+
+Specify the fully qualified name of the
+ResourceBundle from which the Jakarta Faces implementation will acquire message
+strings that correspond to standard message keys See
+<<RequestProcessingLifecycle.adoc#a584,Localized Application Messages>> for a
+list of the standard message keys recognized by Jakarta Faces.
+
+[[a3526]]
+==== System Event Methods
+
+System events are described in
+<<UserInterfaceComponentModel.adoc#a1359,System Events>>. This section describes
+the methods defined on _Application_ that support system events
+
+===== Subscribing to system events
+
+[source,java]
+----
+public abstract void subscribeToEvent(Class<? extends SystemEvent>
+    systemEventClass, SystemEventListener listener)
+
+public abstract void subscribeToEvent(Class<? extends SystemEvent>
+    systemEventClass, Class sourceClass, SystemEventListener listener);
+
+public abstract void publishEvent(Class<? extends SystemEvent>
+    systemEventClass, SystemEventListenerHolder source);
+
+public void publishEvent(Class<? extends SystemEvent>
+    systemEventClass, Class<?> sourceBaseType, Object source)
+----
+
+The first variant of _subscribeToEvent()_
+subscribes argument _listener_ to have its _isListenerForSource()_
+method, and (depending on the result from _isListenerForSource()_) its
+_processEvent()_ method called any time any call is made to
+_Application.publishEvent(Class<? extends SystemEvent> systemEventClass,
+SystemEventListenerHolder source)_ where the first argument in the call
+to _publishEvent()_ is equal to the first argument to
+_subscribeToEvent()_.  __NOTE__: The
+implementation must not support subclasses for the _systemEventClass_
+and/or _sourceClass_ arguments to _subscribeToEvent()_ or
+_publishEvent()_. For example, consider two event types,
+_SuperEvent_ and _SubEvent extends SuperEvent_. If a listener
+subscribes to _SuperEvent.class_ events, but later someone publishes a
+_SubEvent.class_ event (which extends _SuperEvent_), the listener for
+_SuperEvent.class_ must not be called.
+
+The second variant of _subscribeToEvent()_ is
+equivalent to the first, with the additional constraint the the
+_sourceClass_ argument to _publishEvent()_ must be equal to the _Class_
+object obtained by calling _getClass()_ on the _source_ argument to
+_publishEvent()_.
+
+See the javadocs for both variants of
+_subscribeForEvent()_ for the complete specification of these methods.
+
+_publishEvent()_ is called by the system at
+several points in time during the runtime of a Jakarta Faces application. The
+specification for when _publishEvent()_ is called is given in the
+javadoc for the event classes that are listed in
+<<UserInterfaceComponentModel.adoc#a1308,Event Classes>>. See the javadoc for
+_publishEvent()_ for the complete specification.
+
+===== Unsubscribing from system events
+
+[source,java]
+----
+public abstract void unsubscribeFromEvent(Class<? extends SystemEvent>
+    systemEventClass, SystemEventListener listener);
+
+public abstract void unsubscribeFromEvent(Class<? extends SystemEvent>
+    systemEventClass, Class sourceClass, SystemEventListener listener);
+----
+
+See the javadocs for both variants of
+_unsubscribeFromEvent()_ for the complete specification.
+
+
+[[a3542]]
+=== ApplicationFactory
+
+A single instance of
+_jakarta.faces.application.ApplicationFactory_ must be made available to
+each Jakarta Faces-based web application running in a servlet or portlet
+container. The factory instance can be acquired by Jakarta Faces implementations
+or by application code, by executing:
+
+[source,java]
+----
+ApplicationFactory factory = (ApplicationFactory)
+    FactoryFinder.getFactory(FactoryFinder.APPLICATION_FACTORY);
+----
+
+The _ApplicationFactory_ implementation class
+supports the following methods:
+
+[source,java]
+----
+public Application getApplication();
+public void setApplication(Application application);
+----
+
+Return or replace the _Application_ instance
+for the current web application. The Jakarta Faces implementation must provide a
+default _Application_ instance whose behavior is described in
+<<ApplicationIntegration.adoc#a3400,Application>>.
+
+Note that applications will generally find it
+more convenient to access the _Application_ instance for this
+application by calling the _getApplication()_ method on the
+_FacesContext_ instance for the current request.
+
+
+[[a3553]]
+=== Application Actions
+
+An _application action_ is an
+application-provided method on some Java class that performs some
+application-specified processing when an _ActionEvent_ occurs, during
+either the _Apply Request Values_ or the _Invoke Application_ phase of
+the request processing lifecycle (depending upon the _immediate_
+property of the _ActionSource_ instance initiating the event).
+
+Application action is not a formal Jakarta Faces API;
+instead any method that meets the following requirements may be used as
+an Action by virtue of evaluating a method binding expression:
+
+* The method must be public.
+
+* The method must take no parameters.
+
+* The method must return _Object_.
+
+The action method will be called by the
+default _ActionListener_ implementation, as described in
+<<ApplicationIntegration.adoc#a3402,ActionListener Property>> above. Its
+responsibility is to perform the desired application actions, and then
+return a logical “outcome” (represented as a _String_) that can be used
+by a _NavigationHandler_ in order to determine which view should be
+rendered next. The action method to be invoked is defined by a
+_MethodBinding_ that is specified in the _action_ property of a
+component that implements _ActionSource_. Thus, a component tree with
+more than one such _ActionSource_ component can specify individual
+action methods to be invoked for each activated component, either in the
+same Java class or in different Java classes.
+
+
+[[a3561]]
+=== NavigationHandler
+
+[[a3562]]
+==== Overview
+
+Most Jakarta Faces applications can be thought of as a
+directed graph of views, each node of which roughly corresponds to the
+user’s perception of “location” within the application. Applications
+that use the Faces Flows feature have additional kinds of nodes in the
+directed graph. In any case, navigating the nodes of this graph is the
+responsibility of the _NavigationHandler_. A single _NavigationHandler_
+instance is responsible for consuming the logical outcome returned by an
+application action that was invoked, along with additional state
+information that is available from the _FacesContext_ instance for the
+current request, and (optionally) selecting a new view to be rendered.
+If the outcome returned by the applicationaction is _null_ or the empty
+string, and none of the navigation cases that map to the current view
+identifier have a non-null condition expression, the same view must be
+re-displayed. This is the only case where the same view (and component
+tree) is re-used.
+
+[source,java]
+----
+public void handleNavigation(FacesContext context,
+    String fromAction, String outcome);
+----
+
+The _handleNavigation_ method may select a
+new view by calling _createView()_ on the _ViewHandler_ instance for
+this application, optionally customizing the created view, and then
+selecting it by calling the _setViewRoot()_ method on the _FacesContext_
+instance that is passed. Alternatively, the _NavigationHandler_ can
+complete the actual response (for example, by issuing an HTTP redirect),
+and call _responseComplete()_ on the _FacesContext_ instance.
+
+After a return from the _handleNavigation_
+method, control will normally proceed to the _Render Response_ phase of
+the request processing lifecycle (see <<RequestProcessingLifecycle.adoc#a457,
+Render Response>>), which will cause the newly selected view to be
+rendered. If the _NavigationHandler_ called the _responseComplete()_
+method on the _FacesContext_ instance, however, the _Render Response_
+phase will be bypassed.
+
+Jakarta Faces also contains the _ConfigurableNavigationHandler_ interface, which extends
+the contract of the _NavigationHandler_ to include two additional
+methods that accommodate runtime inspection of the NavigationCases that
+represent the rule-based navigation metamodel. The method
+_getNavigationCase_ consults the _NavigationHandler_ to determine which
+_NavigationCase_ the _handleNavigation_ method would resolve for a given
+"from action" expression and logical outcome combination. The method
+_getNavigationCases_ returns a java.util.Map of all the _NavigationCase_
+instances known to this _NavigationHandler_. Each key in the map is a
+from view ID and the cooresponding value is a java.util.Set of
+NavigationCases for that from view ID.
+
+[source,java]
+----
+public NavigationCase getNavigationCase(FacesContext context,
+    String fromAction, String outcome);
+
+public Map<String, Set<NavigationCase>> getNavigationCases();
+----
+
+A Jakarta Faces
+compliant-implemention must ensure that its _NavigationHandler_
+implements the _ConfigurableNavigationHandler_ interface. The
+_handleNavigation_ and _getNavigation_ Case methods should use the same
+logic to resolve a _NavigationCase_, which is outlined in the next
+section.
+
+[[a3571]]
+==== Default NavigationHandler Algorithm
+
+Jakarta Faces implementations must provide a default
+_NavigationHandler_ implementation that maps the action reference that
+was utilized (by the default _ActionListener_ implementation) to invoke
+an application action, the logical outcome value returned by that
+application action, as well as other state information, into the view
+identifier for the new view or flow node to be selected. The remainder
+of this section describes the functionality provided by this default
+implementation.
+
+The behavior of the default
+_NavigationHandler_ implementation is configured, at web application
+startup time, from the contents of zero or more _application
+configuration resources_ (see <<UsingFacesInWebApplications.adoc#a6195,
+Application Configuration Resources>>). The configuration information is
+represented as zero or more _<navigation-rule>_ elements, each keyed to
+a matching pattern for the _view identifier_ of the current view
+expressed in a _<from-view-id>_ element. This matching pattern must be
+either an exact match for a view identifier (such as “/index.xhtml” if you
+are using the default _ViewHandler_), or the prefix of a component view
+id, followed by an asterisk (“\*”) character. A matching pattern of “*”,
+or the lack of a _<from-view-id>_ element inside a _<navigation-rule>_
+rule, indicates that this rule matches any possible component view
+identifier.
+
+Version 2.2 of the specification introduced
+the Faces Flows feature.  With
+respect to the navigation algorithm, any text that references a _view
+identifier_, such as _<from-view-id>_ or _<to-view-id>_, can also
+refer to a flow node, subject to these constraints.
+
+* When outside of a flow, _view identifier_ has
+the additional possibility of being a flow id.
+
+* When inside a flow, a _view
+identifier_ has the additional possibility of being the id of any node
+within the current flow.
+
+If the specification needs to refer to a
+_view identifier_ that is an actual VDL view (and not a VDL view or a
+flow, or flow node), the term _vdl view identifier_ will be used.
+
+Nested within each _<navigation-rule>_
+element are zero or more _<navigation-case>_ elements that contain
+additional matching criteria based on the action reference expression
+value used to select an application action to be invoked (if any), and
+the logical outcome returned by calling the _invoke()_ method of that
+application action <<Footnotes.adoc#a9089,^[3]^>>. Navigation
+cases support a condition element, <if>, whose content must be a single,
+contiguous value expression expected to resolve to a boolean value (if
+the content does not match this requirement, the condition is
+ignored) <<Footnotes.adoc#a9090,^[4]^>>. When the <if> element is present, the
+value expression it contains must evaluate to true when the navigation
+case is being consulted in order for the navigation case to
+match <<Footnotes.adoc#a9092,^[5]^>>. Finally, the <navigation-case> element
+contains a <to-view-id> element, whose content is either the view
+identifier or a value expression that resolves to the view identifier.
+If the navigation case is a match, this view identifier is to be
+selected and stored in the FacesContext for the current request
+following the invocation of the NavigationHandler. See below for an
+example of the configuration information for the default
+_NavigationHandler_ might be configured.
+
+It is permissible for the application
+configuration resource(s) used to configure the default
+_NavigationHandler_ to include more than one _<navigation-rule>_ element
+with the same _<from-view-id>_ matching pattern. For the purposes of the
+algorithm described below, all of the nested _<navigation-case>_
+elements for all of these rules shall be treated as if they had been
+nested inside a single _<navigation-rule>_ element.
+
+The default _NavigationHandler_ implementation must behave as if it were
+performing the following algorithm (although optimized implementation
+techniques may be utilized):
+
+* If no navigation case is matched by a call to
+the handleNavigation() method, this is an indication that the current
+view should be redisplayed. A null outcome does not
+unconditionally cause all navigation rules to be skipped.
+
+* Find a _<navigation-rule>_ element for which
+the view identifier (of the view in the _FacesContext_ instance for the
+current request) matches the _<from-view-id>_ matching pattern of the
+_<navigation-rule>_. Rule instances are considered in the following
+order:
+
+** An exact match of the view identifier against
+a _<from-view-id>_ pattern that does not end with an asterisk (“*”)
+character.
+
+** For _<from-view-id>_ patterns that end with
+an asterisk, an exact match on characters preceding the asterisk against
+the prefix of the view id. If the patterns for multiple navigation rules
+match, pick the longest matching prefix first.
+
+** If there is a _<navigation-rule>_ with a
+_<from-view-id>_ pattern of only an asterisk <<Footnotes.adoc#a9093,^[6]^>>, it
+matches any view identifier.
+
+* From the _<navigation-case>_ elements nested
+within the matching _<navigation-rule>_ element, locate a matching
+navigation case by matching the _<from-action>_ and _<from-outcome>_
+values against the _fromAction_ and outcome parameter values passed to
+the _handleNavigation()_ method. To match an outcome value of null, the
+_<from-outcome>_ must be absent and the _<if>_ element present.
+Regardless of outcome value, if the _<if>_ element is present, evaluate
+the content of this element as a value expression and only select the
+navigation case if the expression resolves to true. Navigation cases are
+checked in the following order:
+
+** Cases specifying both a _<from-action>_ value
+and a _<from-outcome>_ value are matched against the _action_ expression
+and _outcome_ parameters passed to the _handleNavigation()_ method (both
+parameters must be not null, and both must be equal to the corresponding
+condition values, in order to match).
+
+** Cases that specify only a _<from-outcome>_
+value are matched against the _outcome_ parameter passed to the
+_handleNavigation()_ method (which must be not null, and equal to the
+corresponding condition value, to match).
+
+** Cases that specify only a _<from-action>_
+value are matched against the _action_ expression parameter passed to
+the _handleNavigation()_ method (which must be non-null, and equal to
+the corresponding condition value, to match; if the <if> element is
+absent, only match a non-null outcome; otherwise, match any outcome).
+
+** Any remaining case is assumed to match so
+long as the outcome parameter is non-null or the <if> element is
+present.
+
+** For cases that match up to this point and
+contain an <if> element, the condition value expression must be
+evaluated and the resolved value true for the case to match.
+
+* If a matching _<navigation-case>_ element was
+located, proceed as follows.
+
+** If the _<to-view-id>_ element is the
+id of a flow, discover that flow’s start node and resolve it to a _vdl
+view identifier_ by following the algorithm in
+<<ApplicationIntegration.adoc#a3622,Requirements for Explicit Navigation in
+Faces Flow Call Nodes other than ViewNodes>>
+
+** If the _<to-view-id>_ element is a non-view
+flow node, resolve it to a _vdl view identifier_ by following the
+algorithm in <<ApplicationIntegration.adoc#a3622,Requirements for Explicit
+Navigation in Faces Flow Call Nodes other than ViewNodes>>.
+
+** If _UIViewAction.isProcessingBroadcast()_
+returns _true_, call _getFlash().setKeepMessages(true)_ on the current
+_FacesContext_. Compare the viewId of the current viewRoot with the
+_<to-view-id>_ of the matching _<navigation-case>_. If they differ,
+take any necessary actions to effectively restart the Jakarta Faces lifecycle on
+the _<to-view-id>_ of the matching _<navigation-case>_. Care must be
+taken to preserve any view parameters or navigation case parameters,
+clear the view map of the _UIViewRoot_, and call _setRenderAll(true)_
+on the _PartialViewContext_. Implementations may choose to meet this
+requirement by treating this case as if a _<redirect />_ was specified
+on the matching _<navigation-case>_. If the viewIds do not differ,
+continue on to the next bullet point.
+
+** Clear the view map if the viewId of the new
+_UIViewRoot_ differs from the viewId of the current _UIViewRoot_.
+
+** If the _<redirect/>_ element was _not_
+specified in this _<navigation-case>_ (or the application is running in
+a Portlet environment, where redirects are not possible), use the
+_<to-view-id>_ element of the matching case to request a new
+_UIViewRoot_ instance from the _ViewHandler_ instance for this
+application. Call _transition()_ on the _FlowHandler_, passing the
+current _FacesContext_, the current flow, the new flow and the
+_facesFlowCallNode_ corresponding to this faces flow call, if any. Pass
+the new _UIViewRoot_ to the _setViewRoot()_ method of the _FacesContext_
+instance for the current request.
++
+Then, exit the algorithm. If the content of
+<to-view-id> is a value expression, first evaluate it to obtain the
+value of the view id.
+
+** If the _<redirect/>_ element _was_ specified
+in this _<navigation-case>_, or this invocation of _handleNavigation()_
+was due to a _UIViewAction_ broadcast event where the new _viewId_ is
+different from the current _viewId_, resolve the _<to-view-id>_ to a
+view identifier, using the algorithm in _<<ApplicationIntegration.adoc#a3622,
+Requirements for Explicit Navigation in Faces Flow Call Nodes other than
+ViewNodes>>_. Call _getRedirectURL()_ on the _ViewHandler_, passing the
+current _FacesContext_, the _<to-view-id>_, any name=value parameter
+pairs specified within _<view-param>_ elements within the _<redirect>_
+element, and the value of the _include-view-params_ attribute of the
+_<redirect />_ element if present, _false_, if not. If this navigation
+is a flow transition (where current flow is not the same as the new
+flow), include the relevant flow metadata as entries in the _parameters_
+.
++
+--
+*** If current flow is not null and new flow is
+null, include the following entries:
+_FlowHandler.TO_FLOW_DOCUMENT_ID_REQUEST_PARAM_NAME_:
+_FlowHandler.NULL_FLOW_ +
+_FlowHandler.FLOW_ID_REQUEST_PARAM_NAME_: “” (the empty string)
+
+*** If current flow is null and new flow is not
+null, include the following entries: +
+_FlowHandler.TO_FLOW_DOCUMENT_ID_REQUEST_PARAM_NAME_: The to flow
+document id +
+_FlowHandler.FLOW_ID_REQUEST_PARAM_NAME_: the flow id for the flow that
+is the destination of the transition.
+
+*** If the _parameters_ map has entries for
+either of these keys, both of the entries must be replaced with the new
+values. This allows the call to _FlowHandler.clientWindowTransition()_
+to perform correctly when the GET request after the redirect happens.
+--
++
+The return from _getRedirectURL()_ is the
+value to be sent to the client to which the redirect will occur. Call
+_getFlash().setRedirect(true)_ on the current _FacesContext_. Cause the
+current response to perform an HTTP redirect to this path, and call
+_responseComplete()_ on the _FacesContext_ instance for the current
+request. If the content of <to-view-id> is a value expression, first
+evaluate it to obtain the value of the view id.
+
+* If no matching _<navigation-case>_ element
+was located, return to Step 1 and find the next matching
+_<navigation-rule>_ element (if any). If there are no more matching rule
+elements, execute the following algorithm to search for an implicit
+match based on the current _outcome_. This implicit matching algorithm
+also includes navigating within the current faces flow, and returning
+from the current faces flow.
+
+** Let _outcome_ be _viewIdToTest_.
+
+** Examine the _viewIdToTest_ for the presence
+of a “?” character, indicating the presence of a URI query string. If
+one is found, remove the query string from _viewIdToTest_, including
+the leading “_?_” and let it be _queryString_, look for the string
+“_faces-redirect=true_” within the query string. If found, let
+_isRedirect_ be _true_, otherwise let _isRedirect_ be _false_. Look
+for the string “_includeViewParams=true_” or
+“_faces-include-view-params=true_”. If either are found, let
+_includeViewParams_ be _true_, otherwise let _includeViewParams_ be
+_false_. When performing preemptive navigation, redirect is implied,
+even if the navigation case doesn't indicate it, and the query string
+must be preserved. Refer to <<StandardUserInterfaceComponents.adoc#a2060,
+UIOutcomeTarget>> for more information on preemptive navigation.
+
+** If _viewIdToTest_ does not have a “file
+extension”, take the file extension from the current _viewId_ and append
+it properly to _viewIdToTest_.
+
+** If _viewIdToTest_ does not begin with “/”,
+take the current _viewId_ and look for the last “_/_”. If not found,
+prepend a “_/_” and continue. Otherwise remove all characters in
+_viewId_ after, but not including, “_/_”, then append _viewIdToTest_
+and let the result be _viewIdToTest_.
+
+** Obtain the current ViewHandler and call its
+_deriveViewId()_ method, passing the current _FacesContext_ and
+_viewIdToTest_. If _UnsupportedOperationException_ is thrown,
+the implementation must ensure the algorithm described for
+_ViewHandler.deriveViewId()_ specified in
+_<<ApplicationIntegration.adoc#a3910,Default ViewHandler Implementation>>_ is
+performed. Let the result be _implicitViewId_.
+
+** If _implicitViewId_ is non-__null__, discover
+if _fromOutcome_ is equal to the flow-id of an existing flow in the
+_FlowHandler_. If so find the start node of the flow. If the start node
+is a _ViewNode_, let _viewIdToTest_ be the _vdlDocumentId_ value of the
+_ViewNode_. Call _deriveViewId_ as in the preceding step and let the
+result be _implicitViewId_. If _fromOutcome_ is not equal to the
+flow-id of an existing flow in the _FlowHandler_, and we are currently
+in a flow, discover if this is call to a _faces-flow-return_ node. If
+so, obtain the _fromOutcome_ of the _faces-flow-return_ node, re-apply
+this algorithm to derive the value of the _implicitViewId_ and continue.
+
+** If the _implicitViewId_ is non-__null__, take
+the following action. If _isRedirect_ is _true_, append the
+_queryString_ to _implicitViewId_. Let _implicitNavigationCase_ be a
+conceptual _<navigation-case>_ element whose _fromViewId_ is the current
+_viewId_, _fromAction_ is passed through from the arguments to
+_handleNavigation()_, _fromOutcome_ is passed through from the
+arguments to _handleNavigation()_, _toViewId_ is _implicitViewId_, and
+_redirect_ is the value of _isRedirect_, and _include-view-params_ is
+_includeViewParams_. Treat _implicitNavigationCase_ as a matching
+navigation case and return to the first step above that starts with “If
+a matching _<navigation-case>_ element was located...”.
+
+* If _UIViewAction.isProcessingBroadcast()_
+returns _true_, call _getFlash().setKeepMessages(true)_ on the current
+_FacesContext_. Compare the viewId of the current viewRoot with the
+effective _<to-view-id>_ of the matching _<navigation-case>_. If they
+differ, take any necessary actions effectively restart the Jakarta Faces lifecycle
+on the effective _<to-view-id>_ of the matching _<navigation-case>_.
+Care must be taken to preserve any view parameters or navigation case
+parameters, clear the view map of the _UIViewRoot_, and call
+_setRenderAll(true)_ on the _PartialViewContext_.
+
+* If none of the above steps found a matching
+_<navigation-case>_, perform the steps in
+<<ApplicationIntegration.adoc#a3622,Requirements for Explicit Navigation in
+Faces Flow Call Nodes other than ViewNodes>> to find a matching
+_<navigation-case>_.
+
+* If none of the above steps found a matching
+_<navigation-case>_, if _ProjectStage_ is not _Production_ render a
+message in the page that explains that there was no match for this
+outcome.
+
+A rule match always causes a new view to be
+created, losing the state of the old view. This includes clearing out
+the view map.
+
+Query string parameters may be contributed by
+three different sources: the outcome (implicit navigation), a nested
+_<f:param>_ on the component tag (e.g., _<h:link>_, _<h:button>_,
+_<h:commandLink>_, _<h:commandButton>_), and view parameters. When a
+redirect URL is built, whether it be by the N _avigationHandler_ on a
+redirect case or a _UIOutcomeTarget_ renderer, the query string
+parameter sources should be consulted in the following order:
+
+* the outcome (implicit navigation)
+
+* view parameter
+
+* nested _<f:param>_
+
+If a query string parameter is found in two
+or more sources, the latter source must replace all instances of the
+query string parameter from the previous source(s).
+
+
+[[a3622]]
+===== Requirements for Explicit Navigation in Faces Flow Call Nodes other than ViewNodes
+
+These steps must be performed in this order to determine
+the _vdl view identifier_ when navigating to a flow node that is not a
+view node.
+
+Algorithm for resolving a _nodeId_ to a _vdl
+view identifier_.
+
+* If _nodeId_ is a view node, let _vdl view
+identifier_ be the value of _nodeId_ and exit the algorithm.
+
+* If the node is a _SwitchNode_, iterate over
+the _NavigationCase_ instances returned from its _getCases()_ method.
+For each, one call _getCondition()_. If the result is _true_, let
+_nodeId_ be the value of its _fromOutcome_ property.
+
+* If the node is a _MethodCallNode_, let
+_nodeId_ be the value invoking the value of its _methodExpression_
+property. If the result is _null_, let _nodeId_ be the value of the
+__MethodCallNode__’s _outcome_ property.
+
+* If the node is a _FlowCallNode_, save it
+aside as _facesFlowCallNode_. Let _flowId_ be the value of its
+_calledFlowId_ property and _flowDocumentId_ be the value of its
+_calledFlowDocumentId_ property. If no _flowDocumentId_ exists for the
+node, let it be the string resulting from _flowId + “/” + flowId +
+“.xhtml”_. Ask the _FlowHandler_ for a _Flow_ for this _flowId_,
+_flowDocumentId_ pair. Obtain a reference to the start node and execute
+this algorithm again, on that start node.
+
+* If the node is a _ReturnNode_ obtain its
+navigation case and call _FlowHandler.pushReturnMode()_. This enables
+the navigation to proceed with respect to the calling flow’s navigation
+rules, or the application’s navigation rules if there is no calling
+flow. Start the navigation algorithm over using it as the basis but pass
+the value of the symbolic constant
+_jakarta.faces.flow.FlowHandler.NULL_FLOW_ as the value of the
+_toFlowDocumentId_ argument. If this does not yield a navigation case,
+call _FlowHandler.getLastDisplayedViewId()_, which will return the last
+displayed view id of the calling flow, or _null_ if there is no such
+flow. In a _finally_ block, when the re-invocation of the navigation
+algorithms completes, call _FlowHandler.popReturnMode()_.
+
+===== Requirements for Entering a Flow
+
+If any of
+the preceding navigation steps cause a flow to be entered, the
+implementation must perform the following steps, in this order, before
+continuing with navigation.
+
+* Make it so any _@FlowScoped_ beans for this
+flow are able to be activated when an Expression Language expression that references them
+is evaluated.
+
+* Call the initializer for the flow, if any.
+
+* Proceed to the start node of the flow, which
+may be any flow node type.
+
+An attempt to navigate into a flow other than
+via the identified start node of that throw should cause a
+_FacesException_.
+
+
+===== Requirements for Exiting a Flow
+
+If any of the
+preceding navigation steps cause a flow to be exited, the implementation
+must perform the following steps, in this order, before continuing with
+navigation.
+
+* Call the finalizer for the flow, if any.
+
+* De-activate any _@FlowScoped_ beans for the
+current flow.
+
+* If exiting via a return node ensure the
+return parameters are correctly passed back to the caller.
+
+
+===== Requirements for Calling A Flow from the Current Flow
+
+If any of the
+preceding navigation steps cause a flow to be called from another flow,
+the _transition()_ method on _FlowHandler_ will ensure parameters are
+correctly passed.
+
+
+[[a3646]]
+==== Example NavigationHandler Configuration
+
+The following _<navigation-rule>_ elements
+might appear in one or more application configuration resources (see
+<<UsingFacesInWebApplications.adoc#a6195,Application Configuration Resources>>) to
+configure the behavior of the default _NavigationHandler_
+implementation:
+
+[source,xml]
+----
+<navigation-rule>
+  <description>
+    APPLICATION WIDE NAVIGATION HANDLING
+  </description>
+  <from-view-id> * </from-view-id>
+
+  <navigation-case>
+    <description>
+      Assume there is a “Logout” button on every page that
+      invokes the logout Action.
+    </description>
+    <display-name>Generic Logout Button</display-name>
+    <from-action>#{userBean.logout}</from-action>
+    <to-view-id>/logout.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <description>
+      Handle a generic error outcome that might be returned
+      by any application Action.
+    </description>
+    <display-name>Generic Error Outcome</display-name>
+    <from-outcome>loginRequired</from-outcome>
+    <to-view-id>/must-login-first.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <description>
+      Illustrate paramaters
+    </description>
+    <from-outcome>redirectPasswordStrength</from-outcome>
+    <redirect>
+      <view-param>
+        <name>userId</name>
+        <value>someValue</value>
+      </view-param>
+      <include-view-params>true</include-view-params>
+    </redirect>
+  </navigation-case>
+</navigation-rule>
+----
+
+[source,xml]
+----
+<navigation-rule>
+  <description>
+    LOGIN PAGE NAVIGATION HANDLING
+  </description>
+  <from-view-id> /login.xhtml </from-view-id>
+
+  <navigation-case>
+    <description>
+      Handle case where login succeeded.
+    </description>
+    <display-name>Successful Login</display-name>
+    <from-action>#{userBean.login}</from-action>
+    <from-outcome>success</from-outcome>
+    <to-view-id>/home.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <description>
+      User registration for a new user succeeded.
+    </description>
+    <display-name>Successful New User Registration</display-name>
+    <from-action>#{userBean.register}</from-action>
+    <from-outcome>success</from-outcome>
+    <to-view-id>/welcome.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <description>
+      User registration for a new user failed because of a
+      duplicate username.
+    </description>
+    <display-name>Failed New User Registration</display-name>
+    <from-action>#{userBean.register}</from-action>
+    <from-outcome>duplicateUserName</from-outcome>
+    <to-view-id>/try-another-name.xhtml</to-view-id>
+  </navigation-case>
+</navigation-rule>
+----
+
+[source,xml]
+----
+<navigation-rule>
+  <description>
+    Assume there is a search form on every page. These navigation
+    cases get merged with the application-wide rules above because
+    they use the same “from-view-id” pattern. The same thing would
+    also happen if “from-view-id” was omitted here, because that is
+    equivalent to a matching pattern of “*”.
+  </description>
+  <from-view-id> * </from-view-id>
+
+  <navigation-case>
+    <display-name>Search Form Success</display-name>
+    <from-action>#{searchForm.go}</from-action>
+    <from-outcome>success</from-outcome>
+    <to-view-id>/search-results.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <display-name>Search Form Failure</display-name>
+    <from-action>#{searchForm.go}</from-action>
+    <to-view-id>/search-problem.xhtml</to-view-id>
+  </navigation-case>
+</navigation-rule>
+----
+
+[source,xml]
+----
+<navigation-rule>
+  <description>
+    Searching works slightly differently in part of the site.
+  </description>
+  <from-view-id> /movies/* </from-view-id>
+
+  <navigation-case>
+    <display-name>Search Form Success</display-name>
+    <from-action>#{searchForm.go}</from-action>
+    <from-outcome>success</from-outcome>
+    <to-view-id>/movie-search-results.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <display-name>Search Form Failure</display-name>
+    <from-action>#\{searchForm.go}</from-action>
+    <to-view-id>/search-problem.xhtml</to-view-id>
+  </navigation-case>
+</navigation-rule>
+----
+
+[source,xml]
+----
+public void savePizza();
+
+<navigation-rule>
+  <description>
+    Pizza topping selection navigation handling
+  </description>
+  <from-view-id>/selectToppings.xhtml</from-view-id>
+
+  <navigation-case>
+    <description>
+      Case where pizza is saved but there is additional cost
+    </description>
+    <display-name>Pizza saved w/ extras</display-name>
+    <from-action>#{pizzaBuilder.savePizza}</from-action>
+    <if>#{pizzaBuilder.additionalCost}</if>
+    <to-view-id>/approveExtras.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <description>
+      Case where pizza is saved and additional pizzas are needed
+    </description>
+    <display-name>Pizza saved, additional pizzas needed</display-name>
+    <from-action>#{pizzaBuilder.savePizza}</from-action>
+    <if>#{not order.complete}</if>
+    <to-view-id>/createPizza.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <description>
+      Handle case where pizza is saved and order is complete
+    </description>
+    <display-name>Pizza complete</display-name>
+    <from-action>#{pizzaBuilder.savePizza}</from-action>
+    <if>#{order.complete}</if>
+    <to-view-id>/cart.xhtml</to-view-id>
+  </navigation-case>
+</navigation-rule>
+----
+
+[source,xml]
+----
+public String placeOrder();
+
+<navigation-rule>
+  <description>
+    Cart navigation handling
+  </description>
+  <from-view-id>/cart.xhtml</from-view-id>
+
+  <navigation-case>
+    <description>
+      Handle case where account has one click delivery enabled
+    </description>
+    <display-name>Place order w/ one-click delivery</display-name>
+    <from-action>#{pizzaBuilder.placeOrder}</from-action>
+    <if>#{account.oneClickDelivery}</if>
+    <to-view-id>/confirmation.xhtml</to-view-id>
+  </navigation-case>
+
+  <navigation-case>
+    <description>
+      Handle case where delivery information is required
+    </description>
+    <display-name>Place order w/o one-click delivery</display-name>
+    <from-action>#{pizzaBuilder.placeOrder}</from-action>
+    <if>#{not account.oneClickDelivery}</if>
+    <to-view-id>/delivery.xhtml</to-view-id>
+  </navigation-case>
+</navigation-rule>
+----
+
+[[a3840]]
+=== FlowHandler
+
+Any Jakarta Faces application can be modeled as a
+directed graph where the nodes are views and the edges are transitions
+between the views. Faces Flows introduces several other kinds of nodes
+to this directed graph, providing support for encapsulating related
+views and edges together. Applications can be created as composites of
+modules of functionality, with each module consisting of well defined
+entry and exit conditions, and the ability to share state among the
+nodes within each module. This feature is heavily influenced by the
+design of ADF Task Flows in Oracle’s Fusion Middleware and also by
+Spring Web Flow and Apache MyFaces CODI. The normative specification for
+this feature proceeds from the Javadoc for the class
+_jakarta.faces.flow.FlowHandler_, and also from related requirements in
+<<ApplicationIntegration.adoc#a3561,NavigationHandler>>. This section
+provides a non-normative usage example and walkthrough of feature so
+that all the other parts of the specification that intersect with this
+feature can be discovered.
+
+==== Non-normative example
+
+Here is a simple example to introduce the
+feature. It does not touch on all aspects of the feature. The example
+has two flows, each of which calls the other, passing parameters. Any
+view outside of a flow may navigate to either of the flows, named flow-a
+and flow-b.
+
+image:NonNormativeExampleOfTwoFlows.svg[Non-normative example of two flows]
+
+This diagram uses the following conventions.
+
+* view nodes are boxes
+
+* faces flow return nodes are circles
+
+* faces flow call nodes are boxes with the
+corners chopped off
+
+* _@FlowScoped_ beans are rectangles
+semi-circular short sides
+
+* the start node is marked “start”
+
+* inbound and outbound parameters are listed by
+name
+
+* arrows show valid traversals among the nodes.
+
+These flows are identical, except for the
+names of their constituents, and each has the following properties.
+
+* Three view nodes, one of which is the
+implicit start node
+
+* One faces flow return node, each of which
+returns the outcome “return1”
+
+* One flow call node, which calls the other
+flow, with two outbound parameters, named to match up with the other
+flow
+
+* Two inbound parameters, named to match up
+with the other flow
+
+The different kinds of nodes mentioned in the
+preceding discussion are defined in the javadoc for class
+_jakarta.faces.flow.FlowHandler_.
+
+Consider this simple web app, called
+_basic_faces_flow_call.war_, containing the above mentioned flows. The
+file layout for of the app is shown next. The example is shown using
+maven war packaging
+
+....
+basic_faces_flow_call/
+  pom.xml
+  src/main/webapp/
+             index.xhtml
+             return1.xhtml
+             WEB-INF/beans.xml
+             flow-a/
+               flow-a.xhtml
+               next_a.xhtml
+               next_b.xhtml
+             flow-b/
+               flow-b-flow.xml
+               next_a.xhtml
+               next_b.xhtml
+  src/main/java/com/sun/faces/basic_faces_flow_call/
+                                FlowA.java
+                                Flow_a_Bean.java
+                                Flow_b_Bean.java
+....
+
+To complete the example, the execution of the
+flows is examined. When the application containing these flows is
+deployed, the runtime discovers the flow definitions and adds them to
+the internal flow data structure. One flow is defined in
+_flow-b-flow.xml_. This is an XML file conforming to the Application
+Configuration Resources syntax described in
+<<UsingFacesInWebApplications.adoc#a6195,Application Configuration Resources>>.
+The other flow is defined in _FlowA.java_, a class with a method with
+the _@FlowDefinition_ annotation. When the flow discovery is complete,
+an application scoped, thread safe data structure containing the flow
+definitions is available from the _jakarta.faces.flow.FlowHandler_
+singleton. This data structure is navigable by the runtime via the
+_jakarta.faces.flow.Flow_ API.
+
+When the user agent visits
+_http://localhost:8080/basic_faces_flow_call/faces/index.xhtml_, they
+see a page with two buttons, the actions of which are _flow-a_, and
+_flow-b_, respectively. Clicking either button causes entry to the
+corresponding flow. In this case, the user clicks the _flow-a_ button.
+The _@FlowScoped_ bean _Flow_a_Bean_ is instantiated by the container
+and navigation proceeds immediately to the start node, in this case
+_flow-a.xhtml_. The user proceeds directly to click a button taking
+them to _next_a.xhtml_, and then to _next_b.xhtml_. On that page there
+is a button whose action is _callB_. Clicking this button activates the
+correspondingly named faces flow call node, which prepares the specified
+outbound parameters, de-activates _Flow_a_Bean_ and calls _flow-b_.
+
+Upon entry to _flow-b_, the _@FlowScoped_
+bean _Flow_b_Bean_ is instantiated by the container, the outbound
+parameters from _flow-a_ are matched up with corresponding inbound
+parameters on _flow-b_ and navigation proceeds immediately to the start
+node, in this case _flow-b.xhtml_. The user proceeds directly to click
+a button taking them to _next_a.xhtml_, and then to _next_b.xhtml_. On
+that page there is a button whose action is _taskFlowReturn1_. Clicking
+this button causes _Flow_b_Bean_ to be deactivated and navigation to the
+view named _return1_ to be performed.
+
+==== Non-normative Feature Overview
+
+The normative requirements of the feature are
+stated in the context of the part of the specification impacted. This
+section gives the reader a non-normative overview of the feature that
+touches on all the parts of the specification that intersect with this
+feature.
+
+._Startup Time_
+
+At startup time, the runtime will discover
+flows available for this application. _This behavior is normatively
+specified in <<UsingFacesInWebApplications.adoc#a6228,Faces Flows>> and in the XML
+schema for the application configuration resources._
+
+._Invoke Application Time_
+
+The default _ActionListener_ may need to take
+special action when calling into a flow. _This behavior is normatively
+specified in <<ApplicationIntegration.adoc#a3402,ActionListener Property>>._
+
+The default _NavigationHandler_
+implementation must use the _FlowHandler_ during its operation. _This
+behavior is normatively specified in <<ApplicationIntegration.adoc#a3571,
+Default NavigationHandler Algorithm>>_.
+
+
+[[a3871]]
+=== ViewHandler
+
+_ViewHandler_ is the pluggability mechanism
+for allowing implementations of or applications using the Jakarta
+Faces specification to provide their own handling of the activities in
+the _Render Response_ and _Restore View_ phases of the request
+processing lifecycle. This allows for implementations to support
+different response generation technologies, as well as different state
+saving/restoring approaches.
+
+A Jakarta Faces implementation must provide a default
+implementation of the _ViewHandler_ interface. See
+<<ApplicationIntegration.adoc#a3450,ViewHandler Property>> for information on
+replacing this default implementation with another implementation.
+
+[[a3874]]
+==== Overview
+
+ViewHandler defines the public APIs
+described in the following paragraphs
+
+[source,java]
+----
+public Locale calculateLocale(FacesContext context);
+public String calculateRenderKitId(FacesContext context);
+----
+
+These methods are called from _createView()_
+to allow the new view to determine the _Locale_ to be used for all
+subsequent requests, and to find out which _renderKitId_ should be used
+for rendering the view.
+
+[source,java]
+----
+public void initView(FacesContext) throws FacesException;
+public String calculateCharacterEncoding(FacesContext context);
+----
+
+The _initView()_ method must be called as the
+first method in the implementation of the _Restore View Phase_ of the
+request processing lifecycle, immediately after checking for the
+existence of the _FacesContext_ parameter. See the javadocs for this
+method for the specification.
+
+[source,java]
+----
+public String deriveViewId(FacesContext context, String input);
+----
+
+The _deriveViewId()_ method is an
+encapsulation of the viewId derivation algorithm in previous versions of
+the specification. This method looks at the argument _input_, and the
+current request and derives the _viewId_ upon which the lifecycle will
+be run.
+
+[source,java]
+----
+public UIViewRoot createView(FacesContext context, String viewId);
+----
+
+Create and return a new _UIViewRoot_
+instance, initialized with information from the specified _FacesContext_
+and view identifier parameters.
+
+If the view being requested is a Facelet
+view, the _createView()_ method must ensure that the _UIViewRoot_ is
+fully populated with all the children defined in the VDL page before
+_createView()_ returns.
+
+[source,java]
+----
+public String getActionURL(FacesContext context, String viewId);
+----
+
+Returns a URL, suitable for encoding and
+rendering, that (if activated) will cause the Jakarta Faces request processing
+lifecycle for the specified _viewId_ to be executed
+
+[source,java]
+----
+public String getBookmarkableURL(FacesContext context, String viewId,
+    Map<String, List<String>> parameters, boolean includeViewParams);
+----
+
+Return a Jakarta Faces action URL derived from the
+viewId argument that is suitable to be used as the target of a link in a
+Jakarta Faces response. The URL, if activated, would cause the browser to issue an
+initial request to the specified viewId
+
+[source,java]
+----
+public String getRedirectURL(FacesContext context, String viewId,
+    Map<String, List<String>> parameters, boolean includeViewParams);
+----
+
+Return a Jakarta Faces action URL derived from the
+_viewId_ argument that is suitable to be used by the _NavigationHandler_
+to issue a redirect request to the URL using an initial request.
+
+[source,java]
+----
+public String getResourceURL(FacesContext context, String path);
+----
+
+Returns a URL, suitable for encoding and
+rendering, that (if activated) will retrieve the specified web
+application resource.
+
+[source,java]
+----
+public void renderView(FacesContext context, UIViewRoot viewToRender)
+    throws IOException, FacesException;
+----
+
+This method must be called during the _Render
+Response_ phase of the request processing lifecycle. It must provide a
+valid _ResponseWriter_ or _ResponseStream_ instance, storing it in the
+_FacesContext_ instance for the current request (see
+<<Per-RequestStateInformation.adoc#a3198,ResponseStream and ResponseWriter>>), and
+then perform whatever actions are required to cause the view currently
+stored in the _viewRoot_ of the _FacesContext_ instance for the current
+request to be rendered to the corresponding writer or stream. It must
+also interact with the associated _StateManager_ (see
+<<ApplicationIntegration.adoc#a4117,StateManager>>), by calling the
+_getSerializedView()_ and _saveView()_ methods, to ensure that state
+information for current view is saved between requests.
+
+[source,java]
+----
+public UIViewRoot restoreView(FacesContext context,
+    String viewId) throws IOException;
+----
+
+This method must be called from the _Restore
+View_ phase of the request processing lifecycle. It must perform
+whatever actions are required to restore the view associated with the
+specified _FacesContext_ and _viewId_.
+
+It is the caller’s responsibility to ensure
+that the returned _UIViewRoot_ instance is stored in the _FacesContext_
+as the new _viewRoot_ property. In addition, if _restoreView()_ returns
+_null_ (because there is no saved state for this view identifier), the
+caller must call _createView()_, and call _renderResponse()_ on the
+_FacesContext_ instance for this request.
+
+[source,java]
+----
+public void writeState(FacesContext context) throws IOException;
+----
+
+Take any appropriate action to either
+immediately write out the current view’s state information (by calling
+_StateManager.writeState()_), or noting where state information may
+later be written. This method must be called once per call to the
+_encodeEnd()_ method of any renderer for a _UIForm_ component, in order
+to provide the _ViewHandler_ an opportunity to cause saved state to be
+included with each submitted form.
+
+[source,java]
+----
+public ViewDeclarationLanguage getViewDeclarationLanguage();
+----
+
+See the javadocs for this method for the
+specification.
+
+[source,java]
+----
+public Set<String> getProtectedViewsUnmodifiable();
+public void addProtectedView(String urlPattern);
+public boolean removeProtectedView(String urlPattern)
+----
+
+See the javadocs for these methods for the
+specification.
+
+[[a3910]]
+==== Default ViewHandler Implementation
+
+The terms _view identifier_ and _viewId_ are
+used interchangeably below and mean the context relative path to the web
+application resource that produces the view, such as a
+Facelets page. In the Facelets
+case, this is a context relative path to the XHTML page representing the
+view, such as _/foo.xhtml_.
+
+Jakarta Faces implementations must provide a default
+_ViewHandler_ implementation, along with a default
+_ViewDeclarationLanguageFactory_ implementation that vends
+_ViewDeclarationLanguage_ implementation designed to support the
+rendering of Facelets pages
+containing Jakarta Faces components. The default _ViewHandler_ is specified in
+this section and the default _ViewDeclarationLanguage_ implementation
+is specified in the following section.
+
+[[a3913]]
+===== ViewHandler Methods that Derive Information From the Incoming Request
+
+The _deriveViewId()_ method must fulfill the following
+responsibilities:
+
+* If the argument input is _null_, return
+_null_.
+
+* If prefix mapping (such as “/faces/*”) is
+used for _FacesServlet_, normalize the _viewId_ according to the
+following algorithm, or its semantic equivalent, and return it.
+
+** Remove any number of occurrences of the
+prefix mapping from the viewId. For example, if the incoming value was
+_/faces/faces/faces/view.xhtml_ the result would be simply _view.xhtml_.
+
+* If suffix mapping (such as “*.faces”) is used
+for _FacesServlet_, the _viewId_ is set using following algorithm.
+
+** Let _requestViewId_ be the value of argument
+_input_.
+
+** Consult the javadocs for
+_ViewHandler.FACELETS_VIEW_MAPPINGS_PARAM_NAME_ and perform the steps
+necessary to obtain a value for that param (or its alias as in the
+javadocs). Let this be _faceletsViewMappings_.
+
+** Obtain the value of the context
+initialization parameter named by the symbolic constant
+_ViewHandler.FACELETS_SUFFIX_PARAM_NAME_. (if no such context
+initialization parameter is present, use the value of the symbolic
+constant _ViewHandler.DEFAULT_FACELETS_SUFFIX_). Let this be
+_faceletsDefaultSuffixes_.
+
+** For each entry in the list from _faceletsDefaultSuffixes_,
+replace the suffix of _requestViewId_ with that entry.
+For discussion, call this _candidateViewId_.
+For each entry in _faceletsViewMappings_, If the
+current entry is a prefix mapping entry, skip it and continue to the
+next entry. If _candidateViewId_ is exactly equal to the current entry,
+consider the algorithm complete with the result being _candidateViewId_.
+If the current entry is a wild-card extension mapping, apply it
+non-destructively to _candidateViewId_ and look for a physical resource
+with that name. If present, consider the algorithm complete with the
+result being the name of the physical resource. Otherwise look for a
+physical resource with the name _candidateViewId_. If such a resource
+exists, consider the algorithm complete with the result being
+_candidateViewId_. If there are no entries in _faceletsViewMappings_,
+look for a physical resource with the name _candidateViewId_. If such a
+resource exists, _candidateViewId_ is the correct _viewId_.
+
+** Otherwise, if a physical resource exists with
+the name _requestViewId_ let that value be _viewId_.
+
+** Otherwise return _null_.
+
+* If an exact mapping (such as /foo) is used
+for FacesServlet, the _viewId_ is set using following algorithm.
+
+** Let _requestViewId_ be the value of the
+argument input.
+
+** Obtain the value of the context
+initialization parameter named by the symbolic constant
+_ViewHandler.FACELETS_SUFFIX_PARAM_NAME_. (if no such context
+initialization parameter is present, use the value of the symbolic
+constant _ViewHandler.DEFAULT_FACELETS_SUFFIX_). Let this be
+_faceletsDefaultSuffixes_.
+
+** For each entry in the list from _faceletsDefaultSuffixes_,
+add that current entry to the end of _requestViewId_.
+For discussion, call this _candidateViewId_. Look for a physical
+resource with the name _candidateViewId_. If such a resource exists,
+consider the algorithm complete with the result being _candidateViewId_.
+
+** Otherwise, if a physical resource exists with
+the name _requestViewId_ let that value be _viewId_.
+
+** Otherwise return _null_.
+
+* The getViewDeclarationLanguage() must fulfill
+the following responsibilites.
+
+* See the javadocs for the normative
+specification for this method.
+
+The
+_deriveLogicalViewId()_ method is identical to _deriveViewId()_ except
+that it does not check for the existence of the resource. 
+
+The
+_calculateCharacterEncoding()_ method must fulfill the following
+responsibilities:
+
+* Examine the _Content-Type_ request header. If
+it has a _charset_ parameter extract it and return it.
+
+* If not, test for the existence of a
+session by calling _getSession(false)_ on the _ExternalContext_ for this
+_FacesContext_. If the session is non-__null__, look in the _Map_
+returned by the _getSessionMap()_ method of the _ExternalContext_ for a
+value under the key given by the value of the symbolic constant
+_jakarta.faces.application.ViewHandler.CHARACTER_ENCODING_KEY_. If a
+value is found, convert it to a String and return it. 
+
+The
+_calculateLocale()_ method must fulfill the following responsibilities:
+
+* Attempt to match one of the locales returned
+by the _getLocales()_ method of the _ExternalContext_ instance for this
+request, against the supported locales for this application as defined
+in the application configuration resources. Matching is performed by the
+algorithm described in Section 8.3.2 "Resource Bundle Determination Algorithm" of the Jakarta Standard Tag Library Specification Document. If
+a match is found, return the corresponding _Locale_ object.
+
+* Otherwise, if the application has specified a
+default locale in the application configuration resources, return the
+corresponding _Locale_ object.
+
+* Otherwise, return the value returned
+by calling _Locale.getDefault()_.
+
+The _calculateRenderKitId()_ method must fulfill the
+following responsibilities:
+
+* Return the value of the request parameter
+named by the symbolic constant
+_ResponseStateManager.RENDER_KIT_ID_PARAM_ if it is not _null_.
+
+* Otherwise, return the value returned by
+_Application.getDefaultRenderKitId()_ if it is not _null_.
+
+* Otherwise, return the value specified by the
+symbolic constant _RenderKitFactory.HTML_BASIC_RENDER_KIT_.
+
+===== ViewHandler Methods that are Called to Fill a Specific Role in the Lifecycle
+
+The _createView()_ method must obtain a reference to the
+_ViewDeclarationLanguage_ for this _viewId_ and call its
+_ViewDeclarationLanguage.createView()_ method, returning the result and
+not swallowing any exceptions thrown by that method.
+
+The
+_initView()_ method must fulfill the following responsibilities:
+
+* See the javadocs for this method for
+the specification.
+
+The _renderView()_ method must obtain a reference to the
+_ViewDeclarationLanguage_ for the _viewId_ of the argument
+_viewToRender_ and call its _ViewDeclarationLanguage.restoreView()_
+method, returning the result and not swallowing any exceptions thrown by
+that method.
+
+The _restoreView()_ method must obtain a reference to the
+_ViewDeclarationLanguage_ for the _viewId_ of the argument
+_viewToRender_ and call its _ViewDeclarationLanguage.restoreView()_
+method, returning the result and not swallowing any exceptions thrown by
+that method.
+
+The _writeState()_ method must fulfill the
+following responsibilities:
+
+* Obtain the saved state stored in a
+thread-safe manner during the invocation of _renderView()_ and pass it
+to the _writeState()_ method of the _StateManager_ for this application.
+
+[[a3955]]
+===== ViewHandler Methods Relating to Navigation
+
+The
+_getActionURL()_ method must fulfill the following responsibilities:
+
+* If the specified _viewId_ does not start with
+a “/”, throw _IllegalArgumentException_.
+
+* If exact mapping (such as /foo) is used for
+FacesServlet, the following algorithm must be followed to derive the
+result.
+
+** Retrieve the collection of existing mappings
+of the FacesServlet, e.g. using _ServletRegistration#getMappings()_.
+Let this be _facesServletMappings_. If the argument _viewId_ has an
+extension, then obtain the value of the context initialization parameter
+named by the symbolic constant _ViewHandler.FACELETS_SUFFIX_PARAM_NAME_.
+(if no such context initialization parameter is present, use the value
+of the symbolic constant _ViewHandler.DEFAULT_FACELETS_SUFFIX_). Let
+this be _faceletsDefaultSuffixes_.
+
+** For each entry in the list from
+_faceletsDefaultSuffixes_, if the extension of the argument _viewId_ is equal
+to this entry, remove the extension from _viewId_. For discussion, call
+this _candidateViewId_.
+
+** Look if the _candidateViewId_ is present in
+_facesServletMappings_. If so,the result is _contextPath +
+candidateViewId_.
+
+** If the argument _viewId_ has no extension,
+then look if the _viewId_ is present in _facesServletMappings_. If so,
+the result is _contextPath + viewId_.
+
+** If no result has been obtained, pick any
+prefix mapping or extension mapping from _facesServletMappings_. If no
+such mapping is found, throw an _IllegalStateException_.
+
+** If such mapping is found remove the "*"
+character from that mapping, take that as the new mapping and continue
+with evaluating this mapping as specified below for "if prefix mapping
+[...] is used" and for "if suffix mapping [...] is used
+
+
+
+* If prefix mapping (such as “/faces/*”) is
+used for _FacesServlet_, prepend the context path of the current
+application, and the specified prefix, to the specified viewId and
+return the completed value. For example
+“_/cardemo/faces/chooseLocale.xhtml_”.
+
+* If suffix mapping (such as “*.faces”) is used
+for _FacesServlet_, the following algorithm must be followed to derive
+the result.
+
+** If the argument _viewId_ has no extension,
+the result is _contextPath + viewId + mapping_, where _contextPath_ is
+the context path of the current application, _viewId_ is the argument
+_viewId_ and _mapping_ is the value of the mapping (such as “*.faces”).
+
+** If the argument _viewId_ has an extension,
+and this extension is not _mapping_, the result is _contextPath +
+viewId.substring(0, period) + mapping_.
+
+** If the argument _viewId_ has an extension,
+and this extension is _mapping_, the result is _contextPath + viewId_.
+For example “_/cardemo/chooseLocale.faces_”
+
+* If the current view is one of the views to
+which view protection must be applied, the returned URL must contain the
+parameter with a name equal to the value of the constant defined by
+_ResponseStateManager.NON_POSTBACK_VIEW_TOKEN_PARAM_. The value of this
+parameter must be the return value from a call to
+_ResponseStateManager.getCryptographicallyStrongTokenFromSession()_.
+This parameter is inspected during the restore view phase (see
+<<RequestProcessingLifecycle.adoc#a404,Restore View>>).
+
+The _getBookmarkableURL()_ method must fulfill the following
+responsibilities:
+
+* If argument _includeViewParams_ is _true_,
+obtain the view paramaters corresponding to the argument _viewId_ and
+append them to the _Map_ given in argument _parameters_. Let the
+resultant _Map_ be called _paramsToEncode_.
+
+** If the _viewId_ of the current _FacesContext_
+is not equal to the argument _viewId_, get the
+_ViewDeclarationLanguage_ for the argument _viewId_, obtain its
+_ViewMetadata_, call _createMetadataView()_ on it, then call
+_ViewMetadata.getViewParameters()_ passing the return from
+_createMetadataView()_. Let the result of this method be _toViewParams_.
+
+** If the _viewId_ of the current _FacesContext_
+is equal to the argument _viewId_, call
+_ViewMetadata.getViewParameters()_ passing the current _UIViewRoot_.
+Let the result of this method be _toViewParams_.
+
+** If _toViewParams_ is empty, take no further
+action to add view parameters to this URL. Iterate over each
+_UIViewParameter_ element in _toViewParams_ and take the following
+actions on each element.
+
+** If the _Map_ given by _parameters_ has a key
+equal to the _name_ property of the current element, take no action on
+the current element and continue iterating.
+
+** If the current _UIViewParameter_ has a
+_ValueExpression_ under the key _“value”_ (without the quotes), let
+_value_ be the result of calling _getStringValueFromModel()_ on the
+current _UIViewParameter_.
+
+** Otherwise, if the current _viewId_ is the
+same as the argument _viewId_, let _value_ be the result of calling
+_getStringValue()_ on the current _UIViewParameter_.
+
+** Otherwise, if the current _viewId_ is
+different from the argument _viewId_, locate the _UIViewParameter_
+instance in the current view whose name is equivalent to the current
+element and let _value_ be the result of calling _getStringValue()_ on
+the located _UIViewParameter_.
+
+** If the above steps yielded a non-__null__
+_value_, find the _List<String>_ value in the _parameters_ map under
+the key given by the _name_ property of the current _UIViewParameter_
+element. If such a _List_ exists, add _value_ to it. Otherwise create a
+_List<String>_, add _value_ to it, and add it to the _parameters_ map
+under the appropriate key.
+
+* If argument _includeViewParams_ is _false_,
+take no action to add additional entries to _paramaters_. Let
+_paramsToEncode_ be _parameters_.
+
+* Call _getActionURL()_ on the argument
+_viewId_. Let the result be _actionEncodedViewId_.
+
+* Call _encodeBookmarkableURL()_ on the current
+_ExternalContext_, passing _actionEncodedViewId_ as the first argument
+and _paramsToEncode_ as the second. Let the result be
+_bookmarkEncodedURL_.
+
+* Pass _bookmarkEncodedURL_ to
+_ExternalContext.encodeActionURL()_ and return the result.
+
+The
+_getRedirectURL()_ method must fulfill the following responsibilities:
+
+* Take exactly the same action as in
+_getBookmarkableURL()_ up to and including the call to _getActionURL()_.
+Thereafter take the following actions.
+
+* Call _encodeRedirectURL()_ on the current
+_ExternalContext_, passing _actionEncodedViewId_ as the first argument
+and _paramsToEncode_ as the second. Let the result be
+_redirectEncodedURL_.
+
+* Pass _redirectEncodedURL_ to
+_ExternalContext.encodeActionURL()_ and return the result.
+
+The
+_getResourceURL()_ method must fulfill the following responsibilities:
+
+* If the specified path starts with a “/”,
+prefix it with the context path for the current web application, and
+return the result.
+
+* Otherwise, return the specified _path_
+value unchanged.
+
+[[a3997]]
+===== ViewHandler Methods that relate to View Protection
+
+* See the javadocs for _addProtectedView()_ for the
+normative specification. 
+
+* See the javadocs for _removeProtectedView()_ for the
+normative specification. 
+
+* See the javadocs for
+_getProtectedViewsUnmodifiable()_ for the normative specification.
+
+
+See the _View Protection_ section within
+<<RequestProcessingLifecycle.adoc#a404,Restore
+View>> for the normative specification of this feature.
+
+[[a4003]]
+=== ViewDeclarationLanguage
+
+To support the introduction of Facelets into
+the version 2 of the core specification, whilst preserving backwards compatibility with
+Jakarta Server Pages applications used with version 1 of the specification, the concept of the _View Declaration
+Language_ was formally introduced in version 2 of the specification. A
+View Declaration Language (VDL) is a syntax used to declare user
+interfaces comprised of instances of Jakarta Faces __UIComponent__s. Under this
+definition, Facelets is an example of an implementation of a VDL.
+Historically, Jakarta Server Pages was another example of an implementation of a VDL, 
+but this has been deprecated in version 2 of the specification and removed in version 4 of the specification.
+Any of the responsibilities of the _ViewHandler_ that specifically
+deal with the VDL sub-system are now the domain of the VDL
+implementation. These responsibilities are defined on the
+_ViewDeclarationLanguage_ class.
+
+The Facelets specific implementation is further detailed in
+<<FaceletsAndWebApplications.adoc#a5608,
+Specification of the ViewDeclarationLanguage Implementation for Facelets for Jakarta Faces>>.
+
+==== ViewDeclarationLanguageFactory
+
+_ViewDeclarationLanguageFactory_ is a
+factory object that creates (if needed) and returns a new
+_ViewDeclarationLanguage_ instance based on the VDL found in a specific
+view.
+
+The factory mechanism specified in
+<<UsingFacesInWebApplications.adoc#a6147,FactoryFinder>> and
+the decoration mechanism specified in <<UsingFacesInWebApplications.adoc#a6336,
+Delegating Implementation Support>> are used to allow decoration or
+replacement of the _ViewDeclarationLanguageFactory_.
+
+[source,java]
+----
+public ViewDeclarationLanguage getViewDeclarationLanguage(String viewId)
+----
+
+Return the _ViewDeclarationLanguage_ instance
+suitable for handling the VDL contained in the page referenced by the
+argument viewId. The
+default implementation must return a valid _ViewDeclarationLanguage_
+instance for views written in Facelets.
+Whether the instance
+returned is the same for a Facelet view or another VDL is an implementation
+detail.
+
+[[a4010]]
+==== Default ViewDeclarationLanguage Implementation
+
+For each of the methods on
+_ViewDeclarationLanguage_, the required behavior is broken into three
+segments:
+
+* Behavior required of all compliant
+implementations
+
+* Behavior required of the implementation that
+handles Facelet views
+
+Any implementation strategy is valid as long
+as these requirements are met.
+
+[[a4016]]
+===== ViewDeclarationLanguage.createView()
+
+[source,java]
+----
+public UIViewRoot createView(FacesContext context, String viewId)
+----
+
+The
+_createView()_ method must fulfill the following responsibilities.
+
+* If there is an existing _UIViewRoot_
+available on the _FacesContext_, this method must copy its _locale_ and
+_renderKitId_ to this new view root. If not, this method must call
+_calculateLocale()_ and _calculateRenderKitId()_, and store the results
+as the values of the _locale_ and _renderKitId_, properties,
+respectively, of the newly created _UIViewRoot_.
+
+* If no _viewId_ could be identified, or the
+_viewId_ is exactly equal to the servlet mapping, send the response
+error code _SC_NOT_FOUND_ with a suitable message to the client.
+
+* Create a new _UIViewRoot_ object instance
+using _Application.createComponent(UIViewRoot.COMPONENT_TYPE)_.
+
+* Pass the argument _viewId_ to the
+_setViewId()_ method on the new _UIViewRoot_ instance.
+
+* The new _UIViewRoot_ instance must be passed
+to _FacesContext.setViewRoot()_. This enables the broadest possible
+range of implementations for how tree creation is actually implemented.
+
+* Call
+_calculateResourceLibraryContracts()_, passing the argument _viewId_,
+and unconditionally set the result as the _resourceLibraryContracts_
+property on the _FacesContext_. The implementation must obtain the
+_ViewDeclarationLanguage_ reference on which to invoke
+_calculateResourceLibraryContracts()_ from the _ViewHandler_. This
+ensures the methods can be correctly decorated.
+
+* Return the newly created _UIViewRoot_.
+
+[[a4030]]
+===== ViewDeclarationLanguage.calculateResourceLibraryContracts()
+
+[source,java]
+----
+public List<String> calculateResourceLibraryContracts(
+    FacesContext context, String viewId)
+----
+
+The implementation must examine the
+resource library contracts data structure, which was populated as
+specified in <<UsingFacesInWebApplications.adoc#a6215,Resource Library
+Contracts>>, and find the _<contract-mapping>_ element that matches the
+argument _viewId_. When processing the nested _<url-pattern>_ matches
+must be made using the following rules in this order.
+
+. An exact match.
+
+. The longest match
+
+. The value * matches all incoming viewIds
+
+The value returned from this method is the
+list whose contents are taken from the _contracts_ attribute of the
+matching _<contract-mapping>_ element.
+
+===== ViewDeclarationLanguage.buildView()
+
+[source,java]
+----
+public void buildView(FacesContext context, UIComponent root)
+----
+
+The
+_buildView()_ method must fulfill the following responsibilities.
+
+* The implementation must guarantee that the
+page is executed in such a way that the _UIComponent_ tree described in
+the VDL page is completely built and populated, rooted at the new
+_UIViewRoot_ instance created previously.
+
+* The runtime must guarantee that the view must
+be fully populated before the _afterPhase()_ method of any
+_PhaseListeners_ attached to the application or to the _UIViewRoot_ (via
+_UIViewRoot.setAfterPhaseListener()_ or _UIViewRoot.addPhaseListener()_
+) are called.
+
+* The implementation must guarantee
+the markup comprising the view is executed with the UIComponent
+instances in the view being encountered in the same depth-first order as
+in other lifecycle methods defined on _UIComponent_, and added to the
+view (but not rendered at this time), during the traversal. .
+
+[[a4046]]
+===== ViewDeclarationLanguage.getComponentMetadata()
+
+[source,java]
+----
+public BeanInfo getComponentMetadata(
+    FacesContext context, Resource componentResource)
+----
+
+The _getComponentMetadata()_ method must fulfill the
+following responsibilities:
+
+* Return a reference to the component metadata
+for the composite component represented by the argument
+_componentResource_, or _null_ if the metadata cannot be found. The
+implementation may share and pool what it ends up returning from this
+method to improve performance.
+
+* Support argument _componentResource_ being a
+Facelet markup file that is to be interpreted as a composite component
+as specified in <<UserInterfaceComponentModel.adoc#a1671,Composite Component
+Metadata>>.
+
+===== ViewDeclarationLanguage.getViewMetadata() and getViewParameters()
+
+[source,java]
+----
+public ViewMetadata getViewMetadata(FacesContext context, String viewId)
+----
+
+The _getViewMetadata()_ method must fulfill the following
+responsibilities:
+
+* Return a reference to the view metadata for
+the view represented by the argument _viewId_, or _null_ if the
+metadata cannot be found. The implementation may share and pool what it
+ends up returning from this method to improve performance.
+
+* The implementation must support
+argument _viewId_ being a Facelet markup file from which the view
+metadata should be extracted.
+
+.ViewMetadata Contract
+
+[source,java]
+----
+public UIViewRoot createMetadataView()
+----
+
+The content of the metadata is provided by
+the page author as a special _<f:facet/>_ of the _UIViewRoot_. The name
+of this facet is given by the value of the symbolic constant
+_UIViewRoot.METADATA_FACET_NAME_. The _UIViewRoot_ return from this
+method must have that facet, and its children as its only children. This
+facet may contain _<f:viewParameter>_ or _<f:viewAction>_ children. Each
+such element is the metadata will cause a _UIViewParameter_ or
+_UIViewAction_ (respectively) to be added to the view. Because
+_UIViewParameter_ extends _UIInput_ it is valid to attach any of the
+kinds of attached objects to an _<f:viewParameter>_ that are valid for
+any element that represents any other kind of _UIInput_ in the view.
+Because _UIViewAction_ implements _ActionSource2_, it is valid to
+attach any of the kinds of attached objects to an _<f:viewAction>_ that
+are valid for any element that represents any other kind of
+_ActionSource2_ in the view.
+
+
+[source,java]
+----
+public Collection<UIViewParameter> getViewParameters(UIViewRoot root)
+----
+
+Convenience method that uses the view
+metadata specification above to obtain the _List<UIViewParameter>_ for
+the argument viewId.
+
+===== ViewDeclarationLanguage.getScriptComponentResource()
+
+[source,java]
+----
+public Resource getScriptComponentResource(
+    FacesContext context, Resource componentResource)
+----
+
+The _getScriptComponentResource()_ method must fulfill the
+following responsibilities:
+
+* Take implementation specific action to
+discover a _Resource_ given the argument _componentResource_. The
+returned _Resource_ if non-__null__, must point to a script file that
+can be turned into something that extends _UIComponent_ and implements
+_NamingContainer_.
+
+
+
+===== ViewDeclarationLanguage.renderView()
+
+[source,java]
+----
+public void renderView(FacesContext context, String viewId)
+----
+
+The
+_renderView()_ method must fulfill the following responsibilities:
+
+* Return immediately if calling _isRendered()_
+on the argument _UIViewRoot_ returns _false_.
+
+* Call _saveView()_ on the _StateManager_ for
+this application, saving the result in a thread-safe manner for use in
+the _writeState()_ method of _ViewHandler_.
+
+* Call _startDocument()_ on the
+_ResponseWriter_.
+
+* Call _encodeAll()_ on the _UIViewRoot_.
+
+* Call _endDocument()_ on the _ResponseWriter_.
+
+* Close the writer used to write the
+response.
+
+[[a4101]]
+===== ViewDeclarationLanguage.restoreView()
+
+[source,java]
+----
+public UIViewRoot restoreView(FacesContext context, String viewId)
+----
+
+The
+_restoreView()_ method must fulfill the following responsibilities:
+
+* Call _ResponseStateManager.isStateless()_.
+If the result is _false_, 
+
+** If no _viewId_ could be identified, return
+_null_.
+
+** Call the _restoreView()_ method of the
+associated _StateManager_, passing the _FacesContext_ instance for the
+current request and the calculated _viewId_, and return the returned
+_UIViewRoot_, which may be _null_.
+
+* Otherwise, take the following steps and return.
+
+** Obtain a reference to the
+_ViewDeclarationLanguage_ from the _ViewDeclarationLanguageFactory_.
+This is necessary to allow for proper decoration. It is not acceptable
+to simply use the java language _this_ keyword.
+
+** Call _createView()_ on the
+_ViewDeclarationLanguage_ instance, passing the _context_ and _viewId_
+arguments. Let _viewRoot_ be the result.
+
+** Call _FacesContext.setViewRoot(viewRoot)_.
+
+** Call _buildView()_ on the
+_ViewDeclarationLanguage_, passing the _context_ and _viewRoot_.
+
+** Return the _viewRoot_.
+
+
+[[a4117]]
+=== StateManager
+
+_StateManager_ directs the process of saving
+and restoring the view between requests. The _StateManager_ instance for
+an application is retrieved from the _Application_ instance, and
+therefore cannot know any details of the markup language created by the
+_RenderKit_ being used to render a view. Therefore, the _StateManager_
+utilizes a helper object (see <<RenderingModel.adoc#a4288,
+ResponseStateManager>>), that is provided by the _RenderKit_
+implementation, and is therefore aware of the markup language details.
+The Jakarta Faces implementation must provide a default _StateManager_
+implementation that supports the behavior described below.
+
+[[a4119]]
+==== Overview
+
+Conceptually, the state of a view can be
+divided into two pieces:
+
+* _Tree Structure_. This includes component
+parent-child relationships, including facets.
+
+* _Component State_. This includes:
+
+** Component attributes and properties, and
+
+** __Validator__s, __Converter__s,
+__FacesListener__s, and other objects attached to a component. The manner
+in which these _attached objects_ are saved is up to the component
+implementation. For attached objects that may have state, the
+_StateHolder_ interface (see <<UserInterfaceComponentModel.adoc#a1138,
+StateHolder>>) is provided to allow these objects to preserve their own
+attributes and properties. If an attached object does not implement
+_StateHolder_, but does implement _Serializable_, it is saved using
+standard serialization. Attached objects that do not implement either
+_StateHolder_ or _Serializable_ must have a public, zero-arg
+constructor, and will be restored only to their initial, default object
+state <<Footnotes.adoc#a9094,^[7]^>>.
+
+It is beneficial to think of this separation
+between tree structure and tree state to allow the possibility that
+implementations can use a different mechanism for persisting the
+structure than is used to persist the state. For example, in a system
+where the tree structure is stored statically, as an XML file, for
+example, the system could keep a DOM representation of the trees
+representing the webapp UI in memory, to be used by all requests to the
+application.
+
+[[a4126]]
+===== Stateless Views
+
+Version 2.2 of the specification adds support
+for stateless views. In such a view, the _UIComponent_ state for the
+components is not saved. This feature must be used with full awareness
+of the statefulness requirements of the components in the view. If a
+component requires state to operate correctly, it must not be used in a
+stateless view. Furthermore, it is not required that _@ViewScoped_
+managed beans work at all with stateless views.
+
+To mark a view as stateless, the existing
+_transient_ property from _UIComponent_ is exposed to the view author by
+means of the _transient_ attribute on the _<f:view>_ tag from the Faces
+Core tag library. The following spec sections contain more normative
+requirements for stateless views.
+
+* The VDLDocs for the _<f:view>_ tag.
+
+* The javadocs for
+_ResponseStateManager.writeState(FacesContext, Object)_
+
+* The javadocs for
+_ResponseStateManager.isStateless(FacesContext)_
+
+* <<ApplicationIntegration.adoc#a4101,The specification of ViewDeclarationLanguage.restoreView()>>
+
+* The javadocs for
+_jakarta.faces.view.ViewScoped_
+
+* The javadocs for
+_jakarta.faces.bean.ViewScoped_
+
+[[a4135]]
+==== State Saving Alternatives and Implications
+
+Jakarta Faces implementations support two primary
+mechanisms for saving state, based on the value of the
+_jakarta.faces.STATE_SAVING_METHOD_ initialization parameter (see
+<<UsingFacesInWebApplications.adoc#a6088,Application Configuration Parameters>>).
+The possible values for this parameter give a general indication of the
+approach to be used, while allowing Jakarta Faces implementations to innovate on
+the technical details:
+
+* _client_ —Cause the saved state to be
+included in the rendered markup that is sent to the client (such as in a
+hidden input field for HTML). The state information must be included in
+the subsequent request, making it possible for Jakarta Faces to restore the view
+without having saved information on the server side. It is advisable
+that this information be encrypted and tamper evident, since it is being
+sent down to the client, where it may persist for some time.The default
+implementation Serializes the view in _client_ mode.
+
+* _server_  Cause the saved state to be
+stored on the server in between requests. Implementations that wish to
+enable their saved state to fail over to a different container instance
+must keep this in mind when implementing their server side state saving
+strategy. Serializing the view in server mode is optional but must be
+possible by setting the _context-param
+jakarta.faces.SERIALIZE_SERVER_STATE_ to _true_. In the _server_ mode,
+this serialized view is stored in the session and a unique key to
+retrieve the view is sent down to the client. By storing the serialized
+view in the session, failover may happen using the usual mechanisms
+provided by the container.
+
+Serializable in the preceding text means the
+values of all component attributes and properties (as well as the saved
+state of attached objects) must implement _java.io.Serializable_ such
+that if the aggregate saved state were written to an
+_ObjectOutputStream_, a _NotSerializableException_ would not be thrown.
+
+[[a4140]]
+==== State Saving Methods.
+
+[source,java]
+----
+public Object saveView(FacesContext context);
+----
+
+This method causes the tree structure and component state of the view
+contained in the argument _FacesContext_ to be collected, stored, and
+returned in a _java.lang.Object_ instance that must implement
+_java.io.Serializable_. If _null_ is returned from this method, there
+is no state to save.
+
+The returned object must represent the entire
+state of the view, such that a request processing lifecycle can be run
+against it on postback. Special care must be taken to guarantee that
+objects attached to component instances, such as listeners, converters,
+and validators, are also saved. The _StateHolder_ interface is provided
+for this reason.
+
+This method must also enforce the rule that
+component ids within a _NamingContainer_ must be unique
+
+[source,java]
+----
+public void writeState(FacesContext context, Object state)
+    throws IOException;
+----
+
+Save the state represented in the specified
+_Object_ instance, in an implementation dependent manner.
+
+==== State Restoring Methods
+
+[source,java]
+----
+public UIViewRoot restoreView(FacesContext context, String viewId);
+----
+
+Restore the tree structure and the component
+state of the view for this _viewId_ to be restored, in an implementation
+dependent manner. If there is no saved state information available for
+this _viewId_, this method returns _null_.
+
+The default implementation of this method
+calls through to _restoreTreeStructure()_ and, if necessary
+_restoreComponentState()_.
+
+==== Convenience Methods
+
+[source,java]
+----
+public boolean isSavingStateInClient(FacesContext context);
+----
+
+Return _true_ if and only if the value of the
+_ServletContext_ init parameter named by the value of the constant
+_StateManager.STATE_SAVING_METHOD_PARAM_NAME_ is equal to the value of
+the constant _STATE_SAVING_METHOD_CLIENT_. Return _false_ otherwise.
+
+
+[source,java]
+----
+public String getViewState(FacesContext context);
+----
+
+Return the current view state as a String.
+This method must call
+ResposeStateManger.getViewState. Refer to
+<<RenderingModel.adoc#a4288,ResponseStateManager>> for more details.
+
+
+=== ResourceHandler
+
+The normative specification for this class is
+in the javadoc for _jakarta.faces.application.ResourceHandler_. See also
+<<RequestProcessingLifecycle.adoc#a746,Resource Handling>>.
+
+[source,java]
+----
+public ResourceHandler getResourceHandler();
+public void setResourceHandler(ResourceHandler impl);
+----
+
