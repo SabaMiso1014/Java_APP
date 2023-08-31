@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 OVal Plugin, since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-oval-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.oval.annotation;version="6.1.2",org.a
+ pache.struts2.oval.interceptor;uses:="com.opensymphony.xwork2,com.opens
+ ymphony.xwork2.inject,com.opensymphony.xwork2.interceptor,com.opensymph
+ ony.xwork2.util,net.sf.oval,net.sf.oval.configuration,net.sf.oval.confi
+ guration.xml,net.sf.oval.context";version="6.1.2"
+Implementation-Title: DEPRECATED: Struts 2 OVal Plugin, since 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config.entities;version="[6.1,7)",com.opensymphony.xwork2.inj
+ ect;version="[6.1,7)",com.opensymphony.xwork2.interceptor;version="[6.1
+ ,7)",com.opensymphony.xwork2.util;version="[6.1,7)",com.opensymphony.xw
+ ork2.validator;version="[6.1,7)",net.sf.oval;version="[3.2,4)",net.sf.o
+ val.configuration;version="[3.2,4)",net.sf.oval.configuration.annotatio
+ n;version="[3.2,4)",net.sf.oval.configuration.xml;version="[3.2,4)",net
+ .sf.oval.context;version="[3.2,4)",net.sf.oval.exception;version="[3.2,
+ 4)",net.sf.oval.expression;version="[3.2,4)",net.sf.oval.localization.c
+ ontext;version="[3.2,4)",ognl,org.apache.commons.lang3;version="[3.10,4
+ )",org.apache.logging.log4j;version="[2.19,3)",org.apache.struts2.oval.
+ annotation
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 OVal Plugin, since 6.0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Configuration Browser Plugin
+Bundle-SymbolicName: org.apache.struts.2-config-browser-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.config_browser;uses:="com.opensymphon
+ y.xwork2,com.opensymphony.xwork2.config,com.opensymphony.xwork2.config.
+ entities,com.opensymphony.xwork2.inject,com.opensymphony.xwork2.util.re
+ flection,com.opensymphony.xwork2.validator";version="6.1.2"
+Implementation-Title: Struts 2 Configuration Browser Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.config.entit
+ ies;version="[6.1,7)",com.opensymphony.xwork2.conversion;version="[6.1,
+ 7)",com.opensymphony.xwork2.conversion.impl,com.opensymphony.xwork2.inj
+ ect;version="[6.1,7)",com.opensymphony.xwork2.util;version="[6.1,7)",co
+ m.opensymphony.xwork2.util.reflection;version="[6.1,7)",com.opensymphon
+ y.xwork2.validator;version="[6.1,7)",org.apache.commons.text;version="[
+ 1.10,2)",org.apache.logging.log4j;version="[2.19,3)",org.apache.struts2
+ .components;version="[6.1,7)",org.apache.struts2.dispatcher.mapper;vers
+ ion="[6.1,7)",org.apache.struts2.dispatcher.multipart;version="[6.1,7)"
+ ,org.apache.struts2.views.freemarker;version="[6.1,7)",org.apache.strut
+ s2.views.velocity;version="[6.1,7)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Configuration Browser Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

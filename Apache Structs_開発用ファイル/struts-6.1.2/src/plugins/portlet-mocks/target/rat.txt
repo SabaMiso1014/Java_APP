@@ -1,0 +1,59 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:38+09:00
+
+Notes: 0
+Binaries: 0
+Archives: 0
+Standards: 33
+
+Apache Licensed: 33
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/test/resources/applicationContext.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/test/java/org/apache/struts2/StrutsSpringPortletMockObjectsTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockRenderRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockActionResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockEventRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockEvent.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockClientDataRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockActionRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockCacheControl.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletSession.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockResourceURL.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockResourceRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletConfig.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockMimeResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/multipart/MultipartActionRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/multipart/package-info.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockResourceResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortalContext.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockRenderResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/ServletWrappingPortletContext.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockEventResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockStateAwareResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockMultipartActionRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletURL.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletContext.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockBaseURL.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletRequestDispatcher.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/MockPortletPreferences.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet-mocks/src/main/java/org/apache/struts2/mock/web/portlet/package-info.java
+ 
+*****************************************************

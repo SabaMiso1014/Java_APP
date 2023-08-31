@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Jasper Reports Plugin
+Bundle-SymbolicName: org.apache.struts.2-jasperreports-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.views.jasperreports;uses:="com.opensy
+ mphony.xwork2,com.opensymphony.xwork2.inject,com.opensymphony.xwork2.se
+ curity,com.opensymphony.xwork2.util,net.sf.jasperreports.engine,org.apa
+ che.struts2.result";version="6.1.2"
+Implementation-Title: Struts 2 Jasper Reports Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.inject;version="[6.1,7)",com.opensymphony.xwork2.security;ver
+ sion="[6.1,7)",com.opensymphony.xwork2.util;version="[6.1,7)",javax.ser
+ vlet;version="[3.1,4)",javax.servlet.http;version="[3.1,4)",net.sf.jasp
+ erreports.engine,net.sf.jasperreports.engine.export,net.sf.jasperreport
+ s.engine.util,org.apache.commons.lang3;version="[3.10,4)",org.apache.lo
+ gging.log4j;version="[2.19,3)",org.apache.struts2.result;version="[6.1,
+ 7)",org.apache.struts2.util;version="[6.1,7)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Jasper Reports Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

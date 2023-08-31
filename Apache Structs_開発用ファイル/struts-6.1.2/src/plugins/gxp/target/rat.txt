@@ -1,0 +1,35 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:37+09:00
+
+Notes: 0
+Binaries: 0
+Archives: 0
+Standards: 9
+
+Apache Licensed: 9
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/main/resources/struts-plugin.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/main/java/org/apache/struts2/views/gxp/GxpResult.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/main/java/org/apache/struts2/views/gxp/Gxp.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/main/java/org/apache/struts2/views/gxp/GxpInstance.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/main/java/org/apache/struts2/views/gxp/AbstractGxp.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/main/java/org/apache/struts2/views/gxp/AbstractGxpResult.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/gxp/src/main/java/org/apache/struts2/views/gxp/Param.java
+ 
+*****************************************************

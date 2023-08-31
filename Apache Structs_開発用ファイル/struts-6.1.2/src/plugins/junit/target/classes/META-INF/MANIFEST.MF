@@ -1,0 +1,45 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 JUnit Plugin
+Bundle-SymbolicName: org.apache.struts.2-junit-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.junit;uses:="com.opensymphony.xwork2,
+ com.opensymphony.xwork2.config,com.opensymphony.xwork2.inject,com.opens
+ ymphony.xwork2.interceptor.annotations,javax.servlet,javax.servlet.http
+ ,org.apache.struts2.dispatcher,org.apache.struts2.dispatcher.mapper,org
+ .apache.struts2.mock.web.portlet,org.junit,org.springframework.beans,or
+ g.springframework.context,org.springframework.core.io,org.springframewo
+ rk.mock.web";version="6.1.2",org.apache.struts2.junit.util;version="6.1
+ .2"
+Implementation-Title: Struts 2 JUnit Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.inject;versi
+ on="[6.1,7)",com.opensymphony.xwork2.interceptor;version="[6.1,7)",com.
+ opensymphony.xwork2.interceptor.annotations;version="[6.1,7)",com.opens
+ ymphony.xwork2.test;version="[6.1,7)",com.opensymphony.xwork2.util;vers
+ ion="[6.1,7)",com.opensymphony.xwork2.util.location;version="[6.1,7)",j
+ avax.portlet;version="[2.0,3)";resolution:=optional,javax.servlet;versi
+ on="[3.1,4)",javax.servlet.http;version="[3.1,4)",org.apache.commons.io
+ ;version="[1.4,2)",org.apache.commons.lang3;version="[3.10,4)";resoluti
+ on:=optional,org.apache.logging.log4j;version="[2.19,3)",org.apache.str
+ uts2;version="[6.1,7)",org.apache.struts2.dispatcher;version="[6.1,7)",
+ org.apache.struts2.dispatcher.mapper;version="[6.1,7)",org.apache.strut
+ s2.mock.web.portlet;version="[6.1,7)";resolution:=optional,org.apache.s
+ truts2.portlet;version="[6.1,7)";resolution:=optional,org.apache.struts
+ 2.util;version="[6.1,7)",org.junit,org.springframework.beans,org.spring
+ framework.context,org.springframework.core.io,org.springframework.mock.
+ web,org.springframework.test.context.support,org.springframework.web.co
+ ntext;resolution:=optional
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 JUnit Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

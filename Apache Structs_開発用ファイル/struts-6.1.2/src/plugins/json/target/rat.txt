@@ -1,0 +1,91 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:40+09:00
+
+Notes: 0
+Binaries: 0
+Archives: 0
+Standards: 65
+
+Apache Licensed: 65
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONActionRedirectResultTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/StrutsMockHttpSession.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/AnEnumBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/StrutsMockHttpServletRequest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/ListBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/AnEnum.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONUtilTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/SingleDateBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/SMDActionTest1.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/StrutsMockHttpServletResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/AnotherBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/DefaultJSONWriterTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONInterceptorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONValidationInterceptorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONEnumTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONPopulatorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/WrapperClassBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/TestAction2.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/SMDMethodInterfaceTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/SimpleValue.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/OtherBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONCleanerTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/Bean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/TestAction3.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONResultTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/SMDActionTest2.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/TestAction4.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/StrutsMockServletContext.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/JSONReaderTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/TestAction5.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/test/java/org/apache/struts2/json/TestAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/resources/struts-plugin.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/resources/META-INF/tags/JsonPlugin.tld
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONUtil.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONCleaner.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONException.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONValidationInterceptor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONResult.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/config/entities/JSONConstantConfig.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/bridge/StringBridge.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/bridge/ParameterizedBridge.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/bridge/FieldBridge.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONReader.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONActionRedirectResult.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/annotations/JSONParameter.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/annotations/JSONFieldBridge.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/annotations/JSON.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/annotations/SMDMethodParameter.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/annotations/SMDMethod.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/annotations/SMD.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/SerializationParams.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/DefaultJSONWriter.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/smd/SMDMethodParameter.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/smd/SMDGenerator.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/smd/SMDMethod.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/smd/SMD.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONWriter.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONConstants.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONInterceptor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/rpc/RPCErrorCode.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/rpc/RPCError.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/rpc/RPCResponse.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/json/src/main/java/org/apache/struts2/json/JSONPopulator.java
+ 
+*****************************************************

@@ -1,0 +1,59 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Velocity Plugin
+Bundle-SymbolicName: org.apache.struts.2-velocity-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.views.velocity;uses:="com.opensymphon
+ y.xwork2,com.opensymphony.xwork2.config,com.opensymphony.xwork2.inject,
+ com.opensymphony.xwork2.util,com.opensymphony.xwork2.util.location,java
+ x.servlet,javax.servlet.http,org.apache.struts2.config,org.apache.strut
+ s2.util,org.apache.struts2.views,org.apache.velocity,org.apache.velocit
+ y.app,org.apache.velocity.app.event,org.apache.velocity.context,org.apa
+ che.velocity.exception,org.apache.velocity.runtime.resource,org.apache.
+ velocity.runtime.resource.loader,org.apache.velocity.tools,org.apache.v
+ elocity.util.introspection";version="6.1.2",org.apache.struts2.views.ve
+ locity.result;uses:="com.opensymphony.xwork2,com.opensymphony.xwork2.in
+ ject,com.opensymphony.xwork2.util,javax.servlet.http,org.apache.struts2
+ .result,org.apache.struts2.views.velocity,org.apache.velocity,org.apach
+ e.velocity.app,org.apache.velocity.context";version="6.1.2",org.apache.
+ struts2.views.velocity.template;uses:="com.opensymphony.xwork2.inject,o
+ rg.apache.struts2.components.template,org.apache.struts2.views.velocity
+ ";version="6.1.2",org.apache.struts2.views.velocity.components;uses:="c
+ om.opensymphony.xwork2.util,javax.servlet.http,org.apache.struts2.compo
+ nents,org.apache.velocity.context,org.apache.velocity.exception,org.apa
+ che.velocity.runtime.directive,org.apache.velocity.runtime.parser.node"
+ ;version="6.1.2"
+Implementation-Title: Struts 2 Velocity Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.inject;versi
+ on="[6.1,7)",com.opensymphony.xwork2.util;version="[6.1,7)",com.opensym
+ phony.xwork2.util.location;version="[6.1,7)",javax.servlet;version="[3.
+ 1,4)",javax.servlet.http;version="[3.1,4)",javax.servlet.jsp,org.apache
+ .commons.lang3;version="[3.10,4)",org.apache.logging.log4j;version="[2.
+ 19,3)",org.apache.struts2;version="[6.1,7)",org.apache.struts2.componen
+ ts;version="[6.1,7)",org.apache.struts2.components.template;version="[6
+ .1,7)",org.apache.struts2.config;version="[6.1,7)",org.apache.struts2.r
+ esult;version="[6.1,7)",org.apache.struts2.util;version="[6.1,7)",org.a
+ pache.struts2.views;version="[6.1,7)",org.apache.struts2.views.util;ver
+ sion="[6.1,7)",org.apache.struts2.views.velocity,org.apache.struts2.vie
+ ws.velocity.components,org.apache.velocity;version="[2.3,3)",org.apache
+ .velocity.app;version="[2.3,3)",org.apache.velocity.app.event;version="
+ [2.3,3)",org.apache.velocity.context;version="[2.3,3)",org.apache.veloc
+ ity.exception;version="[2.3,3)",org.apache.velocity.runtime.directive;v
+ ersion="[2.3,3)",org.apache.velocity.runtime.parser.node;version="[2.3,
+ 3)",org.apache.velocity.runtime.resource;version="[2.3,3)",org.apache.v
+ elocity.runtime.resource.loader;version="[2.3,3)",org.apache.velocity.t
+ ools,org.apache.velocity.util.introspection;version="[2.3,3)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Velocity Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

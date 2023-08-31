@@ -1,0 +1,93 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:37+09:00
+
+Notes: 0
+Binaries: 0
+Archives: 0
+Standards: 67
+
+Apache Licensed: 67
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/TextAreaTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/AbstractCommonAttributesTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/SelectTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/ScriptTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/AnchorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/CheckboxTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/SubmitTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/TextFieldTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/LabelTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/FormTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/FieldErrorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/HeadTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/DateTextFieldTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/TokenTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/Bean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/AbstractTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/ResetTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/FileTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/HiddenTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/ActionMessageTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/ActionErrorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/PasswordTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/test/java/org/apache/struts2/views/java/simple/LinkTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/resources/struts-plugin.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/XHTMLTagSerializer.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/Attributes.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/TagHandlerFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/TagGenerator.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/TagSerializer.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/ResetHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/AbstractTagHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/CheckboxListHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/LabelHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/TokenHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/CommonAttributesHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/NonceHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/RadioHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/DateTextFieldHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/ScriptingEventsHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/FormHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/DynamicAttributesHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/SimpleTheme.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/HeadHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/AbstractMessageListHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/AnchorHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/HiddenHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/FieldErrorHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/ActionMessageHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/TextFieldHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/LinkHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/FileHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/PasswordHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/EmptyHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/ActionErrorHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/CheckboxHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/ScriptHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/SelectHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/SubmitHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/simple/TextAreaHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/JavaTemplateConstants.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/DefaultTheme.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/TagHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/Theme.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/DefaultTagHandlerFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/javatemplates/src/main/java/org/apache/struts2/views/java/JavaTemplateEngine.java
+ 
+*****************************************************

@@ -1,0 +1,62 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:39+09:00
+
+Notes: 0
+Binaries: 0
+Archives: 0
+Standards: 36
+
+Apache Licensed: 36
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/test/resources/default.properties
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/test/resources/struts-osgi.properties
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/test/java/org/apache/struts2/osgi/host/FelixOsgiHostTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/test/java/org/apache/struts2/osgi/OsgiUtilTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/test/java/org/apache/struts2/osgi/action/ServiceAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/test/java/org/apache/struts2/osgi/interceptor/SomeAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/test/java/org/apache/struts2/osgi/interceptor/OsgiInterceptorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/resources/struts-plugin.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/resources/beanRefContext.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/resources/struts-osgi.properties
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/StrutsOsgiListener.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/BundlePackageLoader.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/host/GlassfishOSGiHost.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/host/OsgiHost.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/host/FelixOsgiHost.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/host/BaseOsgiHost.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/BundleFreemarkerManager.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/BundleAccessor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/PackageLoader.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/DelegatingObjectFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/action/BundleContextAware.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/action/ServiceAware.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/OsgiConfigurationProvider.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/BundleClassLoaderInterface.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/OsgiUtil.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/DefaultBundleAccessor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/OsgiHostFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/SpringOsgiObjectFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/loaders/StaticContentBundleResourceLoader.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/loaders/FreeMarkerBundleResourceLoader.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/loaders/VelocityBundleResourceLoader.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/interceptor/BundleContextAware.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/interceptor/OsgiInterceptor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/osgi/src/main/java/org/apache/struts2/osgi/interceptor/ServiceAware.java
+ 
+*****************************************************

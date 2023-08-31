@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Bean Validation Plugin
+Bundle-SymbolicName: org.apache.struts.2-bean-validation-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts.beanvalidation.constraints;uses:="java
+ x.validation,javax.validation.groups";version="6.1.2",org.apache.struts
+ .beanvalidation.validation.constant;version="6.1.2",org.apache.struts.b
+ eanvalidation.validation.interceptor;uses:="com.opensymphony.xwork2,com
+ .opensymphony.xwork2.inject,com.opensymphony.xwork2.interceptor,javax.v
+ alidation";version="6.1.2"
+Implementation-Title: Struts 2 Bean Validation Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.inject;version="[6.1,7)",com.opensymphony.xwork2.interceptor;
+ version="[6.1,7)",com.opensymphony.xwork2.validator;version="[6.1,7)",j
+ avax.validation;version="[2.0,3)",javax.validation.bootstrap;version="[
+ 2.0,3)",javax.validation.groups;version="[2.0,3)",org.apache.commons.la
+ ng3;version="[3.10,4)",org.apache.commons.lang3.reflect;version="[3.10,
+ 4)",org.apache.logging.log4j;version="[2.19,3)",org.apache.struts2.inte
+ rceptor.validation;version="[6.1,7)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Bean Validation Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

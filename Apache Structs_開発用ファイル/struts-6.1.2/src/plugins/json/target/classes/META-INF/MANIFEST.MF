@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Activator: org.apache.struts2.osgi.StrutsActivator
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 JSON Plugin
+Bundle-SymbolicName: org.apache.struts.2-json-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.json;uses:="com.opensymphony.xwork2,c
+ om.opensymphony.xwork2.inject,com.opensymphony.xwork2.interceptor,javax
+ .servlet.http,org.apache.struts2.json.rpc,org.apache.struts2.json.smd,o
+ rg.apache.struts2.result";version="6.1.2",org.apache.struts2.json.confi
+ g.entities;uses:="org.apache.struts2.config.entities";version="6.1.2",o
+ rg.apache.struts2.json.bridge;version="6.1.2",org.apache.struts2.json.a
+ nnotations;uses:="org.apache.struts2.json.bridge";version="6.1.2",org.a
+ pache.struts2.json.smd;uses:="com.opensymphony.xwork2";version="6.1.2",
+ org.apache.struts2.json.rpc;version="6.1.2"
+Implementation-Title: Struts 2 JSON Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.inject;version="[6.1,7)",com.opensymphony.xwork2.interceptor;
+ version="[6.1,7)",com.opensymphony.xwork2.util;version="[6.1,7)",javax.
+ servlet;version="[3.1,4)",javax.servlet.http;version="[3.1,4)",org.apac
+ he.commons.lang3;version="[3.10,4)",org.apache.commons.text;version="[1
+ .10,2)",org.apache.logging.log4j;version="[2.19,3)",org.apache.struts2;
+ version="[6.1,7)",org.apache.struts2.config.entities;version="[6.1,7)",
+ org.apache.struts2.dispatcher;version="[6.1,7)",org.apache.struts2.json
+ ,org.apache.struts2.json.annotations,org.apache.struts2.json.bridge,org
+ .apache.struts2.json.rpc,org.apache.struts2.json.smd,org.apache.struts2
+ .osgi,org.apache.struts2.result;version="[6.1,7)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 JSON Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

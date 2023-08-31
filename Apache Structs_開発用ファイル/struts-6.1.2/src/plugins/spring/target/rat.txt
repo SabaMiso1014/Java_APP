@@ -1,0 +1,60 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:38+09:00
+
+Notes: 1
+Binaries: 0
+Archives: 0
+Standards: 33
+
+Apache Licensed: 33
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/resources/org/apache/struts2/spring/StrutsSpringObjectFactoryTest-applicationContext.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/resources/com/opensymphony/xwork2/spring/emptyContext-spring.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/resources/com/opensymphony/xwork2/spring/actionContext-spring.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/resources/com/opensymphony/xwork2/spring/actionContext-xwork.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/org/apache/struts2/spring/StrutsSpringObjectFactoryTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/test/SecurityMemberAccessProxyTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/SimpleAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/mock/DummyTextProvider.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/ModelDrivenAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/TestBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/ognl/SecurityMemberAccessProxyTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/TestSubBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/TestChildBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/ExecuteInterceptor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/SpringObjectFactoryTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/SpringProxyUtilTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/SpringResult.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/ActionsFromSpringTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/TestAspect.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/interceptor/ActionAutowiringInterceptorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/test/java/com/opensymphony/xwork2/spring/interceptor/TestActionInvocation.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/resources/struts-plugin.xml
+  N     /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/resources/NOTICE.txt
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/org/apache/struts2/spring/StrutsSpringObjectFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/org/apache/struts2/spring/SpringConstants.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/org/apache/struts2/spring/config/entities/SpringConstantConfig.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/org/apache/struts2/spring/ClassReloadingInstantiationStrategy.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/org/apache/struts2/spring/ClassReloadingBeanFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/org/apache/struts2/spring/ClassReloadingXMLWebApplicationContext.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/com/opensymphony/xwork2/spring/SpringProxyableObjectFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/com/opensymphony/xwork2/spring/SpringObjectFactory.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/spring/src/main/java/com/opensymphony/xwork2/spring/interceptor/ActionAutowiringInterceptor.java
+ 
+*****************************************************

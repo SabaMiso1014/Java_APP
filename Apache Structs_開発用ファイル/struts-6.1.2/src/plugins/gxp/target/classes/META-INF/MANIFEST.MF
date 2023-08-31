@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 GXP Plugin - since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-gxp-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.views.gxp;uses:="com.google.gxp.base,
+ com.google.gxp.html,com.opensymphony.xwork2,com.opensymphony.xwork2.inj
+ ect,com.opensymphony.xwork2.util";version="6.1.2"
+Implementation-Title: DEPRECATED: Struts 2 GXP Plugin - since 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.google.common.base,com.google.common.collect,com.goo
+ gle.gxp.base,com.google.gxp.html,com.opensymphony.xwork2;version="[6.1,
+ 7)",com.opensymphony.xwork2.inject;version="[6.1,7)",com.opensymphony.x
+ work2.util;version="[6.1,7)",javax.servlet.http;version="[3.1,4)",org.a
+ pache.struts2;version="[6.1,7)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 GXP Plugin - since 6.0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

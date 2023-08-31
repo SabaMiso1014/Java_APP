@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 TestNG Plugin
+Bundle-SymbolicName: org.apache.struts.2-testng-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.testng;uses:="com.opensymphony.xwork2
+ ,com.opensymphony.xwork2.config,com.opensymphony.xwork2.inject,org.apac
+ he.struts2.dispatcher,org.testng.annotations";version="6.1.2"
+Implementation-Title: Struts 2 TestNG Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.config.impl,
+ com.opensymphony.xwork2.inject;version="[6.1,7)",com.opensymphony.xwork
+ 2.util;version="[6.1,7)",javax.servlet;version="[3.1,4)",org.apache.str
+ uts2.dispatcher;version="[6.1,7)",org.apache.struts2.util;version="[6.1
+ ,7)",org.springframework.mock.web,org.testng.annotations
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 TestNG Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

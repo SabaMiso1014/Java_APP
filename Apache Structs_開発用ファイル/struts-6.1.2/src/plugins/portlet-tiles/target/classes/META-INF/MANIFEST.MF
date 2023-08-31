@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 Portlet Tiles Plugin - since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-portlet-tiles-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.views.tiles;version="6.1.2";uses:="co
+ m.opensymphony.xwork2,javax.portlet,org.apache.struts2.result,org.apach
+ e.tiles"
+Implementation-Title: DEPRECATED: Struts 2 Portlet Tiles Plugin - since 
+ 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",javax.portlet;
+ version="[2.0,3)",org.apache.struts2.portlet;version="[6.1,7)",org.apac
+ he.struts2.portlet.context;version="[6.1,7)",org.apache.struts2.result;
+ version="[6.1,7)",org.apache.tiles;version="[3.0,4)",org.apache.tiles.r
+ equest;version="[1.0,2)",org.apache.tiles.request.portlet;version="[1.0
+ ,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 Portlet Tiles Plugin - since 6
+ .0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

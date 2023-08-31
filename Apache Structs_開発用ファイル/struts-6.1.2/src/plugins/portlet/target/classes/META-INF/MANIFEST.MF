@@ -1,0 +1,65 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 Portlet Plugin - since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-portlet-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.components;version="6.1.2";uses:="com
+ .opensymphony.xwork2.inject,org.apache.struts2.dispatcher.mapper,org.ap
+ ache.struts2.url,org.apache.struts2.views.util",org.apache.struts2.port
+ let.servlet;uses:="javax.portlet,javax.servlet,javax.servlet.descriptor
+ ,javax.servlet.http";version="6.1.2",org.apache.struts2.portlet.result;
+ uses:="com.opensymphony.xwork2,com.opensymphony.xwork2.inject,com.opens
+ ymphony.xwork2.util,javax.portlet,javax.servlet.http,org.apache.struts2
+ .dispatcher.mapper,org.apache.struts2.result,org.apache.struts2.url,org
+ .apache.struts2.views.velocity,org.apache.velocity,org.apache.velocity.
+ app,org.apache.velocity.context";version="6.1.2",org.apache.struts2.por
+ tlet;uses:="javax.portlet";version="6.1.2",org.apache.struts2.portlet.c
+ ontext;uses:="javax.portlet,org.apache.struts2.dispatcher.mapper,org.ap
+ ache.struts2.portlet";version="6.1.2",org.apache.struts2.portlet.util;u
+ ses:="javax.portlet";version="6.1.2",org.apache.struts2.portlet.dispatc
+ her;uses:="com.opensymphony.xwork2,javax.portlet,javax.servlet,javax.se
+ rvlet.http,org.apache.struts2,org.apache.struts2.dispatcher.mapper,org.
+ apache.struts2.interceptor,org.apache.struts2.portlet,org.apache.struts
+ 2.portlet.servlet";version="6.1.2",org.apache.struts2.portlet.action;us
+ es:="javax.portlet";version="6.1.2",org.apache.struts2.portlet.intercep
+ tor;uses:="com.opensymphony.xwork2,com.opensymphony.xwork2.interceptor,
+ javax.portlet,org.apache.struts2,org.apache.struts2.interceptor";versio
+ n="6.1.2",org.apache.struts2.views.freemarker;version="6.1.2";uses:="co
+ m.opensymphony.xwork2,com.opensymphony.xwork2.inject,freemarker.templat
+ e,javax.portlet,org.apache.struts2.result"
+Implementation-Title: DEPRECATED: Struts 2 Portlet Plugin - since 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.config.entit
+ ies;version="[6.1,7)",com.opensymphony.xwork2.inject;version="[6.1,7)",
+ com.opensymphony.xwork2.interceptor;version="[6.1,7)",com.opensymphony.
+ xwork2.util;version="[6.1,7)",freemarker.template;version="[2.3,3)",jav
+ ax.portlet;version="[2.0,3)",javax.servlet;version="[3.1,4)",javax.serv
+ let.descriptor;version="[3.1,4)",javax.servlet.http;version="[3.1,4)",j
+ avax.servlet.jsp,org.apache.commons.lang3;version="[3.10,4)",org.apache
+ .logging.log4j;version="[2.19,3)",org.apache.logging.log4j.message;vers
+ ion="[2.19,3)",org.apache.struts2;version="[6.1,7)",org.apache.struts2.
+ action;version="[6.1,7)",org.apache.struts2.dispatcher;version="[6.1,7)
+ ",org.apache.struts2.dispatcher.mapper;version="[6.1,7)",org.apache.str
+ uts2.dispatcher.multipart;version="[6.1,7)",org.apache.struts2.intercep
+ tor;version="[6.1,7)",org.apache.struts2.portlet,org.apache.struts2.por
+ tlet.action,org.apache.struts2.portlet.context,org.apache.struts2.portl
+ et.dispatcher,org.apache.struts2.portlet.servlet,org.apache.struts2.por
+ tlet.util,org.apache.struts2.result;version="[6.1,7)",org.apache.struts
+ 2.url;version="[6.1,7)",org.apache.struts2.util;version="[6.1,7)",org.a
+ pache.struts2.views;version="[6.1,7)",org.apache.struts2.views.util;ver
+ sion="[6.1,7)",org.apache.struts2.views.velocity;version="[6.1,7)",org.
+ apache.velocity;version="[2.3,3)",org.apache.velocity.app;version="[2.3
+ ,3)",org.apache.velocity.context;version="[2.3,3)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 Portlet Plugin - since 6.0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

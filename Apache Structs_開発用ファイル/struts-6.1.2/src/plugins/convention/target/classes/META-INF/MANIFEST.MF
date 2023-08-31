@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Activator: org.apache.struts2.osgi.StrutsActivator
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Convention Plugin
+Bundle-SymbolicName: org.apache.struts.2-convention-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.convention;uses:="com.opensymphony.xw
+ ork2,com.opensymphony.xwork2.config,com.opensymphony.xwork2.config.enti
+ ties,com.opensymphony.xwork2.inject,com.opensymphony.xwork2.util.finder
+ ,com.opensymphony.xwork2.util.location,javax.servlet,org.apache.struts2
+ ,org.apache.struts2.convention.annotation,org.apache.struts2.dispatcher
+ ,org.objectweb.asm";version="6.1.2",org.apache.struts2.convention.confi
+ g.entities;uses:="org.apache.struts2.config.entities";version="6.1.2",o
+ rg.apache.struts2.convention.annotation;version="6.1.2"
+Implementation-Title: Struts 2 Convention Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.config.entit
+ ies;version="[6.1,7)",com.opensymphony.xwork2.config.providers;version=
+ "[6.1,7)",com.opensymphony.xwork2.inject;version="[6.1,7)",com.opensymp
+ hony.xwork2.util;version="[6.1,7)",com.opensymphony.xwork2.util.classlo
+ ader;version="[6.1,7)",com.opensymphony.xwork2.util.finder;version="[6.
+ 1,7)",com.opensymphony.xwork2.util.location;version="[6.1,7)",javax.ser
+ vlet;version="[3.1,4)",org.apache.commons.lang3;version="[3.10,4)",org.
+ apache.logging.log4j;version="[2.19,3)",org.apache.struts2;version="[6.
+ 1,7)",org.apache.struts2.config.entities;version="[6.1,7)",org.apache.s
+ truts2.convention.annotation,org.apache.struts2.dispatcher;version="[6.
+ 1,7)",org.apache.struts2.osgi,org.objectweb.asm;version="[9.2,10)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Convention Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

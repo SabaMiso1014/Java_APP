@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Tiles Plugin
+Bundle-SymbolicName: org.apache.struts.2-tiles-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.tiles;uses:="com.opensymphony.xwork2,
+ javax.servlet,org.apache.struts2.tiles.annotation,org.apache.tiles,org.
+ apache.tiles.definition.pattern,org.apache.tiles.el,org.apache.tiles.ev
+ aluator,org.apache.tiles.factory,org.apache.tiles.locale,org.apache.til
+ es.ognl,org.apache.tiles.preparer,org.apache.tiles.preparer.factory,org
+ .apache.tiles.request,org.apache.tiles.request.locale,org.apache.tiles.
+ request.render,org.apache.tiles.request.servlet,org.apache.tiles.startu
+ p,org.apache.tiles.web.startup";version="6.1.2",org.apache.struts2.tile
+ s.annotation;version="6.1.2",org.apache.struts2.views.tiles;uses:="com.
+ opensymphony.xwork2,org.apache.struts2.result";version="6.1.2"
+Implementation-Title: Struts 2 Tiles Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.inject;versi
+ on="[6.1,7)",com.opensymphony.xwork2.ognl;version="[6.1,7)",com.opensym
+ phony.xwork2.util;version="[6.1,7)",com.opensymphony.xwork2.util.finder
+ ;version="[6.1,7)",freemarker.ext.beans;version="[2.3,3)",freemarker.te
+ mplate;version="[2.3,3)",javax.el;version="[3.0,4)",javax.servlet;versi
+ on="[3.1,4)",javax.servlet.http;version="[3.1,4)",javax.servlet.jsp,ogn
+ l,org.apache.commons.lang3;version="[3.10,4)",org.apache.logging.log4j;
+ version="[2.19,3)",org.apache.logging.log4j.message;version="[2.19,3)",
+ org.apache.struts2;version="[6.1,7)",org.apache.struts2.result;version=
+ "[6.1,7)",org.apache.struts2.tiles,org.apache.struts2.tiles.annotation,
+ org.apache.struts2.views;version="[6.1,7)",org.apache.struts2.views.fre
+ emarker;version="[6.1,7)",org.apache.tiles;version="[3.0,4)",org.apache
+ .tiles.access;version="[3.0,4)",org.apache.tiles.definition.pattern;ver
+ sion="[3.0,4)",org.apache.tiles.definition.pattern.regexp;version="[3.0
+ ,4)",org.apache.tiles.definition.pattern.wildcard;version="[3.0,4)",org
+ .apache.tiles.el;version="[3.0,4)",org.apache.tiles.evaluator;version="
+ [3.0,4)",org.apache.tiles.evaluator.impl;version="[3.0,4)",org.apache.t
+ iles.factory;version="[3.0,4)",org.apache.tiles.freemarker.template;ver
+ sion="[3.0,4)",org.apache.tiles.impl;version="[3.0,4)",org.apache.tiles
+ .impl.mgmt;version="[3.0,4)",org.apache.tiles.locale;version="[3.0,4)",
+ org.apache.tiles.mgmt;version="[3.0,4)",org.apache.tiles.ognl;version="
+ [3.0,4)",org.apache.tiles.preparer;version="[3.0,4)",org.apache.tiles.p
+ reparer.factory;version="[3.0,4)",org.apache.tiles.request;version="[1.
+ 0,2)",org.apache.tiles.request.locale;version="[1.0,2)",org.apache.tile
+ s.request.render;version="[1.0,2)",org.apache.tiles.request.servlet;ver
+ sion="[1.0,2)",org.apache.tiles.startup;version="[3.0,4)",org.apache.ti
+ les.web.startup;version="[3.0,4)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Tiles Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

@@ -1,0 +1,67 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:38+09:00
+
+Notes: 1
+Binaries: 0
+Archives: 0
+Standards: 40
+
+Apache Licensed: 40
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/handler/Contact.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/handler/JacksonJsonHandlerTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/handler/SimpleBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/handler/JuneauXmlHandlerTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/handler/JacksonXmlHandlerTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/handler/XStreamHandlerTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/DefaultContentTypeHandlerManagerTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/DefaultHttpHeadersTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/RestWorkflowInterceptorTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/RestActionMapperTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/RestActionInvocationTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/test/java/org/apache/struts2/rest/ContentTypeHandlerManagerTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/resources/struts-plugin.xml
+  N     /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/resources/NOTICE.txt
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/RestActionSupport.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/JuneauXmlHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/AbstractContentTypeHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/HtmlHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/FormUrlEncodedHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/JacksonJsonHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/MultipartFormDataHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/JacksonXmlHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/ContentTypeHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/XStreamHandler.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/xstream/XStreamProvider.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/xstream/XStreamAllowedClassNames.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/xstream/XStreamPermissionProvider.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/handler/xstream/XStreamAllowedClasses.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/RestActionInvocation.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/config/entities/RestConstantConfig.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/RestActionMapper.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/HttpHeaders.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/ContentTypeInterceptor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/DefaultContentTypeHandlerManager.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/RestWorkflowInterceptor.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/ContentTypeHandlerManager.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/DefaultHttpHeaders.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/RestConstants.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/rest/src/main/java/org/apache/struts2/rest/RestActionProxyFactory.java
+ 
+*****************************************************

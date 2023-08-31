@@ -1,0 +1,49 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 REST Plugin
+Bundle-SymbolicName: org.apache.struts.2-rest-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.rest.handler;uses:="com.opensymphony.
+ xwork2,com.opensymphony.xwork2.inject,com.thoughtworks.xstream";version
+ ="6.1.2",org.apache.struts2.rest.handler.xstream;uses:="com.thoughtwork
+ s.xstream,com.thoughtworks.xstream.security";version="6.1.2",org.apache
+ .struts2.rest;uses:="com.opensymphony.xwork2,com.opensymphony.xwork2.co
+ nfig,com.opensymphony.xwork2.config.entities,com.opensymphony.xwork2.in
+ ject,com.opensymphony.xwork2.interceptor,javax.servlet.http,org.apache.
+ logging.log4j,org.apache.struts2.dispatcher.mapper,org.apache.struts2.r
+ est.handler";version="6.1.2",org.apache.struts2.rest.config.entities;us
+ es:="org.apache.struts2.config.entities";version="6.1.2"
+Implementation-Title: Struts 2 REST Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.fasterxml.jackson.databind;version="[2.13,3)",com.fa
+ sterxml.jackson.dataformat.xml;version="[2.13,3)";resolution:=optional,
+ com.opensymphony.xwork2;version="[6.1,7)",com.opensymphony.xwork2.confi
+ g;version="[6.1,7)",com.opensymphony.xwork2.config.entities;version="[6
+ .1,7)",com.opensymphony.xwork2.inject;version="[6.1,7)",com.opensymphon
+ y.xwork2.interceptor;version="[6.1,7)",com.opensymphony.xwork2.util;ver
+ sion="[6.1,7)",com.opensymphony.xwork2.util.location;version="[6.1,7)",
+ com.thoughtworks.xstream;version="[1.4,2)",com.thoughtworks.xstream.io;
+ version="[1.4,2)",com.thoughtworks.xstream.io.xml;version="[1.4,2)",com
+ .thoughtworks.xstream.security;version="[1.4,2)",javax.servlet;version=
+ "[3.1,4)",javax.servlet.http;version="[3.1,4)",org.apache.commons.beanu
+ tils;version="[1.9,2)";resolution:=optional,org.apache.commons.lang3;ve
+ rsion="[3.10,4)",org.apache.juneau.parser;version="[8.1,9)";resolution:
+ =optional,org.apache.juneau.serializer;version="[8.1,9)";resolution:=op
+ tional,org.apache.juneau.xml;version="[8.1,9)";resolution:=optional,org
+ .apache.logging.log4j;version="[2.19,3)",org.apache.struts2;version="[6
+ .1,7)",org.apache.struts2.config.entities;version="[6.1,7)",org.apache.
+ struts2.dispatcher.mapper;version="[6.1,7)",org.apache.struts2.rest.han
+ dler,org.apache.struts2.rest.handler.xstream,org.apache.struts2.result;
+ version="[6.1,7)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 REST Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

@@ -1,0 +1,45 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Spring Plugin
+Bundle-SymbolicName: org.apache.struts.2-spring-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.spring;uses:="com.opensymphony.xwork2
+ .inject,com.opensymphony.xwork2.spring,com.opensymphony.xwork2.util.cla
+ ssloader,javax.servlet,org.apache.commons.jci.monitor,org.springframewo
+ rk.beans,org.springframework.beans.factory,org.springframework.beans.fa
+ ctory.config,org.springframework.beans.factory.support,org.springframew
+ ork.web.context.support";version="6.1.2",org.apache.struts2.spring.conf
+ ig.entities;uses:="org.apache.struts2.config.entities";version="6.1.2",
+ com.opensymphony.xwork2.spring;uses:="com.opensymphony.xwork2,com.opens
+ ymphony.xwork2.inject,org.springframework.beans,org.springframework.bea
+ ns.factory.config,org.springframework.context";version="6.1.2",com.open
+ symphony.xwork2.spring.interceptor;uses:="com.opensymphony.xwork2,com.o
+ pensymphony.xwork2.interceptor,org.springframework.beans,org.springfram
+ ework.context";version="6.1.2"
+Implementation-Title: Struts 2 Spring Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.inject;versi
+ on="[6.1,7)",com.opensymphony.xwork2.interceptor;version="[6.1,7)",com.
+ opensymphony.xwork2.spring,com.opensymphony.xwork2.util.classloader;ver
+ sion="[6.1,7)",javax.servlet;version="[3.1,4)",org.apache.commons.jci.m
+ onitor;version="[1.1,2)";resolution:=optional,org.apache.commons.lang3;
+ version="[3.10,4)",org.apache.logging.log4j;version="[2.19,3)",org.apac
+ he.struts2.config.entities;version="[6.1,7)",org.apache.struts2.dispatc
+ her;version="[6.1,7)",org.springframework.beans,org.springframework.bea
+ ns.factory,org.springframework.beans.factory.config,org.springframework
+ .beans.factory.support,org.springframework.context,org.springframework.
+ context.support,org.springframework.core,org.springframework.util,org.s
+ pringframework.web.context,org.springframework.web.context.support
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Spring Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

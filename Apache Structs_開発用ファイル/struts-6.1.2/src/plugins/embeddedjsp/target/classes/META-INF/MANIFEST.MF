@@ -1,0 +1,70 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 Embedded JSP Plugin, since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-embeddedjsp-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2;version="6.1.2";uses:="com.opensympho
+ ny.xwork2,javax.servlet,org.apache.struts2.result",org.apache.struts2.e
+ l;uses:="javax.el,org.apache.struts2.el.parser";version="6.1.2",org.apa
+ che.struts2.el.util;uses:="javax.el";version="6.1.2",org.apache.struts2
+ .el.parser;uses:="javax.el,org.apache.struts2.el.lang";version="6.1.2",
+ org.apache.struts2.el.lang;uses:="javax.el,org.apache.struts2.el.parser
+ ";version="6.1.2",org.apache.struts2.compiler;uses:="javax.tools";versi
+ on="6.1.2",org.apache.struts2.jasper;uses:="com.opensymphony.xwork2.uti
+ l.finder,javax.servlet,javax.servlet.jsp.tagext,org.apache.juli.logging
+ ,org.apache.struts2.jasper.compiler,org.apache.struts2.jasper.servlet";
+ version="6.1.2",org.apache.struts2.jasper.servlet;uses:="com.opensympho
+ ny.xwork2.util.finder,javax.servlet,javax.servlet.descriptor,javax.serv
+ let.http,javax.servlet.jsp.tagext,org.apache.struts2.jasper,org.apache.
+ struts2.jasper.compiler,org.apache.tomcat";version="6.1.2",org.apache.s
+ truts2.jasper.util;version="6.1.2",org.apache.struts2.jasper.security;v
+ ersion="6.1.2",org.apache.struts2.jasper.el;uses:="javax.el,javax.servl
+ et.jsp.el";version="6.1.2",org.apache.struts2.jasper.runtime;uses:="jav
+ ax.el,javax.naming,javax.servlet,javax.servlet.http,javax.servlet.jsp,j
+ avax.servlet.jsp.el,javax.servlet.jsp.tagext,org.apache.jasper.runtime,
+ org.apache.struts2.jasper,org.apache.struts2.jasper.el,org.apache.tomca
+ t";version="6.1.2",org.apache.struts2.jasper.tagplugins.jstl.core;uses:
+ ="org.apache.struts2.jasper.compiler.tagplugin";version="6.1.2",org.apa
+ che.struts2.jasper.tagplugins.jstl;uses:="javax.servlet,javax.servlet.h
+ ttp,javax.servlet.jsp";version="6.1.2",org.apache.struts2.jasper.xmlpar
+ ser;uses:="org.apache.struts2.jasper,org.apache.struts2.jasper.compiler
+ ,org.w3c.dom,org.xml.sax";version="6.1.2",org.apache.struts2.jasper.com
+ piler;uses:="javax.el,javax.servlet,javax.servlet.jsp.tagext,org.apache
+ .juli.logging,org.apache.struts2.jasper,org.apache.struts2.jasper.compi
+ ler.tagplugin,org.apache.struts2.jasper.servlet,org.xml.sax";version="6
+ .1.2",org.apache.struts2.jasper.compiler.tagplugin;version="6.1.2"
+Implementation-Title: DEPRECATED: Struts 2 Embedded JSP Plugin, since 6.
+ 0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.util.finder;version="[6.1,7)",com.opensymphony.xwork2.util.fs
+ ;version="[6.1,7)",javax.el,javax.naming,javax.servlet;version="[3.1,4)
+ ",javax.servlet.descriptor;version="[3.1,4)",javax.servlet.http;version
+ ="[3.1,4)",javax.servlet.jsp,javax.servlet.jsp.el,javax.servlet.jsp.tag
+ ext,javax.tools,javax.xml.parsers,org.apache.commons.io;version="[1.4,2
+ )",org.apache.commons.lang3;version="[3.10,4)",org.apache.jasper.runtim
+ e,org.apache.juli.logging,org.apache.logging.log4j;version="[2.19,3)",o
+ rg.apache.struts2;version="[6.1,7)",org.apache.struts2.compiler,org.apa
+ che.struts2.dispatcher;version="[6.1,7)",org.apache.struts2.el,org.apac
+ he.struts2.el.lang,org.apache.struts2.el.parser,org.apache.struts2.el.u
+ til,org.apache.struts2.jasper,org.apache.struts2.jasper.compiler,org.ap
+ ache.struts2.jasper.compiler.tagplugin,org.apache.struts2.jasper.el,org
+ .apache.struts2.jasper.runtime,org.apache.struts2.jasper.security,org.a
+ pache.struts2.jasper.servlet,org.apache.struts2.jasper.tagplugins.jstl,
+ org.apache.struts2.jasper.util,org.apache.struts2.jasper.xmlparser,org.
+ apache.struts2.result;version="[6.1,7)",org.apache.struts2.url;version=
+ "[6.1,7)",org.apache.tomcat,org.w3c.dom,org.xml.sax,org.xml.sax.ext,org
+ .xml.sax.helpers
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 Embedded JSP Plugin, since 6.0
+ .0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

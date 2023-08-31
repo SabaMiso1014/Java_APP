@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 Sitemesh Plugin - since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-sitemesh-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.sitemesh;uses:="com.opensymphony.modu
+ le.sitemesh,com.opensymphony.module.sitemesh.factory,com.opensymphony.m
+ odule.sitemesh.mapper,com.opensymphony.sitemesh,com.opensymphony.siteme
+ sh.webapp,com.opensymphony.sitemesh.webapp.decorator,com.opensymphony.x
+ work2,com.opensymphony.xwork2.inject,freemarker.ext.servlet,freemarker.
+ template,javax.servlet,javax.servlet.http,org.apache.struts2.views.free
+ marker,org.apache.struts2.views.velocity,org.apache.velocity,org.apache
+ .velocity.context,org.apache.velocity.tools.view";version="6.1.2"
+Implementation-Title: DEPRECATED: Struts 2 Sitemesh Plugin - since 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.module.sitemesh,com.opensymphony.module
+ .sitemesh.factory,com.opensymphony.module.sitemesh.mapper,com.opensymph
+ ony.module.sitemesh.util,com.opensymphony.sitemesh,com.opensymphony.sit
+ emesh.compatability,com.opensymphony.sitemesh.webapp,com.opensymphony.s
+ itemesh.webapp.decorator,com.opensymphony.xwork2;version="[6.1,7)",com.
+ opensymphony.xwork2.inject;version="[6.1,7)",com.opensymphony.xwork2.in
+ terceptor;version="[6.1,7)",com.opensymphony.xwork2.util;version="[6.1,
+ 7)",freemarker.core;version="[2.3,3)",freemarker.ext.servlet;version="[
+ 2.3,3)",freemarker.template;version="[2.3,3)",javax.servlet;version="[3
+ .1,4)",javax.servlet.http;version="[3.1,4)",org.apache.commons.lang3;ve
+ rsion="[3.10,4)",org.apache.logging.log4j;version="[2.19,3)",org.apache
+ .struts2;version="[6.1,7)",org.apache.struts2.dispatcher;version="[6.1,
+ 7)",org.apache.struts2.dispatcher.listener;version="[6.1,7)",org.apache
+ .struts2.dispatcher.mapper;version="[6.1,7)",org.apache.struts2.views.f
+ reemarker;version="[6.1,7)",org.apache.struts2.views.velocity;version="
+ [6.1,7)";resolution:=optional,org.apache.velocity;version="[2.3,3)";res
+ olution:=optional,org.apache.velocity.app;version="[2.3,3)";resolution:
+ =optional,org.apache.velocity.context;version="[2.3,3)";resolution:=opt
+ ional,org.apache.velocity.tools.view;resolution:=optional,org.slf4j;ver
+ sion="[1.7,2)";resolution:=optional
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 Sitemesh Plugin - since 6.0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 Plexus Plugin - since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-plexus-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.plexus;uses:="com.opensymphony.xwork2
+ ,com.opensymphony.xwork2.config,com.opensymphony.xwork2.config.entities
+ ,com.opensymphony.xwork2.inject,com.opensymphony.xwork2.interceptor,com
+ .opensymphony.xwork2.util.reflection,com.opensymphony.xwork2.validator,
+ javax.servlet,javax.servlet.http,org.codehaus.plexus,org.codehaus.plexu
+ s.configuration";version="6.1.2"
+Implementation-Title: DEPRECATED: Struts 2 Plexus Plugin - since 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.config.entit
+ ies;version="[6.1,7)",com.opensymphony.xwork2.inject;version="[6.1,7)",
+ com.opensymphony.xwork2.interceptor;version="[6.1,7)",com.opensymphony.
+ xwork2.util.reflection;version="[6.1,7)",com.opensymphony.xwork2.valida
+ tor;version="[6.1,7)",javax.servlet;version="[3.1,4)",javax.servlet.htt
+ p;version="[3.1,4)",org.apache.logging.log4j;version="[2.19,3)",org.cod
+ ehaus.plexus,org.codehaus.plexus.configuration
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 Plexus Plugin - since 6.0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

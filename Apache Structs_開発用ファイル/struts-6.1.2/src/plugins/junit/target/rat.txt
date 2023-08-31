@@ -1,0 +1,58 @@
+
+*****************************************************
+Summary
+-------
+Generated at: 2023-08-17T09:31:40+09:00
+
+Notes: 0
+Binaries: 0
+Archives: 0
+Standards: 32
+
+Apache Licensed: 32
+Generated Documents: 0
+
+JavaDocs are generated, thus a license header is optional.
+Generated files do not require license headers.
+
+0 Unknown Licenses
+
+*****************************************************
+  Files with Apache License headers will be marked AL
+  Binary files (which do not require any license headers) will be marked B
+  Compressed archives will be marked A
+  Notices, licenses etc. will be marked N
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/pom.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/applicationContext.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/struts.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/template2.ftl
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/struts-convention-configuration.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/view-success.ftl
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/template-session.ftl
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/struts-session-values-test.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/template-1.ftl
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/template-2.ftl
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/resources/struts-test.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/StrutsSpringJUnit4TestCaseTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/StrutsTestCaseTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/convention/StrutsJUnit4ConventionTestCaseTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/MySessionBean.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/JUnitTestAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/StrutsSpringTestCaseTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/StrutsJUnit4TestCaseTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/session/StrutsJUnit4SessionTestCaseTest.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/session/SessionSetAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/org/apache/struts2/junit/session/SessionGetAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/test/java/actions/ViewAction.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/StrutsSpringTestCase.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/StrutsTestCase.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/util/TestUtils.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/StrutsSpringJUnit4TestCase.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/StrutsJUnit4TestCase.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/XWorkJUnit4TestCase.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/StrutsRestTestCase.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/StrutsPortletTestCase.java
+  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/junit/src/main/java/org/apache/struts2/junit/ConventionPluginResourceLoader.java
+ 
+*****************************************************

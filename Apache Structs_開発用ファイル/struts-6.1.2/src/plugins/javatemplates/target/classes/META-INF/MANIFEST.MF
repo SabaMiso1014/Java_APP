@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Struts 2 Java Templates Plugin
+Bundle-SymbolicName: org.apache.struts.2-javatemplates-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.views.java;uses:="com.opensymphony.xw
+ ork2.inject,org.apache.struts2.components.template";version="6.1.2",org
+ .apache.struts2.views.java.simple;uses:="org.apache.struts2.components.
+ template,org.apache.struts2.views.java";version="6.1.2"
+Implementation-Title: Struts 2 Java Templates Plugin
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.inject;versi
+ on="[6.1,7)",com.opensymphony.xwork2.util;version="[6.1,7)",javax.servl
+ et.http;version="[3.1,4)",org.apache.commons.lang3;version="[3.10,4)",o
+ rg.apache.commons.text;version="[1.10,2)",org.apache.logging.log4j;vers
+ ion="[2.19,3)",org.apache.struts2;version="[6.1,7)",org.apache.struts2.
+ components;version="[6.1,7)",org.apache.struts2.components.template;ver
+ sion="[6.1,7)",org.apache.struts2.interceptor;version="[6.1,7)",org.apa
+ che.struts2.util;version="[6.1,7)",org.apache.struts2.views.java,org.ap
+ ache.struts2.views.java.simple
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: Struts 2 Java Templates Plugin
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

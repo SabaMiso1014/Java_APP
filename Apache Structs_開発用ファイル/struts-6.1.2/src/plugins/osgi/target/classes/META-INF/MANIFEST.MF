@@ -1,0 +1,55 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 OSGi Plugin - since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-osgi-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.osgi;uses:="com.opensymphony.xwork2,c
+ om.opensymphony.xwork2.config,com.opensymphony.xwork2.config.entities,c
+ om.opensymphony.xwork2.inject,com.opensymphony.xwork2.util.finder,freem
+ arker.cache,javax.servlet,org.apache.struts2.osgi.host,org.apache.strut
+ s2.util,org.apache.struts2.views.freemarker,org.apache.struts2.views.ve
+ locity,org.osgi.framework";version="6.1.2",org.apache.struts2.osgi.host
+ ;uses:="javax.servlet,org.apache.felix.framework,org.osgi.framework";ve
+ rsion="6.1.2",org.apache.struts2.osgi.action;uses:="org.osgi.framework"
+ ;version="6.1.2",org.apache.struts2.osgi.loaders;uses:="com.opensymphon
+ y.xwork2.inject,freemarker.cache,org.apache.struts2.dispatcher,org.apac
+ he.struts2.osgi,org.apache.velocity.exception,org.apache.velocity.runti
+ me.resource.loader";version="6.1.2",org.apache.struts2.osgi.interceptor
+ ;uses:="com.opensymphony.xwork2,com.opensymphony.xwork2.inject,com.open
+ symphony.xwork2.interceptor,javax.servlet,org.osgi.framework";version="
+ 6.1.2"
+Implementation-Title: DEPRECATED: Struts 2 OSGi Plugin - since 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: com.opensymphony.xwork2;version="[6.1,7)",com.opensympho
+ ny.xwork2.config;version="[6.1,7)",com.opensymphony.xwork2.config.entit
+ ies;version="[6.1,7)",com.opensymphony.xwork2.config.impl,com.opensymph
+ ony.xwork2.inject;version="[6.1,7)",com.opensymphony.xwork2.interceptor
+ ;version="[6.1,7)",com.opensymphony.xwork2.util;version="[6.1,7)",com.o
+ pensymphony.xwork2.util.finder;version="[6.1,7)",com.opensymphony.xwork
+ 2.util.fs;version="[6.1,7)",freemarker.cache;version="[2.3,3)",java.io,
+ java.lang,java.lang.invoke,java.lang.reflect,java.net,java.security,jav
+ a.util,java.util.function,java.util.jar,java.util.regex,java.util.strea
+ m,javax.servlet;version="[3.1,4)",org.apache.commons.lang3;version="[3.
+ 10,4)",org.apache.felix.framework,org.apache.felix.main,org.apache.feli
+ x.shell;version="[1.0,2)",org.apache.logging.log4j;version="[2.19,3)",o
+ rg.apache.struts2;version="[6.1,7)",org.apache.struts2.config;version="
+ [6.1,7)",org.apache.struts2.dispatcher;version="[6.1,7)",org.apache.str
+ uts2.osgi,org.apache.struts2.osgi.action,org.apache.struts2.osgi.host,o
+ rg.apache.struts2.osgi.loaders,org.apache.struts2.util;version="[6.1,7)
+ ",org.apache.struts2.views.freemarker;version="[6.1,7)",org.apache.stru
+ ts2.views.velocity;version="[6.1,7)",org.apache.velocity.exception;vers
+ ion="[2.3,3)",org.apache.velocity.runtime.resource.loader;version="[2.3
+ ,3)",org.osgi.framework;version="[1.9,2)",org.osgi.util.tracker;version
+ ="[1.5,2)",org.springframework.osgi.web.context.support
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 OSGi Plugin - since 6.0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641

@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Bundle-Description: Apache Struts 2
+Bundle-DocURL: http://www.apache.org
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DEPRECATED: Struts 2 Portlet Mocks Plugin - since 6.0.0
+Bundle-SymbolicName: org.apache.struts.2-portlet-mocks-plugin
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: 6.1.2
+Created-By: Apache Maven Bundle Plugin 5.1.6
+Export-Package: org.apache.struts2.mock.web.portlet;uses:="javax.portlet
+ ,javax.servlet,javax.servlet.http,javax.xml.namespace,org.apache.struts
+ 2.mock.web.portlet.multipart,org.springframework.core.io,org.springfram
+ ework.util,org.springframework.web.multipart,org.w3c.dom";version="6.1.
+ 2",org.apache.struts2.mock.web.portlet.multipart;uses:="javax.portlet,o
+ rg.springframework.web.multipart";version="6.1.2"
+Implementation-Title: DEPRECATED: Struts 2 Portlet Mocks Plugin - since 
+ 6.0.0
+Implementation-Vendor: Apache Software Foundation
+Implementation-Version: 6.1.2
+Import-Package: javax.portlet;version="[2.0,3)",javax.servlet;version="[
+ 3.1,4)",javax.servlet.http;version="[3.1,4)",javax.xml.namespace,javax.
+ xml.parsers,org.apache.commons.logging;version="[1.2,2)",org.apache.str
+ uts2.mock.web.portlet.multipart,org.springframework.core.io,org.springf
+ ramework.mock.web,org.springframework.util,org.springframework.web.mult
+ ipart,org.w3c.dom
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Specification-Title: DEPRECATED: Struts 2 Portlet Mocks Plugin - since 6
+ .0.0
+Specification-Vendor: Apache Software Foundation
+Specification-Version: 6.1
+Tool: Bnd-6.2.0.202202251641
