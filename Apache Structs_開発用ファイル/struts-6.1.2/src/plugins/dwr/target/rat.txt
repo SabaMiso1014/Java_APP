@@ -2,7 +2,7 @@
 *****************************************************
 Summary
 -------
-Generated at: 2023-08-17T09:31:37+09:00
+Generated at: 2023-10-12T00:14:08+09:00
 
 Notes: 0
 Binaries: 0
@@ -22,8 +22,8 @@ Generated files do not require license headers.
   Binary files (which do not require any license headers) will be marked B
   Compressed archives will be marked A
   Notices, licenses etc. will be marked N
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/dwr/pom.xml
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/dwr/src/site/site.xml
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/dwr/src/main/java/org/apache/struts2/validators/DWRValidator.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/dwr/pom.xml
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/dwr/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/dwr/src/main/java/org/apache/struts2/validators/DWRValidator.java
  
 *****************************************************

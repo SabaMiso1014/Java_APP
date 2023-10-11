@@ -2,7 +2,7 @@
 *****************************************************
 Summary
 -------
-Generated at: 2023-08-17T09:31:40+09:00
+Generated at: 2023-10-12T00:14:10+09:00
 
 Notes: 1
 Binaries: 0
@@ -22,67 +22,67 @@ Generated files do not require license headers.
   Binary files (which do not require any license headers) will be marked B
   Compressed archives will be marked A
   Notices, licenses etc. will be marked N
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/pom.xml
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/resources/log4j2.xml
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/resources/struts.xml
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/components/PortletUrlRendererTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/components/PortletAction.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/StrutsTestCasePortletTests.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/result/PortletResultTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/context/PortletActionContextTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/util/PortletUrlHelperTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/PortletApplicationMapTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/dispatcher/Jsr168DispatcherTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/dispatcher/Jsr286DispatcherTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/PortletSessionMapTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/interceptor/PortletStateInterceptorTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/interceptor/PortletAwareInterceptorTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/PortletRequestMapTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/views/jsp/PortletUrlTagTest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/site/site.xml
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/resources/struts-plugin.xml
-  N     /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/resources/NOTICE.txt
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/components/PortletUrlRenderer.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletConstants.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletOutputStream.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletContext.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletRequestDispatcher.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/package.html
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletHttpSession.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletInputStream.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletResponseJSR286.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletResponse.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletRequest.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletConfig.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResultHelper.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResultHelperJSR168.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResult.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletActionRedirectResult.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletVelocityResult.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResultHelperJSR286.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/context/PortletActionContext.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/util/PortletUrlHelper.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/util/PortletUrlHelperJSR286.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletPhase.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletSessionMap.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/DirectRenderFromEventAction.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/Jsr168Dispatcher.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/DispatcherServlet.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/Jsr286Dispatcher.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletResponseAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletContextAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletRequestAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletPreferencesAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletApplicationMap.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletRequestMap.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletAwareInterceptor.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletPrincipalProxy.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletResponseAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletStateInterceptor.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletContextAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletRequestAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletPreferencesAware.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/ServletPortletPreferences.java
-  AL    /Users/yuyahonjo/Java_開発用ファイル/Apache Structs_PR/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/views/freemarker/PortletFreemarkerResult.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/pom.xml
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/resources/log4j2.xml
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/resources/struts.xml
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/components/PortletUrlRendererTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/components/PortletAction.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/StrutsTestCasePortletTests.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/result/PortletResultTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/context/PortletActionContextTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/util/PortletUrlHelperTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/PortletApplicationMapTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/dispatcher/Jsr168DispatcherTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/dispatcher/Jsr286DispatcherTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/PortletSessionMapTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/interceptor/PortletStateInterceptorTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/interceptor/PortletAwareInterceptorTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/portlet/PortletRequestMapTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/test/java/org/apache/struts2/views/jsp/PortletUrlTagTest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/site/site.xml
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/resources/struts-plugin.xml
+  N     /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/resources/NOTICE.txt
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/components/PortletUrlRenderer.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletConstants.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletOutputStream.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletContext.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletRequestDispatcher.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/package.html
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletHttpSession.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletInputStream.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletResponseJSR286.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletResponse.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletRequest.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/servlet/PortletServletConfig.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResultHelper.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResultHelperJSR168.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResult.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletActionRedirectResult.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletVelocityResult.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/result/PortletResultHelperJSR286.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/context/PortletActionContext.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/util/PortletUrlHelper.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/util/PortletUrlHelperJSR286.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletPhase.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletSessionMap.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/DirectRenderFromEventAction.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/Jsr168Dispatcher.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/DispatcherServlet.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/dispatcher/Jsr286Dispatcher.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletResponseAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletContextAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletRequestAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/action/PortletPreferencesAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletApplicationMap.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/PortletRequestMap.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletAwareInterceptor.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletPrincipalProxy.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletResponseAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletStateInterceptor.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletContextAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletRequestAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/PortletPreferencesAware.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/portlet/interceptor/ServletPortletPreferences.java
+  AL    /Users/yuyahonjo/Java_APP/Apache Structs_開発用ファイル/struts-6.1.2/src/plugins/portlet/src/main/java/org/apache/struts2/views/freemarker/PortletFreemarkerResult.java
  
 *****************************************************
